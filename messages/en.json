@@ -1,0 +1,124 @@
+{
+  "meta": {
+    "title": "Lynx AI - Global AI & Web3 Solutions",
+    "description": "Connect with the world through cutting-edge AI models, blockchain technology, and global Web3 innovations that transcend borders."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About us",
+    "projects": "Projects",
+    "careers": "Careers",
+    "environment": "Work environment",
+    "news": "News",
+    "contact": "Contact Us"
+  },
+  "common": {
+    "viewMore": "View more",
+    "getInTouch": "Get in Touch",
+    "sendMessage": "Send Message"
+  },
+  "hero": {
+    "brand": "Lynx AI",
+    "kicker": "The future of Global AI & Web3",
+    "headline": "Global AI & Web3 solutions",
+    "subheadline": "Connect with the world through cutting-edge AI models, blockchain technology, and global Web3 innovations that transcend borders.",
+    "bullets": {
+      "globalReach": "Global Reach",
+      "support": "24/7 Worldwide Support",
+      "crossBorder": "Cross-Border Solutions"
+    }
+  },
+  "solutions": {
+    "title": "Business domains",
+    "subtitle": "Digital Creative Studio",
+    "desc": "Lynx Solution blends creativity and engineering to build human-centered products that create real impact.",
+    "ai": {
+      "title": "AI",
+      "headline": "AI-Powered Analytics",
+      "desc": "Advanced machine learning models for predictive analytics and intelligent automation.",
+      "points": ["Real-time Processing", "Predictive Models", "Custom AI Training"]
+    },
+    "blockchain": {
+      "title": "Blockchain",
+      "headline": "Blockchain Infrastructure",
+      "desc": "Secure, scalable blockchain solutions for enterprise applications and DeFi protocols.",
+      "points": ["Smart Contracts", "DeFi Integration", "Cross-chain Support"]
+    },
+    "web3": {
+      "title": "Web3",
+      "headline": "Web3 Development",
+      "desc": "Full-stack Web3 applications with seamless user experience and robust security.",
+      "points": ["dApp Development", "Wallet Integration", "NFT Platforms"]
+    }
+  },
+  "stats": {
+    "projects": { "value": "50+", "label": "Projects Delivered" },
+    "uptime": { "value": "99.9%", "label": "Uptime Guarantee" },
+    "support": { "value": "24/7", "label": "Support Available" },
+    "transactions": { "value": "100M+", "label": "Transactions Processed" }
+  },
+  "partners": {
+    "title": "Trusted by industry leaders",
+    "globalTag": "Global"
+  },
+  "services": {
+    "title": "Our projects",
+    "subtitle": "Highlighted case studies",
+    "desc": "A selection of projects where Lynx Solution partnered with clients to drive digital transformation.",
+    "items": {
+      "smartContract": {
+        "title": "Smart Contract Development",
+        "desc": "Custom smart contracts built with security and efficiency in mind. From simple tokens to complex DeFi protocols.",
+        "points": ["Security Audits", "Gas Optimization", "Multi-chain Support"]
+      },
+      "aiTraining": {
+        "title": "AI Model Training",
+        "desc": "Train custom AI models tailored to your specific business needs and data requirements.",
+        "points": ["Custom Datasets", "Model Fine-tuning", "Performance Optimization"]
+      },
+      "web3Integration": {
+        "title": "Web3 Integration",
+        "desc": "Seamlessly integrate Web3 functionality into your existing applications and workflows.",
+        "points": ["Wallet Integration", "dApp Development", "API Solutions"]
+      },
+      "blockchainConsulting": {
+        "title": "Blockchain Consulting",
+        "desc": "Strategic guidance on blockchain adoption, tokenomics, and decentralized architecture design.",
+        "points": ["Strategy Planning", "Technical Architecture", "Implementation Roadmap"]
+      },
+      "defiProtocol": {
+        "title": "DeFi Protocol Development",
+        "desc": "Build sophisticated DeFi protocols with advanced features like yield farming, lending, and AMM.",
+        "points": ["Liquidity Pools", "Yield Strategies", "Governance Tokens"]
+      },
+      "aiAnalytics": {
+        "title": "AI-Powered Analytics",
+        "desc": "Transform your data into actionable insights with our advanced AI analytics platform.",
+        "points": ["Predictive Analytics", "Real-time Dashboards", "Custom Reports"]
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Culture & events",
+    "desc": "Stories and activities that reflect the people and culture at Lynx Solution."
+  },
+  "contact": {
+    "title": "Ready to transform your business?",
+    "desc": "Let's discuss how our AI, blockchain, and Web3 solutions can drive your success.",
+    "formTitle": "Get in Touch",
+    "formDesc": "Fill out the form and we'll get back to you within 24 hours.",
+    "infoTitle": "Contact Information",
+    "infoDesc": "Reach out to us through any of these channels.",
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "company": "Company",
+      "message": "Message"
+    }
+  },
+  "footer": {
+    "copyright": "All rights reserved."
+  }
+}
+

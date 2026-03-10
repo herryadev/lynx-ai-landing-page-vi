@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "title": "Lynx Solution | Digital Creative Studio",
+    "description": "Lynx Solution kết hợp sáng tạo và kỹ thuật để tạo ra những sản phẩm có giá trị."
+  },
+  "nav": {
+    "home": "Trang chủ",
+    "about": "Về chúng tôi",
+    "projects": "Dự án",
+    "careers": "Cơ hội nghề nghiệp",
+    "environment": "Môi trường làm việc",
+    "news": "Tin tức",
+    "contact": "Liên hệ"
+  },
+  "common": {
+    "viewMore": "Xem thêm",
+    "viewDetail": "Xem chi tiết",
+    "viewAllProjects": "Xem tất cả dự án",
+    "viewMoreNews": "Xem nhiều tin hơn",
+    "joinUs": "Gia nhập đội ngũ Lynx Solution"
+  },
+  "hero": {
+    "brand": "Lynx Solution",
+    "kicker": "Digital Creative Studio"
+  },
+  "business": {
+    "title": "Lĩnh vực kinh doanh",
+    "intro": "Là một Digital Creative Studio, Lynx Solution luôn đề cao tinh thần làm chủ sản phẩm, tư duy sáng tạo trong mỗi dự án để mang đến những trải nghiệm tốt nhất cho người dùng. Với hai dòng dịch vụ là \"Creative & Engineering\" và \"Talent Platform\", Lynx Solution đã và đang từng bước cùng công nghệ tạo ra những giá trị tốt đẹp cho xã hội.",
+    "creative": {
+      "label": "Digital Creative Studio",
+      "title": "Creative & Engineering",
+      "desc": "Đội ngũ nhân lực dồi dào chuyên về công nghệ, thiết kế và kinh doanh.",
+      "cta": "Tìm hiểu thêm"
+    },
+    "talent": {
+      "label": "Digital Creative Studio",
+      "title": "Talent Platform",
+      "desc": "Các giải pháp nguồn nhân lực hỗ trợ tăng trưởng kinh doanh bền vững.",
+      "cta": "Tìm hiểu thêm"
+    }
+  },
+  "projects": {
+    "title": "Dự án của chúng tôi",
+    "statsPartners": "Đối tác",
+    "statsServices": "Dịch vụ được hỗ trợ",
+    "cardLabel": "Dự án",
+    "items": [
+      {
+        "client": "Công ty ABC",
+        "name": "Dự án Platform X",
+        "desc": "Nền tảng giúp kết nối và tối ưu quy trình làm việc từ xa, bất kể thời gian hay địa điểm."
+      },
+      {
+        "client": "Công ty DEF",
+        "name": "Dự án App Y",
+        "desc": "Phát triển ứng dụng giúp hiện thực hóa phong cách sống và làm việc theo ý muốn."
+      },
+      {
+        "client": "Công ty GHI",
+        "name": "Dự án Data Z",
+        "desc": "Giải pháp dữ liệu giúp doanh nghiệp ra quyết định nhanh và chính xác hơn."
+      }
+    ]
+  },
+  "careers": {
+    "title": "Cơ hội nghề nghiệp",
+    "headline": "Join us & MAKE AWESOME THINGS THAT MATTER.",
+    "desc": "Lynx Solution luôn tìm kiếm những con người đam mê thử thách để tạo nên những giá trị tích cực. Cùng trở thành một phần của Lynx Solution ngay hôm nay.",
+    "cta": "Gia nhập đội ngũ Lynx Solution"
+  },
+  "environment": {
+    "title": "Môi trường làm việc",
+    "activeChallenge": {
+      "tag": "#ActiveChallenge",
+      "desc": "Chủ động tạo ra công việc thử thách liên tục cho bản thân."
+    },
+    "activeLearn": {
+      "tag": "#ActiveLearn",
+      "desc": "Học tập trong một tổ chức có đầy đủ các thành tố: môi trường học tập, cơ hội học tập, năng lực học tập."
+    },
+    "activeJoy": {
+      "tag": "#ActiveJoy",
+      "desc": "Sống trong môi trường văn hóa hướng tới giá trị nhân văn, và hạnh phúc cho mọi người."
+    },
+    "cta": "Xem chi tiết"
+  },
+  "culture": {
+    "title": "Văn hóa - Sự kiện",
+    "items": [
+      {
+        "tag": "Dự án",
+        "title": "Case study: Chuyển đổi số cùng khách hàng",
+        "excerpt": "Cùng Lynx Solution tìm hiểu cách chúng tôi đồng hành với khách hàng trong hành trình chuyển đổi số và duy trì chất lượng sản phẩm."
+      },
+      {
+        "tag": "Văn hóa",
+        "title": "Chiến lược học tập và thực hành liên tục",
+        "excerpt": "Để nuôi dưỡng văn hóa học tập, Lynx Solution triển khai các chương trình đào tạo và cơ hội phát triển cho từng thành viên."
+      },
+      {
+        "tag": "Công nghệ",
+        "title": "Công cụ nội bộ và nền tảng phát triển",
+        "excerpt": "Đội ngũ kỹ thuật xây dựng và vận hành các công cụ nội bộ giúp tối ưu quy trình và nâng cao hiệu quả làm việc."
+      }
+    ]
+  },
+  "footer": {
+    "whoWeAre": "Chúng tôi là ai?",
+    "whoLinks": ["Tầm nhìn, sứ mệnh", "Giá trị cốt lõi", "Ý nghĩa tên Lynx"],
+    "whatWeDo": "Chúng tôi làm gì?",
+    "whatLinks": ["Creative & Engineering", "Talent Platform", "Dự án của chúng tôi"],
+    "newsUpdate": "Cập nhật tin tức",
+    "newsLinks": ["Văn hóa - Sự kiện", "Tuyển dụng", "Chính sách phúc lợi"],
+    "contactTitle": "Liên hệ",
+    "phone": "SĐT",
+    "email": "Email",
+    "offices": "Văn phòng",
+    "officesList": [
+      "Hanoi: Tòa nhà Keangnam, khu ĐTM Cầu Giấy, Hà Nội.",
+      "Đà Nẵng: 16 Lý Thường Kiệt, Phường Hải Châu, Đà Nẵng.",
+      "Hồ Chí Minh: L'Mak Long Tower, 101-103 Nguyễn Cửu Vân, Quận Gia Định, TP.HCM."
+    ],
+    "copyright": "Bản quyền thuộc về Lynx Solution.",
+    "joinUs": "Join us"
+  }
+}
