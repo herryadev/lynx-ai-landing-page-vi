@@ -40,7 +40,7 @@ export function LandingPage() {
                   {t('hero.description')}
                 </p>
                 <div className="mt-6 flex justify-center lg:justify-start">
-                  <a href="#contact">
+                  <a href="https://zalo.me/091220001" target="_blank" rel="noopener noreferrer">
                     <Button>{t('hero.cta')}</Button>
                   </a>
                 </div>
@@ -188,7 +188,9 @@ export function LandingPage() {
                 {t('cta.description')}
               </p>
               <div className="mt-8 flex justify-center">
-                <Button>{t('cta.button')}</Button>
+                <a href="https://zalo.me/091220001" target="_blank" rel="noopener noreferrer">
+                  <Button>{t('cta.button')}</Button>
+                </a>
               </div>
             </motion.div>
           </Container>

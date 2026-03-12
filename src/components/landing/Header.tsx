@@ -1,6 +1,7 @@
 import {useTranslations} from 'next-intl';
 import Image from 'next/image';
 import {Container} from './Container';
+import { Button } from './Button';
 
 const navItems = [
   {key: 'about', href: '#about'},
@@ -38,12 +39,9 @@ export function Header() {
               {t(`nav.${item.key}`)}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="rounded-full bg-[var(--color-primary)] px-4 py-2 text-base font-semibold text-white shadow-sm transition-colors hover:bg-[#d97840]"
-          >
-            {t('nav.contact')}
-          </a>
+          <a href="https://zalo.me/091220001" target="_blank" rel="noopener noreferrer">
+                  <Button>{t('nav.contact')}</Button>
+                </a>
         </nav>
 
       </Container>

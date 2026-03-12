@@ -69,13 +69,11 @@
     "newsUpdate": "Cập nhật tin tức",
     "newsLinks": ["Văn hóa - Sự kiện", "Tuyển dụng", "Chính sách phúc lợi"],
     "contactTitle": "Liên hệ",
-    "phone": "SĐT",
+    "phone": "Zalo",
     "email": "Email",
     "offices": "Văn phòng",
     "officesList": [
-      "Hanoi: Tòa nhà Keangnam, khu ĐTM Cầu Giấy, Hà Nội.",
-      "Đà Nẵng: 16 Lý Thường Kiệt, Phường Hải Châu, Đà Nẵng.",
-      "Hồ Chí Minh: L'Mak Long Tower, 101-103 Nguyễn Cửu Vân, Quận Gia Định, TP.HCM."
+      "Hà Nội: Số 26 Ngõ 364 Đường Minh Khai, Phường Vĩnh Tuy, Quận Hai Bà Trưng, Thành phố Hà Nội, Việt Nam."
     ],
     "copyright": "Bản quyền thuộc về Lynx Solution.",
     "joinUs": "Join us"

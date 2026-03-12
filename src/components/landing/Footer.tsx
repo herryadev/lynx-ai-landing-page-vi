@@ -50,7 +50,7 @@ export function Footer() {
             </h3>
             <ul className="mt-3 space-y-2 text-base text-zinc-600">
               <li>
-                {t('footer.phone')}: <a href="tel:091220001" className="hover:text-zinc-950 hover:underline">091220001</a>
+                {t('footer.phone')}: <a href="https://zalo.me/0912205001" className="hover:text-zinc-950 hover:underline">0912205001</a>
               </li>
               <li>
                 {t('footer.email')}: <a href="mailto:info@lynxsolution.vn" className="hover:text-zinc-950 hover:underline">info@lynxsolution.vn</a>
@@ -64,7 +64,7 @@ export function Footer() {
               {t('footer.offices')}
             </h3>
             <ul className="mt-3 space-y-2 text-base text-zinc-600">
-              {[0, 1, 2].map((i) => (
+              {[0].map((i) => (
                 <li key={i}>{t(`footer.officesList.${i}`)}</li>
               ))}
             </ul>
