@@ -53,7 +53,7 @@ export function Footer() {
                 {t('footer.phone')}: <a href="tel:091220001" className="hover:text-zinc-950 hover:underline">091220001</a>
               </li>
               <li>
-                {t('footer.email')}: <a href="mailto:lyndomicx@gmail.com" className="hover:text-zinc-950 hover:underline">lyndomicx@gmail.com</a>
+                {t('footer.email')}: <a href="mailto:info@lynxsolution.vn" className="hover:text-zinc-950 hover:underline">info@lynxsolution.vn</a>
               </li>
             </ul>
           </div>
