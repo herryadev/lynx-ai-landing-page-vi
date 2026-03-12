@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/quan/Desktop/external/lynx-ai-landing-page-vi/src/app/%5Blocale%5D/not-found.tsx"],"sourcesContent":["export default function NotFound() {\n  return (\n    <div className=\"mx-auto flex min-h-screen max-w-5xl items-center justify-center px-6\">\n      <div className=\"text-center\">\n        <p className=\"text-sm font-semibold text-zinc-500\">404</p>\n        <h1 className=\"mt-2 text-balance text-3xl font-semibold tracking-tight text-zinc-950\">\n          Page not found\n        </h1>\n        <p className=\"mt-3 text-pretty text-zinc-600\">\n          The page you’re looking for doesn’t exist.\n        </p>\n      </div>\n    </div>\n  );\n}\n\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,qBACE,+YAAC;QAAI,WAAU;kBACb,cAAA,+YAAC;YAAI,WAAU;;8BACb,+YAAC;oBAAE,WAAU;8BAAsC;;;;;;8BACnD,+YAAC;oBAAG,WAAU;8BAAwE;;;;;;8BAGtF,+YAAC;oBAAE,WAAU;8BAAiC;;;;;;;;;;;;;;;;;AAMtD"}}]
-}

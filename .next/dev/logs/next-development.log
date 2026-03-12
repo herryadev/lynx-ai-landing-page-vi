@@ -1,4 +1,0 @@
-[00:00:04.527] Server  LOG     ✓ Ready in 4.3s
-[00:00:06.411] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:06.559] Browser WARN    Image with src "/img/logo.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:00:10.103] Browser WARN    Image with src "/img/img3.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
