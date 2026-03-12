@@ -1,12 +1,12 @@
-import {useTranslations} from 'next-intl';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import {Container} from './Container';
+import { Container } from './Container';
 import { Button } from './Button';
 
 const navItems = [
-  {key: 'about', href: '#about'},
-  {key: 'services', href: '#services'},
-  {key: 'why', href: '#why'}
+  { key: 'about', href: '#about' },
+  { key: 'services', href: '#services' },
+  { key: 'why', href: '#why' }
 ] as const;
 
 export function Header() {
@@ -40,8 +40,8 @@ export function Header() {
             </a>
           ))}
           <a href="https://zalo.me/091220001" target="_blank" rel="noopener noreferrer">
-                  <Button>{t('nav.contact')}</Button>
-                </a>
+            <Button>{t('nav.contact')}</Button>
+          </a>
         </nav>
 
       </Container>
