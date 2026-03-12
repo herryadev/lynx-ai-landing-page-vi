@@ -1,13 +1,11 @@
 import {useTranslations} from 'next-intl';
+import Image from 'next/image';
 import {Container} from './Container';
 
 const navItems = [
-  {key: 'home', href: '#top'},
-  {key: 'about', href: '#business'},
-  {key: 'projects', href: '#projects'},
-  {key: 'careers', href: '#careers'},
-  {key: 'environment', href: '#environment'},
-  {key: 'news', href: '#news'}
+  {key: 'about', href: '#about'},
+  {key: 'services', href: '#services'},
+  {key: 'why', href: '#why'}
 ] as const;
 
 export function Header() {
@@ -18,12 +16,16 @@ export function Header() {
       <Container className="flex h-16 items-center justify-between">
         <a
           href="#top"
-          className="flex items-center gap-2 font-semibold tracking-tight text-zinc-950"
+          className="flex items-center gap-3 font-semibold tracking-tight text-zinc-950 "
         >
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-zinc-950 text-white">
-            L
-          </span>
-          <span className="hidden sm:block">Lynx Solution</span>
+          <Image
+            src="/img/logo.jpg"
+            alt="Lynx Solution logo"
+            width={120}
+            height={28}
+            className="h-7 w-auto"
+            priority
+          />
         </a>
 
         <nav className="hidden items-center gap-6 lg:flex">
@@ -31,20 +33,19 @@ export function Header() {
             <a
               key={item.key}
               href={item.href}
-              className="text-sm font-medium text-zinc-600 hover:text-zinc-950 transition-colors"
+              className="text-base font-medium text-zinc-600 transition-colors hover:text-zinc-950"
             >
               {t(`nav.${item.key}`)}
             </a>
           ))}
           <a
             href="#contact"
-            className="rounded-full bg-[var(--color-primary)] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#d97840]"
+            className="rounded-full bg-[var(--color-primary)] px-4 py-2 text-base font-semibold text-white shadow-sm transition-colors hover:bg-[#d97840]"
           >
             {t('nav.contact')}
           </a>
         </nav>
 
-        <div className="flex items-center gap-3" />
       </Container>
     </header>
   );

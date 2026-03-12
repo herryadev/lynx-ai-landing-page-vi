@@ -1,121 +1,65 @@
 {
   "meta": {
-    "title": "Lynx AI - Global AI & Web3 Solutions",
-    "description": "Connect with the world through cutting-edge AI models, blockchain technology, and global Web3 innovations that transcend borders."
+    "title": "AI, CRM & Web3 solutions for Vietnamese businesses",
+    "description": "We help SMEs and startups build software systems and apply AI, CRM and Web3 to optimize operations and grow revenue."
   },
   "nav": {
     "home": "Home",
     "about": "About us",
-    "projects": "Projects",
-    "careers": "Careers",
-    "environment": "Work environment",
-    "news": "News",
+    "services": "Services",
+    "why": "Why choose us",
     "contact": "Contact Us"
   },
-  "common": {
-    "viewMore": "View more",
-    "getInTouch": "Get in Touch",
-    "sendMessage": "Send Message"
-  },
   "hero": {
-    "brand": "Lynx AI",
-    "kicker": "The future of Global AI & Web3",
-    "headline": "Global AI & Web3 solutions",
-    "subheadline": "Connect with the world through cutting-edge AI models, blockchain technology, and global Web3 innovations that transcend borders.",
-    "bullets": {
-      "globalReach": "Global Reach",
-      "support": "24/7 Worldwide Support",
-      "crossBorder": "Cross-Border Solutions"
-    }
+    "kicker": "Tech partner for SMEs & startups",
+    "headline": "End-to-end tech solutions for Vietnamese businesses",
+    "description": "We help SMEs and startups build software systems and apply AI, CRM and Web3 to optimize operations, customer experience and revenue growth.",
+    "cta": "Book a free consultation"
   },
-  "solutions": {
-    "title": "Business domains",
-    "subtitle": "Digital Creative Studio",
-    "desc": "Lynx Solution blends creativity and engineering to build human-centered products that create real impact.",
-    "ai": {
-      "title": "AI",
-      "headline": "AI-Powered Analytics",
-      "desc": "Advanced machine learning models for predictive analytics and intelligent automation.",
-      "points": ["Real-time Processing", "Predictive Models", "Custom AI Training"]
-    },
-    "blockchain": {
-      "title": "Blockchain",
-      "headline": "Blockchain Infrastructure",
-      "desc": "Secure, scalable blockchain solutions for enterprise applications and DeFi protocols.",
-      "points": ["Smart Contracts", "DeFi Integration", "Cross-chain Support"]
-    },
-    "web3": {
-      "title": "Web3",
-      "headline": "Web3 Development",
-      "desc": "Full-stack Web3 applications with seamless user experience and robust security.",
-      "points": ["dApp Development", "Wallet Integration", "NFT Platforms"]
-    }
-  },
-  "stats": {
-    "projects": { "value": "50+", "label": "Projects Delivered" },
-    "uptime": { "value": "99.9%", "label": "Uptime Guarantee" },
-    "support": { "value": "24/7", "label": "Support Available" },
-    "transactions": { "value": "100M+", "label": "Transactions Processed" }
-  },
-  "partners": {
-    "title": "Trusted by industry leaders",
-    "globalTag": "Global"
+  "about": {
+    "title": "About us",
+    "body1": "We are a technology team focused on turning business problems into real, working software solutions.",
+    "body2": "From consulting and design to implementation and operations, we partner with businesses to build flexible, easy-to-use systems that scale with each growth stage."
   },
   "services": {
-    "title": "Our projects",
-    "subtitle": "Highlighted case studies",
-    "desc": "A selection of projects where Lynx Solution partnered with clients to drive digital transformation.",
+    "title": "Our services",
+    "description": "Focused on business impact, not just technology.",
     "items": {
-      "smartContract": {
-        "title": "Smart Contract Development",
-        "desc": "Custom smart contracts built with security and efficiency in mind. From simple tokens to complex DeFi protocols.",
-        "points": ["Security Audits", "Gas Optimization", "Multi-chain Support"]
+      "ai": {
+        "title": "AI Solutions",
+        "desc": "Apply AI to customer service, process automation and data analytics to support faster, more accurate decisions."
       },
-      "aiTraining": {
-        "title": "AI Model Training",
-        "desc": "Train custom AI models tailored to your specific business needs and data requirements.",
-        "points": ["Custom Datasets", "Model Fine-tuning", "Performance Optimization"]
+      "crm": {
+        "title": "CRM Systems",
+        "desc": "Build CRM systems to centralize customer data, track sales opportunities and improve sales team performance."
       },
-      "web3Integration": {
-        "title": "Web3 Integration",
-        "desc": "Seamlessly integrate Web3 functionality into your existing applications and workflows.",
-        "points": ["Wallet Integration", "dApp Development", "API Solutions"]
+      "web": {
+        "title": "Website & Landing Page",
+        "desc": "Design modern, high-converting websites and landing pages for marketing campaigns and brand building."
       },
-      "blockchainConsulting": {
-        "title": "Blockchain Consulting",
-        "desc": "Strategic guidance on blockchain adoption, tokenomics, and decentralized architecture design.",
-        "points": ["Strategy Planning", "Technical Architecture", "Implementation Roadmap"]
+      "blockchain": {
+        "title": "Blockchain / Web3",
+        "desc": "Consult and develop Web3 solutions, smart contracts and blockchain integrations for new business models."
       },
-      "defiProtocol": {
-        "title": "DeFi Protocol Development",
-        "desc": "Build sophisticated DeFi protocols with advanced features like yield farming, lending, and AMM.",
-        "points": ["Liquidity Pools", "Yield Strategies", "Governance Tokens"]
-      },
-      "aiAnalytics": {
-        "title": "AI-Powered Analytics",
-        "desc": "Transform your data into actionable insights with our advanced AI analytics platform.",
-        "points": ["Predictive Analytics", "Real-time Dashboards", "Custom Reports"]
+      "outsourcing": {
+        "title": "Software Outsourcing",
+        "desc": "Provide flexible development teams to help you expand your tech capacity quickly and cost-effectively."
       }
     }
   },
-  "testimonials": {
-    "title": "Culture & events",
-    "desc": "Stories and activities that reflect the people and culture at Lynx Solution."
+  "why": {
+    "title": "Why choose us",
+    "points": [
+      "Business-first thinking: We start from revenue, operations and customer experience goals, not only from technical angles.",
+      "Fast, transparent delivery: Clear implementation roadmap and timelines, with early working versions prioritized.",
+      "Flexible, scalable solutions: Systems are designed to be easy to upgrade and integrate as your business grows.",
+      "Long-term partnership: We support operations, optimization and continuous improvement after launch, not just handover."
+    ]
   },
-  "contact": {
-    "title": "Ready to transform your business?",
-    "desc": "Let's discuss how our AI, blockchain, and Web3 solutions can drive your success.",
-    "formTitle": "Get in Touch",
-    "formDesc": "Fill out the form and we'll get back to you within 24 hours.",
-    "infoTitle": "Contact Information",
-    "infoDesc": "Reach out to us through any of these channels.",
-    "fields": {
-      "firstName": "First Name",
-      "lastName": "Last Name",
-      "email": "Email",
-      "company": "Company",
-      "message": "Message"
-    }
+  "cta": {
+    "title": "Ready to apply technology to your business?",
+    "description": "Contact us for a 30-minute consultation to explore the right solution.",
+    "button": "Contact us"
   },
   "footer": {
     "copyright": "All rights reserved."

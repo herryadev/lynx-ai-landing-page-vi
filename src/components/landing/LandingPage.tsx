@@ -1,8 +1,8 @@
 'use client';
 
 import {useTranslations} from 'next-intl';
+import Image from 'next/image';
 import {motion} from 'framer-motion';
-import {ArrowRight} from 'lucide-react';
 import {Container} from './Container';
 import {Header} from './Header';
 import {Footer} from './Footer';
@@ -17,247 +17,180 @@ export function LandingPage() {
       <Header />
 
       <main>
-        {/* Hero - compact, brand only */}
+        {/* Hero */}
         <section className="relative overflow-hidden border-b border-zinc-200 bg-white">
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute -top-40 left-1/2 h-[480px] w-[480px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,_rgba(231,138,83,0.15),_transparent_70%)] blur-3xl" />
           </div>
-          <Container className="relative py-12 sm:py-16">
-            <motion.div
-              className="text-center"
-              initial={{opacity: 0, y: 20}}
-              animate={{opacity: 1, y: 0}}
-              transition={{duration: 0.5}}
-            >
-              <p className="text-sm font-semibold uppercase tracking-wider text-zinc-500">
-                {t('hero.kicker')}
+          <Container className="relative py-16 sm:py-20">
+            <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
+              <motion.div
+                className="text-center lg:text-left"
+                initial={{opacity: 0, y: 20}}
+                animate={{opacity: 1, y: 0}}
+                transition={{duration: 0.5}}
+              >
+                <p className="text-base font-semibold uppercase tracking-wider text-zinc-500">
+                  {t('hero.kicker')}
+                </p>
+                <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+                  {t('hero.headline')}
+                </h1>
+                <p className="mt-4 text-base leading-7 text-zinc-600">
+                  {t('hero.description')}
+                </p>
+                <div className="mt-6 flex justify-center lg:justify-start">
+                  <a href="#contact">
+                    <Button>{t('hero.cta')}</Button>
+                  </a>
+                </div>
+              </motion.div>
+              <motion.div
+                className="relative h-64 w-full overflow-hidden rounded-2xl sm:h-80 lg:h-96"
+                initial={{opacity: 0, x: 20}}
+                animate={{opacity: 1, x: 0}}
+                transition={{duration: 0.5, delay: 0.2}}
+              >
+                <Image
+                  src="/img/img1.jpg"
+                  alt="Modern office workspace"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </motion.div>
+            </div>
+          </Container>
+        </section>
+
+        {/* About */}
+        <section id="about" className="border-b border-zinc-200 bg-white">
+          <Container className="py-12 sm:py-16">
+            <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
+              <motion.div
+                className="relative h-64 w-full overflow-hidden rounded-2xl sm:h-80 lg:order-1 order-2 lg:h-96"
+                initial={{opacity: 0, x: -20}}
+                whileInView={{opacity: 1, x: 0}}
+                viewport={{once: true}}
+              >
+                <Image
+                  src="/img/img2.jpg"
+                  alt="Team collaboration"
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
+              <motion.div
+                className="lg:order-2 order-1"
+                initial={{opacity: 0, y: 20}}
+                whileInView={{opacity: 1, y: 0}}
+                viewport={{once: true}}
+              >
+                <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+                  {t('about.title')}
+                </h2>
+                <p className="mt-4 text-base leading-7 text-zinc-600">
+                  {t('about.body1')}
+                </p>
+                <p className="mt-2 text-base leading-7 text-zinc-600">
+                  {t('about.body2')}
+                </p>
+              </motion.div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Services */}
+        <section id="services" className="border-b border-zinc-200 bg-zinc-50/50">
+          <Container className="py-12 sm:py-16">
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+                {t('services.title')}
+              </h2>
+              <p className="mt-4 text-base leading-7 text-zinc-600">
+                {t('services.description')}
               </p>
-              <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-                {t('hero.brand')}
-              </h1>
-            </motion.div>
-          </Container>
-        </section>
-
-        {/* Lĩnh vực kinh doanh - 2 blocks like Sun* */}
-        <section id="business" className="border-b border-zinc-200 bg-white">
-          <Container className="py-12 sm:py-16">
-            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-              {t('business.title')}
-            </h2>
-            <p className="mt-4 max-w-3xl text-sm leading-7 text-zinc-600">
-              {t('business.intro')}
-            </p>
-            <div className="mt-10 grid gap-6 md:grid-cols-2">
-              <motion.a
-                href="#projects"
-                className="group block rounded-2xl border border-zinc-200 bg-zinc-50/50 p-8 transition-all hover:border-[var(--color-primary)]/40 hover:bg-[var(--color-primary-soft)]/30 hover:shadow-md"
-                initial={{opacity: 0, y: 20}}
-                whileInView={{opacity: 1, y: 0}}
-                viewport={{once: true}}
-              >
-                <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
-                  {t('business.creative.label')}
-                </p>
-                <h3 className="mt-4 text-xl font-semibold tracking-tight text-zinc-950">
-                  {t('business.creative.title')}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-zinc-600">
-                  {t('business.creative.desc')}
-                </p>
-                <span className="mt-6 inline-flex items-center text-sm font-semibold text-[var(--color-primary)] group-hover:underline">
-                  {t('business.creative.cta')}
-                  <ArrowRight className="ml-1 h-4 w-4" />
-                </span>
-              </motion.a>
-              <motion.a
-                href="#careers"
-                className="group block rounded-2xl border border-zinc-200 bg-zinc-50/50 p-8 transition-all hover:border-[var(--color-primary)]/40 hover:bg-[var(--color-primary-soft)]/30 hover:shadow-md"
-                initial={{opacity: 0, y: 20}}
-                whileInView={{opacity: 1, y: 0}}
-                viewport={{once: true}}
-              >
-                <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
-                  {t('business.talent.label')}
-                </p>
-                <h3 className="mt-4 text-xl font-semibold tracking-tight text-zinc-950">
-                  {t('business.talent.title')}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-zinc-600">
-                  {t('business.talent.desc')}
-                </p>
-                <span className="mt-6 inline-flex items-center text-sm font-semibold text-[var(--color-primary)] group-hover:underline">
-                  {t('business.talent.cta')}
-                  <ArrowRight className="ml-1 h-4 w-4" />
-                </span>
-              </motion.a>
             </div>
-          </Container>
-        </section>
-
-        {/* Dự án của chúng tôi - stats + 3 cards */}
-        <section id="projects" className="border-b border-zinc-200 bg-zinc-50/50">
-          <Container className="py-12 sm:py-16">
-            <div className="flex flex-wrap items-end justify-between gap-6">
-              <div className="flex gap-10">
-                <div>
-                  <p className="text-4xl font-bold tracking-tight text-zinc-950">200</p>
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-zinc-500">++</p>
-                  <p className="mt-1 text-sm text-zinc-600">{t('projects.statsPartners')}</p>
-                </div>
-                <div>
-                  <p className="text-4xl font-bold tracking-tight text-zinc-950">300</p>
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-zinc-500">++</p>
-                  <p className="mt-1 text-sm text-zinc-600">{t('projects.statsServices')}</p>
-                </div>
-              </div>
-              <a
-                href="#"
-                className="text-sm font-semibold text-[var(--color-primary)] hover:underline"
-              >
-                {t('common.viewAllProjects')}
-              </a>
-            </div>
-            <div className="mt-10 grid gap-6 lg:grid-cols-3">
-              {[0, 1, 2].map((i) => (
+            <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {['ai', 'crm', 'web', 'blockchain', 'outsourcing'].map((key) => (
                 <motion.article
-                  key={i}
-                  className="rounded-2xl border border-zinc-200 bg-white p-6 transition-shadow hover:shadow-md"
+                  key={key}
+                  className="rounded-2xl border border-zinc-200 bg-white p-6 text-left"
                   initial={{opacity: 0, y: 16}}
                   whileInView={{opacity: 1, y: 0}}
                   viewport={{once: true}}
                 >
-                  <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
-                    {t('projects.cardLabel')}
-                  </p>
-                  <p className="mt-2 text-sm font-medium text-zinc-700">
-                    {t(`projects.items.${i}.client`)}
-                  </p>
-                  <h3 className="mt-2 text-lg font-semibold tracking-tight">
-                    {t(`projects.items.${i}.name`)}
+                  <h3 className="text-lg font-semibold tracking-tight text-zinc-950">
+                    {t(`services.items.${key}.title`)}
                   </h3>
-                  <p className="mt-3 text-sm leading-6 text-zinc-600">
-                    {t(`projects.items.${i}.desc`)}
+                  <p className="mt-3 text-base leading-6 text-zinc-600">
+                    {t(`services.items.${key}.desc`)}
                   </p>
-                  <a
-                    href="#"
-                    className="mt-4 inline-flex items-center text-sm font-semibold text-[var(--color-primary)] hover:underline"
-                  >
-                    {t('common.viewDetail')}
-                    <ArrowRight className="ml-1 h-4 w-4" />
-                  </a>
                 </motion.article>
               ))}
             </div>
           </Container>
         </section>
 
-        {/* Cơ hội nghề nghiệp - banner */}
-        <section id="careers" className="border-b border-zinc-200 bg-[var(--color-primary-soft)]/50">
+        {/* Why choose us */}
+        <section id="why" className="border-b border-zinc-200 bg-white">
+          <Container className="py-12 sm:py-16">
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+                {t('why.title')}
+              </h2>
+            </div>
+            <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-12">
+              <div className="mx-auto max-w-3xl space-y-4 text-base leading-6 text-zinc-600 lg:max-w-none">
+                {[0, 1, 2, 3].map((i) => (
+                  <motion.div
+                    key={i}
+                    className="flex gap-3 text-left"
+                    initial={{opacity: 0, y: 12}}
+                    whileInView={{opacity: 1, y: 0}}
+                    viewport={{once: true}}
+                  >
+                    <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-[var(--color-primary)]" />
+                    <p>{t(`why.points.${i}`)}</p>
+                  </motion.div>
+                ))}
+              </div>
+              <motion.div
+                className="relative h-64 w-full overflow-hidden rounded-2xl sm:h-80 lg:h-96"
+                initial={{opacity: 0, x: 20}}
+                whileInView={{opacity: 1, x: 0}}
+                viewport={{once: true}}
+              >
+                <Image
+                  src="/img/img3.jpg"
+                  alt="Modern office environment"
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Final CTA */}
+        <section id="contact" className="border-b border-zinc-200 bg-[var(--color-primary-soft)]/60">
           <Container className="py-14 sm:py-20">
             <motion.div
-              className="text-center"
+              className="mx-auto max-w-2xl text-center"
               initial={{opacity: 0, y: 16}}
               whileInView={{opacity: 1, y: 0}}
               viewport={{once: true}}
             >
-              <p className="text-sm font-semibold uppercase tracking-wider text-zinc-600">
-                {t('careers.title')}
-              </p>
-              <h2 className="mt-4 text-2xl font-bold tracking-tight sm:text-4xl">
-                {t('careers.headline')}
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                {t('cta.title')}
               </h2>
-              <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-zinc-600">
-                {t('careers.desc')}
+              <p className="mt-4 text-base leading-7 text-zinc-700">
+                {t('cta.description')}
               </p>
-              <div className="mt-8">
-                <a href="#">
-                  <Button>{t('common.joinUs')}</Button>
-                </a>
+              <div className="mt-8 flex justify-center">
+                <Button>{t('cta.button')}</Button>
               </div>
             </motion.div>
-          </Container>
-        </section>
-
-        {/* Môi trường làm việc - 3 hashtags */}
-        <section id="environment" className="border-b border-zinc-200 bg-white">
-          <Container className="py-12 sm:py-16">
-            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-              {t('environment.title')}
-            </h2>
-            <div className="mt-8 grid gap-6 sm:grid-cols-3">
-              {(['activeChallenge', 'activeLearn', 'activeJoy'] as const).map((key) => (
-                <motion.div
-                  key={key}
-                  className="rounded-2xl border border-zinc-200 bg-zinc-50/50 p-6"
-                  initial={{opacity: 0, y: 12}}
-                  whileInView={{opacity: 1, y: 0}}
-                  viewport={{once: true}}
-                >
-                  <p className="text-sm font-bold text-[var(--color-primary)]">
-                    {t(`environment.${key}.tag`)}
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-zinc-600">
-                    {t(`environment.${key}.desc`)}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-            <div className="mt-8">
-              <a
-                href="#"
-                className="inline-flex items-center text-sm font-semibold text-[var(--color-primary)] hover:underline"
-              >
-                {t('environment.cta')}
-                <ArrowRight className="ml-1 h-4 w-4" />
-              </a>
-            </div>
-          </Container>
-        </section>
-
-        {/* Văn hóa - Sự kiện */}
-        <section id="news" className="border-b border-zinc-200 bg-zinc-50/50">
-          <Container className="py-12 sm:py-16">
-            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-              {t('culture.title')}
-            </h2>
-            <div className="mt-8 grid gap-6 lg:grid-cols-3">
-              {[0, 1, 2].map((i) => (
-                <motion.article
-                  key={i}
-                  className="rounded-2xl border border-zinc-200 bg-white p-6 transition-shadow hover:shadow-md"
-                  initial={{opacity: 0, y: 16}}
-                  whileInView={{opacity: 1, y: 0}}
-                  viewport={{once: true}}
-                >
-                  <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
-                    {t(`culture.items.${i}.tag`)}
-                  </p>
-                  <h3 className="mt-3 text-base font-semibold tracking-tight">
-                    {t(`culture.items.${i}.title`)}
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-zinc-600 line-clamp-3">
-                    {t(`culture.items.${i}.excerpt`)}
-                  </p>
-                  <a
-                    href="#"
-                    className="mt-4 inline-flex items-center text-sm font-semibold text-[var(--color-primary)] hover:underline"
-                  >
-                    {t('common.viewDetail')}
-                    <ArrowRight className="ml-1 h-4 w-4" />
-                  </a>
-                </motion.article>
-              ))}
-            </div>
-            <div className="mt-10 text-center">
-              <a
-                href="#"
-                className="inline-flex items-center text-sm font-semibold text-zinc-700 hover:text-[var(--color-primary)]"
-              >
-                {t('common.viewMoreNews')}
-                <ArrowRight className="ml-1 h-4 w-4" />
-              </a>
-            </div>
           </Container>
         </section>
       </main>

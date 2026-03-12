@@ -1,0 +1,84 @@
+[00:00:01.169] Server  LOG     ✓ Ready in 925ms
+[00:00:04.337] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[12:16:01.194] Server  LOG     ✓ Compiled in 954ms
+[12:16:01.295] Server  LOG     ✓ Compiled in 14ms
+[12:16:08.553] Server  LOG     ✓ Compiled in 24ms
+[12:16:11.431] Browser WARN    Image with src "/img/logo.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[12:16:11.515] Server  LOG     ✓ Compiled in 20ms
+[12:19:08.617] Browser WARN    Image with src "/img/logo.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[12:20:12.567] Server  LOG     ✓ Compiled in 91ms
+[12:20:20.131] Server  LOG     ✓ Compiled in 62ms
+[12:20:20.390] Browser WARN    Image with src "/img/img1.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[12:20:20.431] Browser WARN    Image with src "/img/img1.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[12:20:25.490] Server  LOG     ✓ Compiled in 27ms
+[12:20:25.692] Browser WARN    Image with src "/img/img2.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[12:20:26.431] Browser WARN    Image with src "/img/img2.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[12:20:32.544] Server  LOG     ✓ Compiled in 37ms
+[12:20:32.732] Browser WARN    Image with src "/img/img3.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[12:20:33.431] Browser WARN    Image with src "/img/img3.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[12:26:11.272] Server  LOG     ✓ Compiled in 78ms
+[12:27:56.774] Server  LOG     ✓ Compiled in 46ms
+[12:28:03.908] Browser WARN    Image with src "/img/img2.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[12:28:38.283] Server  LOG     ✓ Compiled in 45ms
+[12:29:20.792] Server  LOG     ✓ Compiled in 60ms
+[12:30:24.838] Server  LOG     ✓ Compiled in 202ms
+[12:31:15.861] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[12:31:16.089] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <RenderFromTemplateContext>
+      <ScrollAndFocusHandler segmentPath={[...]}>
+        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+            <LoadingBoundary name="/" loading={null}>
+              <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
+                <HTTPAccessFallbackErrorBoundary pathname="/vi" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+                  <RedirectBoundary>
+                    <RedirectErrorBoundary router={{...}}>
+                      <InnerLayoutRouter url="/vi" tree={[...]} params={{locale:"vi"}} cacheNode={{...}} ...>
+                        <SegmentViewNode type="layout" pagePath="[locale]/l...">
+                          <SegmentTrieNode>
+                          <link>
+                          <script>
+                          <script>
+                          <LocaleLayout>
+                            <html lang="vi" suppressHydrationWarning={true}>
+                              <body
+                                className="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG_..."
+-                               cz-shortcut-listen="true"
+                              >
+                      ...
+          ...
+
+[12:31:16.089] Browser WARN    Image with src "/img/logo.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[12:31:16.089] Browser WARN    Image with src "/img/img1.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[12:31:16.089] Browser WARN    Image with src "/img/img2.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[12:31:16.089] Browser WARN    Image with src "/img/img3.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[12:31:16.089] Browser WARN    Image with src "/img/img2.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[12:32:06.771] Server  LOG     ✓ Compiled in 49ms
+[12:32:10.607] Server  LOG     ✓ Compiled in 31ms
+[12:32:13.495] Server  LOG     ✓ Compiled in 85ms
+[12:32:16.276] Server  LOG     ✓ Compiled in 27ms
+[12:32:18.308] Server  LOG     ✓ Compiled in 35ms
+[12:32:20.050] Server  LOG     ✓ Compiled in 20ms
+[12:32:22.929] Server  LOG     ✓ Compiled in 48ms
+[12:32:24.131] Server  LOG     ✓ Compiled in 47ms
+[12:32:25.803] Server  LOG     ✓ Compiled in 18ms
+[12:32:27.265] Server  LOG     ✓ Compiled in 14ms
+[12:32:29.670] Server  LOG     ✓ Compiled in 35ms
+[12:32:30.989] Server  LOG     ✓ Compiled in 18ms
+[12:32:32.068] Server  LOG     ✓ Compiled in 20ms
+[12:32:46.666] Server  LOG     ✓ Compiled in 38ms
+[12:33:31.553] Server  LOG     ✓ Compiled in 37ms

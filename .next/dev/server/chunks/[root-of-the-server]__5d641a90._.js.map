@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 46, "column": 0}, "map": {"version":3,"sources":["file:///Users/quan/Desktop/external/lynx-ai-landing-page-vi/src/i18n/routing.ts"],"sourcesContent":["import {defineRouting} from 'next-intl/routing';\n\nexport const routing = defineRouting({\n  locales: ['vi'],\n  defaultLocale: 'vi'\n});\n\nexport type Locale = (typeof routing.locales)[number];\n\n"],"names":[],"mappings":";;;;AAAA;;AAEO,MAAM,UAAU,IAAA,2cAAa,EAAC;IACnC,SAAS;QAAC;KAAK;IACf,eAAe;AACjB"}},
+    {"offset": {"line": 62, "column": 0}, "map": {"version":3,"sources":["file:///Users/quan/Desktop/external/lynx-ai-landing-page-vi/src/proxy.ts"],"sourcesContent":["import createMiddleware from 'next-intl/middleware';\nimport {routing} from './i18n/routing';\n\nexport default createMiddleware(routing);\n\nexport const config = {\n  matcher: ['/', '/(vi|en)/:path*']\n};\n\n"],"names":[],"mappings":";;;;;;AAAA;AACA;;;uCAEe,IAAA,yZAAgB,EAAC,iIAAO;AAEhC,MAAM,SAAS;IACpB,SAAS;QAAC;QAAK;KAAkB;AACnC"}}]
+}

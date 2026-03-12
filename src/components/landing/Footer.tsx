@@ -1,93 +1,79 @@
 import {useTranslations} from 'next-intl';
+import Image from 'next/image';
 import {Container} from './Container';
+
+const navItems = [
+  {key: 'about', href: '#about'},
+  {key: 'services', href: '#services'},
+  {key: 'why', href: '#why'},
+  {key: 'contact', href: '#contact'}
+] as const;
 
 export function Footer() {
   const t = useTranslations();
 
   return (
     <footer id="contact" className="border-t border-zinc-200 bg-white">
-      <Container className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-5">
-        <div>
-          <div className="flex items-center gap-2 font-semibold text-zinc-950">
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-zinc-950 text-white">
-              L
-            </span>
-            <span>Lynx Solution</span>
+      <Container className="py-12">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Logo */}
+          <div>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/img/logo.jpg"
+                alt="Lynx Solution logo"
+                width={120}
+                height={32}
+                className="h-8 w-auto"
+              />
+            </div>
           </div>
-        </div>
 
-        <div>
-          <h3 className="text-sm font-semibold text-zinc-950">
-            {t('footer.whoWeAre')}
-          </h3>
-          <ul className="mt-3 space-y-2 text-sm text-zinc-600">
-            {[0, 1, 2].map((i) => (
-              <li key={i}>
-                <a href="#" className="hover:text-zinc-950 hover:underline">
-                  {t(`footer.whoLinks.${i}`)}
-                </a>
+          {/* Navigation */}
+          <div>
+            <h3 className="text-base font-semibold text-zinc-950">Liên kết</h3>
+            <ul className="mt-3 space-y-2 text-base text-zinc-600">
+              {navItems.map((item) => (
+                <li key={item.key}>
+                  <a href={item.href} className="hover:text-zinc-950 hover:underline">
+                    {t(`nav.${item.key}`)}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="text-base font-semibold text-zinc-950">
+              {t('footer.contactTitle')}
+            </h3>
+            <ul className="mt-3 space-y-2 text-base text-zinc-600">
+              <li>
+                {t('footer.phone')}: <a href="tel:091220001" className="hover:text-zinc-950 hover:underline">091220001</a>
               </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-sm font-semibold text-zinc-950">
-            {t('footer.whatWeDo')}
-          </h3>
-          <ul className="mt-3 space-y-2 text-sm text-zinc-600">
-            {[0, 1, 2].map((i) => (
-              <li key={i}>
-                <a href="#" className="hover:text-zinc-950 hover:underline">
-                  {t(`footer.whatLinks.${i}`)}
-                </a>
+              <li>
+                {t('footer.email')}: <a href="mailto:lyndomicx@gmail.com" className="hover:text-zinc-950 hover:underline">lyndomicx@gmail.com</a>
               </li>
-            ))}
-          </ul>
-        </div>
+            </ul>
+          </div>
 
-        <div>
-          <h3 className="text-sm font-semibold text-zinc-950">
-            {t('footer.newsUpdate')}
-          </h3>
-          <ul className="mt-3 space-y-2 text-sm text-zinc-600">
-            {[0, 1, 2].map((i) => (
-              <li key={i}>
-                <a href="#" className="hover:text-zinc-950 hover:underline">
-                  {t(`footer.newsLinks.${i}`)}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-sm font-semibold text-zinc-950">
-            {t('footer.contactTitle')}
-          </h3>
-          <ul className="mt-3 space-y-2 text-sm text-zinc-600">
-            <li>{t('footer.phone')}: 84-24-0000-0000</li>
-            <li>{t('footer.email')}: contact@lynxsolution.vn</li>
-          </ul>
-          <h3 className="mt-6 text-sm font-semibold text-zinc-950">
-            {t('footer.offices')}
-          </h3>
-          <ul className="mt-3 space-y-2 text-sm text-zinc-600">
-            {[0, 1, 2].map((i) => (
-              <li key={i}>{t(`footer.officesList.${i}`)}</li>
-            ))}
-          </ul>
+          {/* Offices */}
+          <div>
+            <h3 className="text-base font-semibold text-zinc-950">
+              {t('footer.offices')}
+            </h3>
+            <ul className="mt-3 space-y-2 text-base text-zinc-600">
+              {[0, 1, 2].map((i) => (
+                <li key={i}>{t(`footer.officesList.${i}`)}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </Container>
       <div className="border-t border-zinc-200">
-        <Container className="flex flex-col items-center justify-between gap-4 py-6 text-center text-xs text-zinc-500 sm:flex-row">
+        <Container className="py-6 text-center text-sm text-zinc-500">
           <p>© {new Date().getFullYear()} Lynx Solution. {t('footer.copyright')}</p>
-          <a
-            href="#careers"
-            className="font-semibold text-[var(--color-primary)] hover:underline"
-          >
-            {t('footer.joinUs')}
-          </a>
         </Container>
       </div>
     </footer>
