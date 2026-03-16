@@ -39,7 +39,7 @@ export function Header() {
               {t(`nav.${item.key}`)}
             </a>
           ))}
-          <a href="https://zalo.me/091220001" target="_blank" rel="noopener noreferrer">
+          <a href="https://zalo.me/0869802574" target="_blank" rel="noopener noreferrer">
             <Button>{t('nav.contact')}</Button>
           </a>
         </nav>
