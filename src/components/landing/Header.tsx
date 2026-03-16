@@ -20,7 +20,7 @@ export function Header() {
           className="flex items-center gap-3 font-semibold tracking-tight text-zinc-950 "
         >
           <Image
-            src="/img/logo.jpg"
+            src="/img/logo.png"
             alt="Lynx Solution logo"
             width={120}
             height={28}
