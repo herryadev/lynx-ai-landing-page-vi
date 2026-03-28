@@ -1,15 +1,62 @@
 'use client';
 
+import { useCallback, useEffect, useState } from 'react';
 import {useTranslations} from 'next-intl';
 import Image from 'next/image';
 import {motion} from 'framer-motion';
+import { Play, X } from 'lucide-react';
 import {Container} from './Container';
 import {Header} from './Header';
 import {Footer} from './Footer';
 import {Button} from './Button';
 
+const SERVICE_KEYS = ['management', 'customerCare', 'sales', 'content'] as const;
+
+/** Video demo từng dịch vụ — sửa trực tiếp đường dẫn file tại đây. */
+const DEMO_VIDEO_SRC_BY_SERVICE: Record<(typeof SERVICE_KEYS)[number], string> = {
+  management: '/video/openclaw.mp4',
+  customerCare: '/video/video-2.mp4',
+  sales: '/video/tvc.mp4',
+  content: '/video/openclaw.mp4',
+};
+
+const POPUP_VIDEO_SRC = '/video/tvc.mp4';
+
 export function LandingPage() {
   const t = useTranslations();
+  const [videoOpen, setVideoOpen] = useState(false);
+
+  const closeVideo = useCallback(() => {
+    setVideoOpen(false);
+  }, []);
+
+  const openVideo = useCallback(() => {
+    setVideoOpen(true);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const id = requestAnimationFrame(() => setVideoOpen(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
+
+  useEffect(() => {
+    if (!videoOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [videoOpen]);
+
+  useEffect(() => {
+    if (!videoOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeVideo();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [videoOpen, closeVideo]);
 
   return (
     <div className="min-h-screen bg-white text-zinc-950">
@@ -17,6 +64,85 @@ export function LandingPage() {
       <Header />
 
       <main>
+        {/* Services — first & featured */}
+        <section
+          id="services"
+          className="relative scroll-mt-20 overflow-hidden border-b border-zinc-200/90 bg-gradient-to-b from-(--color-primary-soft)/90 via-white to-zinc-50/80"
+        >
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute -top-32 right-0 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle_at_center,rgba(231,138,83,0.22),transparent_68%)] blur-3xl" />
+            <div className="absolute bottom-0 left-0 h-[320px] w-[320px] rounded-full bg-[radial-gradient(circle_at_center,rgba(231,138,83,0.12),transparent_70%)] blur-3xl" />
+          </div>
+          <div className="relative w-full px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+            <div className="mx-auto max-w-4xl text-center">
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-(--color-primary)">
+                {t('services.kicker')}
+              </p>
+              <h1 className="mt-4 text-4xl font-bold tracking-tight text-zinc-950 sm:text-5xl lg:text-6xl lg:leading-[1.08]">
+                {t('services.headline')}
+              </h1>
+              <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-zinc-600 sm:text-xl sm:leading-9">
+                {t('services.description')}
+              </p>
+            </div>
+            <div className="mt-14 grid gap-6 lg:grid-cols-2 xl:grid-cols-4 xl:gap-6 lg:mt-16">
+              {SERVICE_KEYS.map((key, index) => {
+                const bullets = t.raw(`services.items.${key}.bullets`) as string[];
+                const n = String(index + 1).padStart(2, '0');
+                return (
+                  <motion.article
+                    key={key}
+                    className="group flex flex-col overflow-hidden rounded-2xl border-2 border-zinc-200/90 bg-white/95 text-left shadow-[0_20px_50px_-20px_rgba(24,24,27,0.25)] ring-1 ring-zinc-950/5 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-(--color-primary)/40 hover:shadow-[0_28px_60px_-24px_rgba(24,24,27,0.35)]"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.05 }}
+                  >
+                    <div className="flex items-start justify-between gap-4 border-b border-zinc-100 bg-zinc-50/80 px-6 py-5">
+                      <div>
+                        <h3 className="text-xl font-bold tracking-tight text-zinc-950 sm:text-2xl">
+                          {t(`services.items.${key}.title`)}
+                        </h3>
+                      </div>
+                      <span
+                        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-(--color-primary) text-sm font-bold text-white shadow-md ring-2 ring-(--color-primary)/25"
+                        aria-hidden
+                      >
+                        {n}
+                      </span>
+                    </div>
+                    <div className="flex flex-1 flex-col p-6 pt-5">
+                      <ul className="space-y-2.5 text-base leading-6 text-zinc-600">
+                        {bullets.map((line, i) => (
+                          <li key={i} className="flex gap-2.5">
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-(--color-primary)" />
+                            <span>{line}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="mt-6 border-t border-zinc-100 pt-6">
+                        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-zinc-500">
+                          {t(`services.items.${key}.videoLabel`)}
+                        </p>
+                        <div className="relative aspect-[9/16] w-full overflow-hidden rounded-xl border border-zinc-200 bg-zinc-950 shadow-inner ring-1 ring-zinc-950/20">
+                          <video
+                            className="h-full w-full object-contain"
+                            src={DEMO_VIDEO_SRC_BY_SERVICE[key]}
+                            controls
+                            playsInline
+                            preload="metadata"
+                            aria-label={t(`services.items.${key}.videoLabel`)}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </motion.article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
         {/* Hero */}
         <section className="relative overflow-hidden border-b border-zinc-200 bg-white">
           <div className="pointer-events-none absolute inset-0">
@@ -33,9 +159,9 @@ export function LandingPage() {
                 <p className="text-base font-semibold uppercase tracking-wider text-zinc-500">
                   {t('hero.kicker')}
                 </p>
-                <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+                <h2 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
                   {t('hero.headline')}
-                </h1>
+                </h2>
                 <p className="mt-4 text-base leading-7 text-zinc-600">
                   {t('hero.description')}
                 </p>
@@ -46,16 +172,17 @@ export function LandingPage() {
                 </div>
               </motion.div>
               <motion.div
-                className="relative h-64 w-full overflow-hidden rounded-2xl sm:h-80 lg:h-96"
+                className="relative h-64 w-full overflow-hidden rounded-2xl border border-zinc-200/90 shadow-sm ring-1 ring-zinc-950/4 sm:h-80 lg:h-96"
                 initial={{opacity: 0, x: 20}}
                 animate={{opacity: 1, x: 0}}
                 transition={{duration: 0.5, delay: 0.2}}
               >
                 <Image
                   src="/img/img1.jpg"
-                  alt="Modern office workspace"
+                  alt={t('hero.imageAlt')}
                   fill
                   className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
                 />
               </motion.div>
@@ -96,38 +223,6 @@ export function LandingPage() {
                   {t('about.body2')}
                 </p>
               </motion.div>
-            </div>
-          </Container>
-        </section>
-
-        {/* Services */}
-        <section id="services" className="border-b border-zinc-200 bg-zinc-50/50">
-          <Container className="py-12 sm:py-16">
-            <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-                {t('services.title')}
-              </h2>
-              <p className="mt-4 text-base leading-7 text-zinc-600">
-                {t('services.description')}
-              </p>
-            </div>
-            <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {['ai', 'crm', 'web', 'blockchain', 'outsourcing'].map((key) => (
-                <motion.article
-                  key={key}
-                  className="rounded-2xl border border-zinc-200 bg-white p-6 text-left"
-                  initial={{opacity: 0, y: 16}}
-                  whileInView={{opacity: 1, y: 0}}
-                  viewport={{once: true}}
-                >
-                  <h3 className="text-lg font-semibold tracking-tight text-zinc-950">
-                    {t(`services.items.${key}.title`)}
-                  </h3>
-                  <p className="mt-3 text-base leading-6 text-zinc-600">
-                    {t(`services.items.${key}.desc`)}
-                  </p>
-                </motion.article>
-              ))}
             </div>
           </Container>
         </section>
@@ -198,6 +293,56 @@ export function LandingPage() {
       </main>
 
       <Footer />
+
+      <button
+        type="button"
+        onClick={openVideo}
+        className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-50 flex max-w-[min(18rem,calc(100vw-2rem))] items-center gap-2.5 rounded-2xl border border-zinc-200/90 bg-white p-1.5 shadow-lg ring-1 ring-zinc-950/5 transition hover:border-zinc-300 hover:shadow-xl sm:bottom-6 sm:right-6 sm:gap-3 sm:p-2"
+        aria-label={t('hero.watchVideo')}
+      >
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-(--color-primary) text-white shadow-md ring-2 ring-(--color-primary)/20 sm:h-12 sm:w-12">
+          <Play className="ml-0.5 h-5 w-5 sm:h-6 sm:w-6" fill="currentColor" aria-hidden />
+        </span>
+        <span className="pr-2 text-left text-sm font-semibold text-zinc-800 sm:pr-3">{t('hero.watchVideo')}</span>
+      </button>
+
+      {videoOpen ? (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+          <button
+            type="button"
+            className="absolute inset-0 bg-zinc-950/65 backdrop-blur-[2px]"
+            aria-label={t('hero.closeVideo')}
+            onClick={closeVideo}
+          />
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={t('hero.videoAriaLabel')}
+            className="relative z-10 w-full max-w-[min(100%,min(90rem,calc(90vh*16/9)))] overflow-hidden rounded-2xl border border-zinc-700 bg-black shadow-2xl ring-1 ring-white/10"
+          >
+            <button
+              type="button"
+              className="absolute right-2 top-2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-zinc-950/85 text-white ring-1 ring-white/15 backdrop-blur transition hover:bg-zinc-800 sm:right-3 sm:top-3"
+              onClick={closeVideo}
+              aria-label={t('hero.closeVideo')}
+            >
+              <X className="h-5 w-5" strokeWidth={2} />
+            </button>
+            <div className="aspect-video w-full bg-black">
+              <video
+                className="h-full w-full object-contain"
+                src={POPUP_VIDEO_SRC}
+                autoPlay
+                loop
+                playsInline
+                controls
+                preload="auto"
+                aria-label={t('hero.videoAriaLabel')}
+              />
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "AI, CRM & Web3 solutions for Vietnamese businesses",
-    "description": "We help SMEs and startups build software systems and apply AI, CRM and Web3 to optimize operations and grow revenue."
+    "title": "AI operations, customer care, automated sales & marketing",
+    "description": "AI platform for Vietnamese businesses: revenue & inventory reports, 24/7 CS, Zalo sales automation, content & short-form video — with demo videos per module."
   },
   "nav": {
     "home": "Home",
@@ -11,58 +11,86 @@
     "contact": "Contact Us"
   },
   "hero": {
-    "kicker": "Tech partner for SMEs & startups",
-    "headline": "End-to-end tech solutions for Vietnamese businesses",
-    "description": "We help SMEs and startups build software systems and apply AI, CRM and Web3 to optimize operations, customer experience and revenue growth.",
-    "cta": "Book a free consultation"
+    "kicker": "AI for ops, sales & marketing",
+    "headline": "An AI suite to run, serve and grow your business",
+    "description": "From revenue and stock alerts to 24/7 inbox, Zalo sales and viral content: one integrated AI stack with a demo video for each pillar.",
+    "cta": "Book a free consultation",
+    "videoAriaLabel": "AI solution overview video",
+    "watchVideo": "Watch video",
+    "closeVideo": "Close video",
+    "imageAlt": "AI-powered workflows in a modern business"
   },
   "about": {
     "title": "About us",
-    "body1": "We are a technology team focused on turning business problems into real, working software solutions.",
-    "body2": "From consulting and design to implementation and operations, we partner with businesses to build flexible, easy-to-use systems that scale with each growth stage."
+    "body1": "We build focused AI modules for retail and services: real-time metrics, instant customer responses outside office hours, and automation for sales and marketing instead of manual follow-up.",
+    "body2": "Each module has a clear rollout path with Zalo, Telegram, TikTok and Facebook integrations so you see value early and scale step by step."
   },
   "services": {
-    "title": "Our services",
-    "description": "Focused on business impact, not just technology.",
+    "kicker": "Services",
+    "headline": "Four AI pillars for operations & growth",
+    "description": "Each service includes a demo video showing the actual workflow (placeholder video shared across demos).",
     "items": {
-      "ai": {
-        "title": "AI Solutions",
-        "desc": "Apply AI to customer service, process automation and data analytics to support faster, more accurate decisions."
+      "management": {
+        "title": "AI Management & Reporting",
+        "bullets": [
+          "Income/expense and revenue reports by day/month",
+          "Inventory tracking and low-stock alerts",
+          "Real-time reports via Zalo / Telegram"
+        ],
+        "videoLabel": "Demo: AI Management & Reporting"
       },
-      "crm": {
-        "title": "CRM Systems",
-        "desc": "Build CRM systems to centralize customer data, track sales opportunities and improve sales team performance."
+      "customerCare": {
+        "title": "AI Customer Care",
+        "bullets": [
+          "Automated inbox replies 24/7",
+          "Warranty intake & management",
+          "Customer segmentation and data storage"
+        ],
+        "videoLabel": "Demo: AI Customer Care"
       },
-      "web": {
-        "title": "Website & Landing Page",
-        "desc": "Design modern, high-converting websites and landing pages for marketing campaigns and brand building."
+      "sales": {
+        "title": "AI Automated Sales",
+        "bullets": [
+          "Zalo friend adds from target customer lists",
+          "Product consultation in a human-like tone",
+          "Automated follow-up and closing"
+        ],
+        "videoLabel": "Demo: AI Sales"
       },
-      "blockchain": {
-        "title": "Blockchain / Web3",
-        "desc": "Consult and develop Web3 solutions, smart contracts and blockchain integrations for new business models."
-      },
-      "outsourcing": {
-        "title": "Software Outsourcing",
-        "desc": "Provide flexible development teams to help you expand your tech capacity quickly and cost-effectively."
+      "content": {
+        "title": "AI Content & Marketing",
+        "bullets": [
+          "Market scanning and competitor analysis",
+          "Find viral posts in your industry",
+          "Sales-focused copywriting",
+          "Auto-generated TikTok / Facebook Reels videos"
+        ],
+        "videoLabel": "Demo: AI Content & Marketing"
       }
     }
   },
   "why": {
     "title": "Why choose us",
     "points": [
-      "Business-first thinking: We start from revenue, operations and customer experience goals, not only from technical angles.",
-      "Fast, transparent delivery: Clear implementation roadmap and timelines, with early working versions prioritized.",
-      "Flexible, scalable solutions: Systems are designed to be easy to upgrade and integrate as your business grows.",
-      "Long-term partnership: We support operations, optimization and continuous improvement after launch, not just handover."
+      "One platform, many modules: reporting, CS, sales and marketing connected instead of fragmented tools.",
+      "Built for Vietnam channels: Zalo, Telegram, TikTok and Reels in the default rollout.",
+      "See before you buy: demo videos per module so you know features and automation depth.",
+      "After go-live: we tune prompts, playbooks and reports to your real operations."
     ]
   },
   "cta": {
-    "title": "Ready to apply technology to your business?",
-    "description": "Contact us for a 30-minute consultation to explore the right solution.",
+    "title": "Ready to let AI handle ops and sales?",
+    "description": "Message us on Zalo for the right modules and more demos in about 30 minutes.",
     "button": "Contact us"
   },
   "footer": {
+    "contactTitle": "Contact",
+    "phone": "Zalo",
+    "email": "Email",
+    "offices": "Offices",
+    "officesList": [
+      "Hanoi: No. 26, Lane 364 Minh Khai Street, Vinh Tuy Ward, Hai Ba Trung District, Hanoi, Vietnam."
+    ],
     "copyright": "All rights reserved."
   }
 }
-
