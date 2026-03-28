@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {useTranslations} from 'next-intl';
 import Image from 'next/image';
 import {motion} from 'framer-motion';
@@ -25,6 +25,24 @@ const POPUP_VIDEO_SRC = '/video/tvc.mp4';
 export function LandingPage() {
   const t = useTranslations();
   const [videoOpen, setVideoOpen] = useState(false);
+  const [hoveredServiceKey, setHoveredServiceKey] = useState<
+    (typeof SERVICE_KEYS)[number] | null
+  >(null);
+  const serviceVideoRefs = useRef<
+    Partial<Record<(typeof SERVICE_KEYS)[number], HTMLVideoElement | null>>
+  >({});
+
+  useEffect(() => {
+    SERVICE_KEYS.forEach((key) => {
+      const el = serviceVideoRefs.current[key];
+      if (!el) return;
+      if (hoveredServiceKey === key) {
+        void el.play().catch(() => { });
+      } else {
+        el.pause();
+      }
+    });
+  }, [hoveredServiceKey]);
 
   const closeVideo = useCallback(() => {
     setVideoOpen(false);
@@ -92,7 +110,7 @@ export function LandingPage() {
                 return (
                   <motion.article
                     key={key}
-                    className="group flex flex-col overflow-hidden rounded-2xl border-2 border-zinc-200/90 bg-white/95 text-left shadow-[0_20px_50px_-20px_rgba(24,24,27,0.25)] ring-1 ring-zinc-950/5 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-(--color-primary)/40 hover:shadow-[0_28px_60px_-24px_rgba(24,24,27,0.35)]"
+                    className="group flex flex-col overflow-hidden rounded-2xl border-2 border-zinc-200/90 bg-white/95 text-left shadow-[0_20px_50px_-20px_rgba(24,24,27,0.25)] ring-1 ring-zinc-950/5 transition-[border-color,box-shadow,transform] duration-300 hover:border-(--color-primary)/40"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -112,7 +130,31 @@ export function LandingPage() {
                       </span>
                     </div>
                     <div className="flex flex-1 flex-col p-6 pt-5">
-                      <ul className="space-y-2.5 text-base leading-6 text-zinc-600">
+                      <div className="">
+
+                        <div
+                          className="relative aspect-[9/16] w-full overflow-hidden rounded-xl border border-zinc-200 bg-zinc-950 shadow-inner ring-1 ring-zinc-950/20"
+                          onMouseEnter={() => setHoveredServiceKey(key)}
+                          onMouseLeave={() => setHoveredServiceKey(null)}
+                        >
+                          <video
+                            ref={(el) => {
+                              serviceVideoRefs.current[key] = el;
+                            }}
+                            className="h-full w-full object-contain"
+                            src={DEMO_VIDEO_SRC_BY_SERVICE[key]}
+                            controls
+                            playsInline
+                            loop
+                            preload="metadata"
+                            aria-label={t(`services.items.${key}.videoLabel`)}
+                          />
+                        </div>
+                      </div>
+                      {/* <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-zinc-500">
+                        {t(`services.items.${key}.videoLabel`)}
+                      </p> */}
+                      <ul className="space-y-2.5 text-base leading-6 text-zinc-600 pt-6 mt-6 border-t border-zinc-100">
                         {bullets.map((line, i) => (
                           <li key={i} className="flex gap-2.5">
                             <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-(--color-primary)" />
@@ -120,21 +162,6 @@ export function LandingPage() {
                           </li>
                         ))}
                       </ul>
-                      <div className="mt-6 border-t border-zinc-100 pt-6">
-                        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                          {t(`services.items.${key}.videoLabel`)}
-                        </p>
-                        <div className="relative aspect-[9/16] w-full overflow-hidden rounded-xl border border-zinc-200 bg-zinc-950 shadow-inner ring-1 ring-zinc-950/20">
-                          <video
-                            className="h-full w-full object-contain"
-                            src={DEMO_VIDEO_SRC_BY_SERVICE[key]}
-                            controls
-                            playsInline
-                            preload="metadata"
-                            aria-label={t(`services.items.${key}.videoLabel`)}
-                          />
-                        </div>
-                      </div>
                     </div>
                   </motion.article>
                 );
