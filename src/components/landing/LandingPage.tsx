@@ -53,12 +53,6 @@ export function LandingPage() {
   }, []);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const id = requestAnimationFrame(() => setVideoOpen(true));
-    return () => cancelAnimationFrame(id);
-  }, []);
-
-  useEffect(() => {
     if (!videoOpen) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
@@ -82,10 +76,58 @@ export function LandingPage() {
       <Header />
 
       <main>
-        {/* Services — first & featured */}
+        {/* Hero */}
+        <section className="relative overflow-hidden border-b border-zinc-200 bg-white">
+          <Container className="relative z-10 py-16 sm:py-20">
+            <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
+              <motion.div
+                className="text-center lg:text-left"
+                initial={{opacity: 0, y: 20}}
+                animate={{opacity: 1, y: 0}}
+                transition={{duration: 0.5}}
+              >
+                <p className="text-base font-semibold uppercase tracking-wider text-zinc-500">
+                  {t('hero.kicker')}
+                </p>
+                <h2 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+                  {t('hero.headline')}
+                </h2>
+                <p className="mt-4 text-base leading-7 text-zinc-600">
+                  {t('hero.description')}
+                </p>
+                <div className="mt-6 flex justify-center lg:justify-start">
+                  <a href="https://zalo.me/0912205001" target="_blank" rel="noopener noreferrer">
+                    <Button>{t('hero.cta')}</Button>
+                  </a>
+                </div>
+              </motion.div>
+              <motion.div
+                className="relative h-64 w-full overflow-hidden rounded-2xl border border-zinc-200/90 shadow-sm ring-1 ring-zinc-950/4 sm:h-80 lg:h-96"
+                initial={{opacity: 0, x: 20}}
+                animate={{opacity: 1, x: 0}}
+                transition={{duration: 0.5, delay: 0.2}}
+              >
+                <Image
+                  src="/img/img1.jpg"
+                  alt={t('hero.imageAlt')}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+              </motion.div>
+            </div>
+          </Container>
+
+          <div className="pointer-events-none absolute inset-0 -z-10">
+            <div className="absolute -top-40 left-1/2 h-[480px] w-[480px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(231,138,83,0.15),transparent_70%)] blur-3xl" />
+          </div>
+        </section>
+
+        {/* Services */}
         <section
           id="services"
-          className="relative scroll-mt-20 overflow-hidden border-b border-zinc-200/90 bg-gradient-to-b from-(--color-primary-soft)/90 via-white to-zinc-50/80"
+          className="relative scroll-mt-20 overflow-hidden border-b border-zinc-200/90 bg-linear-to-b from-(--color-primary-soft)/90 via-white to-zinc-50/80"
         >
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute -top-32 right-0 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle_at_center,rgba(231,138,83,0.22),transparent_68%)] blur-3xl" />
@@ -131,9 +173,8 @@ export function LandingPage() {
                     </div>
                     <div className="flex flex-1 flex-col p-6 pt-5">
                       <div className="">
-
                         <div
-                          className="relative aspect-[9/16] w-full overflow-hidden rounded-xl border border-zinc-200 bg-zinc-950 shadow-inner ring-1 ring-zinc-950/20"
+                          className="relative aspect-9/16 w-full overflow-hidden rounded-xl border border-zinc-200 bg-zinc-950 shadow-inner ring-1 ring-zinc-950/20"
                           onMouseEnter={() => setHoveredServiceKey(key)}
                           onMouseLeave={() => setHoveredServiceKey(null)}
                         >
@@ -168,53 +209,6 @@ export function LandingPage() {
               })}
             </div>
           </div>
-        </section>
-
-        {/* Hero */}
-        <section className="relative overflow-hidden border-b border-zinc-200 bg-white">
-          <div className="pointer-events-none absolute inset-0">
-            <div className="absolute -top-40 left-1/2 h-[480px] w-[480px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,_rgba(231,138,83,0.15),_transparent_70%)] blur-3xl" />
-          </div>
-          <Container className="relative py-16 sm:py-20">
-            <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
-              <motion.div
-                className="text-center lg:text-left"
-                initial={{opacity: 0, y: 20}}
-                animate={{opacity: 1, y: 0}}
-                transition={{duration: 0.5}}
-              >
-                <p className="text-base font-semibold uppercase tracking-wider text-zinc-500">
-                  {t('hero.kicker')}
-                </p>
-                <h2 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
-                  {t('hero.headline')}
-                </h2>
-                <p className="mt-4 text-base leading-7 text-zinc-600">
-                  {t('hero.description')}
-                </p>
-                <div className="mt-6 flex justify-center lg:justify-start">
-                  <a href="https://zalo.me/0912205001" target="_blank" rel="noopener noreferrer">
-                    <Button>{t('hero.cta')}</Button>
-                  </a>
-                </div>
-              </motion.div>
-              <motion.div
-                className="relative h-64 w-full overflow-hidden rounded-2xl border border-zinc-200/90 shadow-sm ring-1 ring-zinc-950/4 sm:h-80 lg:h-96"
-                initial={{opacity: 0, x: 20}}
-                animate={{opacity: 1, x: 0}}
-                transition={{duration: 0.5, delay: 0.2}}
-              >
-                <Image
-                  src="/img/img1.jpg"
-                  alt={t('hero.imageAlt')}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                />
-              </motion.div>
-            </div>
-          </Container>
         </section>
 
         {/* About */}
@@ -272,7 +266,7 @@ export function LandingPage() {
                     whileInView={{opacity: 1, y: 0}}
                     viewport={{once: true}}
                   >
-                    <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-[var(--color-primary)]" />
+                    <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-(--color-primary)" />
                     <p>{t(`why.points.${i}`)}</p>
                   </motion.div>
                 ))}
@@ -295,7 +289,7 @@ export function LandingPage() {
         </section>
 
         {/* Final CTA */}
-        <section id="contact" className="border-b border-zinc-200 bg-[var(--color-primary-soft)]/60">
+        <section id="contact" className="border-b border-zinc-200 bg-(--color-primary-soft)/60">
           <Container className="py-14 sm:py-20">
             <motion.div
               className="mx-auto max-w-2xl text-center"
@@ -334,7 +328,7 @@ export function LandingPage() {
       </button>
 
       {videoOpen ? (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+        <div className="fixed inset-0 z-100 flex items-center justify-center p-4 sm:p-6">
           <button
             type="button"
             className="absolute inset-0 bg-zinc-950/65 backdrop-blur-[2px]"
