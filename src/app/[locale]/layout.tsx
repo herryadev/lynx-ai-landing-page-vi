@@ -30,7 +30,12 @@ export async function generateMetadata({
 
   return {
     title: t('title'),
-    description: t('description')
+    description: t('description'),
+    icons: {
+      icon: '/favicon.ico',
+      shortcut: '/favicon.ico',
+      apple: '/favicon.ico'
+    }
   };
 }
 
