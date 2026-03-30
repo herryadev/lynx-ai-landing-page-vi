@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đề Xuất Giải Pháp 3D & AR - Lynx AI Solution</title>
+    
+    <!-- CSS Framework -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Chosen Palette: Warm Neutrals (Stone/Amber) for a calm, premium, professional feel -->
+    <!-- Application Structure Plan: 
+         1. Hero Section: Hook the user with the core value proposition.
+         2. Section 'Vấn Đề & Hiệu Quả' (Problem & Impact): Dashboard style. Left side text explains limitations of 2D. Right side uses Doughnut charts to visually quantify the savings (50% marketing, 30% returns). Goal: Immediate ROI justification.
+         3. Section 'Tại Sao Lynx AI' (Why Us): Interactive cards detailing the 3 core differentiators (AI-Driven, Retouching, Local Support). Clicking reveals deeper text to keep UI clean.
+         4. Section 'Báo Giá & Tùy Chọn' (Pricing Options): A clear 3-column pricing table linked to an interactive Bar Chart. Goal: Allow users to compare setup vs. maintenance costs visually. Includes explanation of the Credit-based system.
+         5. Section 'Lộ Trình' (Roadmap): A vertical interactive timeline.
+         Why this structure? It mimics a high-converting B2B SaaS landing page/pitch deck, guiding the prospect from "The Pain/ROI" -> "The Solution/Team" -> "The Cost" -> "The Next Steps". 
+    -->
+    <!-- Visualization & Content Choices:
+         - ROI Savings -> Goal: Inform -> 2 Doughnut Charts (Chart.js) -> Hover for details -> Visually striking proof of value without reading heavy text.
+         - Pricing Comparison -> Goal: Compare -> Grouped Bar Chart (Chart.js) -> Clicking pricing cards updates chart emphasis -> Helps decision makers justify the 55M vs 25M vs 120M options.
+         - NO SVG/Mermaid used. Icons are Unicode or CSS shapes.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            800: '#292524',
+                            900: '#1c1917',
+                        },
+                        amber: {
+                            600: '#d97706',
+                            700: '#b45309',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* CRITICAL: Chart Container Styling for responsiveness and boundary constraints */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px; /* Constrain max width */
+            margin-left: auto;
+            margin-right: auto;
+            height: 30vh;
+            min-height: 250px;
+            max-height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chart-container-large {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 40vh;
+            min-height: 300px;
+            max-height: 450px;
+        }
+
+        /* Interactive utilities */
+        .interactive-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .interactive-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        .active-card {
+            border-color: #d97706; /* Amber 600 */
+            background-color: #fffbeb; /* Amber 50 */
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-stone-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <span class="text-2xl font-bold text-amber-700">&#x2B22; LYNX AI</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#hieu-qua" class="text-stone-600 hover:text-amber-600 font-medium">Hiệu Quả & ROI</a>
+                    <a href="#tai-sao" class="text-stone-600 hover:text-amber-600 font-medium">Khác Biệt</a>
+                    <a href="#bao-gia" class="text-stone-600 hover:text-amber-600 font-medium">Báo Giá</a>
+                    <a href="#lo-trinh" class="text-stone-600 hover:text-amber-600 font-medium">Lộ Trình</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+        <div class="inline-block p-2 bg-amber-100 text-amber-800 rounded-full px-4 text-sm font-semibold mb-6">
+            &#x1F680; Đề Xuất Giải Pháp Nâng Cao
+        </div>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-stone-900 tracking-tight mb-6">
+            Hệ Thống Trực Quan Hóa Sản Phẩm <span class="text-amber-600">3D & AR</span>
+        </h1>
+        <p class="mt-4 max-w-2xl mx-auto text-xl text-stone-600 mb-10">
+            Xóa bỏ giới hạn của hình ảnh 2D truyền thống. Mang sản phẩm của Quý doanh nghiệp vào không gian thực của khách hàng, tối ưu hóa quyết định mua và giảm thiểu chi phí vận hành.
+        </p>
+        <a href="#hieu-qua" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-amber-600 hover:bg-amber-700 transition-colors shadow-lg shadow-amber-600/30">
+            Khám Phá Giải Pháp &#x2193;
+        </a>
+    </header>
+
+    <!-- Section 1: Vấn Đề & Hiệu Quả Kinh Tế -->
+    <section id="hieu-qua" class="py-16 bg-white border-t border-stone-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 text-center">
+                <h2 class="text-3xl font-bold text-stone-900 mb-4">Tại Sao Cần Giải Pháp Này?</h2>
+                <p class="text-lg text-stone-600 max-w-3xl mx-auto">
+                    Phần này trình bày những hạn chế cốt lõi của phương thức hiển thị 2D hiện tại và phân tích chi tiết các chỉ số sinh lời (ROI) mà hệ thống 3D/AR của chúng tôi mang lại. Quý vị có thể tương tác với biểu đồ để xem mức độ tiết kiệm thực tế.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="space-y-6">
+                    <div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
+                        <h3 class="text-xl font-bold text-stone-800 flex items-center gap-2">
+                            <span>&#x26A0;&#xFE0F;</span> Vấn Đề Của Hình Ảnh 2D
+                        </h3>
+                        <ul class="mt-4 space-y-3 text-stone-600">
+                            <li><strong class="text-stone-800">Thiếu chân thực:</strong> Khách hàng khó hình dung kích thước, góc khuất.</li>
+                            <li><strong class="text-stone-800">Tỷ lệ đổi trả cao:</strong> Sản phẩm thực tế khác với hình dung qua ảnh.</li>
+                            <li><strong class="text-stone-800">Chi phí thủ công lớn:</strong> Vận chuyển mẫu vật lý tốn kém, rủi ro hư hỏng.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-amber-50 p-6 rounded-xl border border-amber-200">
+                        <h3 class="text-xl font-bold text-amber-800 flex items-center gap-2">
+                            <span>&#x1F4B0;</span> Giá Trị Kinh Tế & Tiết Kiệm
+                        </h3>
+                        <p class="mt-4 text-stone-700">
+                            Hệ thống 3D & AR không chỉ làm đẹp Website mà là công cụ <strong>tối ưu lợi nhuận</strong>. Số hóa 1 lần, sử dụng mãi mãi để xuất hàng nghìn góc ảnh/video mà không cần Studio. Tính năng AR giúp khách "ướm thử" sản phẩm, xác nhận kích thước ngay tại nhà.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Visualization: Savings -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100 flex flex-col items-center">
+                        <h4 class="text-sm font-semibold text-stone-500 mb-2 uppercase tracking-wider text-center">Chi Phí Studio/Marketing</h4>
+                        <div class="chart-container">
+                            <canvas id="marketingSavingsChart"></canvas>
+                        </div>
+                        <p class="text-center text-sm text-stone-600 mt-2">Giảm tới 50% nhờ tái sử dụng tài sản số 3D.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100 flex flex-col items-center">
+                        <h4 class="text-sm font-semibold text-stone-500 mb-2 uppercase tracking-wider text-center">Tỷ Lệ Đổi Trả Hàng</h4>
+                        <div class="chart-container">
+                            <canvas id="returnRateChart"></canvas>
+                        </div>
+                        <p class="text-center text-sm text-stone-600 mt-2">Giảm 30% nhờ tính năng ướm thử AR.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Tại Sao Chọn Lynx AI -->
+    <section id="tai-sao" class="py-16 bg-stone-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 text-center">
+                <h2 class="text-3xl font-bold text-stone-900 mb-4">Lợi Thế Cạnh Tranh Của Lynx AI</h2>
+                <p class="text-lg text-stone-600 max-w-3xl mx-auto">
+                    Khu vực này làm rõ sự khác biệt giữa Lynx AI và các nền tảng tự động quốc tế (như Hexa3D). Vui lòng click vào từng thẻ dưới đây để tìm hiểu cách chúng tôi kết hợp công nghệ AI và chuyên môn đồ họa nội địa để tạo ra sản phẩm hoàn hảo.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Interactive Cards -->
+                <div class="interactive-card bg-white p-8 rounded-2xl shadow-sm border border-stone-200 flex flex-col items-center text-center" onclick="showLynxDetail('ai')">
+                    <div class="text-4xl mb-4">&#x1F9E0;</div>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">AI-Driven Workflow</h3>
+                    <p class="text-stone-600 text-sm">Xử lý đa mô hình (Multi-model) đảm bảo khung xương chính xác.</p>
+                    <button class="mt-4 text-amber-600 text-sm font-semibold">Xem chi tiết &rarr;</button>
+                </div>
+
+                <div class="interactive-card bg-white p-8 rounded-2xl shadow-sm border border-stone-200 flex flex-col items-center text-center active-card" id="card-retouch" onclick="showLynxDetail('retouch')">
+                    <div class="text-4xl mb-4">&#x2728;</div>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">Expert Retouching</h3>
+                    <p class="text-stone-600 text-sm">Hậu kỳ thủ công chuyên nghiệp, xử lý vật liệu siêu thực.</p>
+                    <button class="mt-4 text-amber-600 text-sm font-semibold">Xem chi tiết &rarr;</button>
+                </div>
+
+                <div class="interactive-card bg-white p-8 rounded-2xl shadow-sm border border-stone-200 flex flex-col items-center text-center" onclick="showLynxDetail('local')">
+                    <div class="text-4xl mb-4">&#x1F1FB;&#x1F1F3;</div>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">Tối Ưu Nội Địa</h3>
+                    <p class="text-stone-600 text-sm">Tốc độ tải siêu nhanh và hỗ trợ trực tiếp 24/7 tại Việt Nam.</p>
+                    <button class="mt-4 text-amber-600 text-sm font-semibold">Xem chi tiết &rarr;</button>
+                </div>
+            </div>
+
+            <!-- Detail Box -->
+            <div class="mt-8 bg-white p-6 rounded-xl border border-amber-200 shadow-inner min-h-[150px] flex items-center justify-center transition-all" id="lynx-detail-box">
+                <p class="text-stone-700 text-lg text-center max-w-4xl" id="lynx-detail-text">
+                    <strong>Đội ngũ hậu kỳ chuyên nghiệp (Expert Retouching):</strong> Khác với các nền tảng quốc tế nơi AI làm xong là kết thúc, tại Lynx AI mọi sản phẩm đều được chuyên viên kiểm tra thủ công. Chúng tôi tái tạo chính xác các vật liệu khó như: Độ bóng kim loại, vân gỗ tự nhiên, độ xuyên thấu thủy tinh, đảm bảo tính thẩm mỹ cao nhất.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Báo Giá & Tùy Chọn -->
+    <section id="bao-gia" class="py-16 bg-white border-t border-stone-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 text-center">
+                <h2 class="text-3xl font-bold text-stone-900 mb-4">Phương Án Triển Khai & Báo Giá</h2>
+                <p class="text-lg text-stone-600 max-w-3xl mx-auto mb-6">
+                    Phần này cung cấp 3 lựa chọn đóng gói giải pháp phù hợp với từng quy mô doanh nghiệp. Biểu đồ bên dưới minh họa cấu trúc chi phí (Khởi tạo vs. Duy trì). Mô hình <strong class="text-amber-700">Credit-based (Dùng bao nhiêu trả bấy nhiêu)</strong> giúp Quý vị kiểm soát hoàn toàn ngân sách số hóa.
+                </p>
+                <div class="bg-stone-50 border border-stone-200 p-4 rounded-lg inline-block text-left text-sm max-w-2xl text-stone-600">
+                    <strong class="text-stone-800">&#x1F4A1; Hiểu về Phí Credit (Render):</strong> Chi phí render 3D phụ thuộc vào số lượng sản phẩm thực tế. Nó bao gồm phí thuê siêu máy tính AI toàn cầu và công sức chuyên viên đồ họa (Retouching) tinh chỉnh vật liệu. Doanh nghiệp chỉ trả phí khi có nhu cầu làm mẫu mới.
+                </div>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <!-- Option 1 -->
+                <div class="border border-stone-200 rounded-2xl p-8 bg-white hover:shadow-lg transition-shadow">
+                    <h3 class="text-2xl font-bold text-stone-900 mb-2">Basic</h3>
+                    <p class="text-stone-500 text-sm mb-6">Thử nghiệm hiệu quả với danh mục nhỏ</p>
+                    <div class="text-4xl font-extrabold text-stone-900 mb-2">25M<span class="text-lg text-stone-500 font-normal"> VNĐ</span></div>
+                    <p class="text-sm text-stone-500 mb-6">Phí khởi tạo nền tảng</p>
+                    <ul class="space-y-3 mb-8 text-stone-600 text-sm">
+                        <li class="flex items-start gap-2"><span>&#x2714;&#xFE0F;</span> Web Viewer cơ bản</li>
+                        <li class="flex items-start gap-2"><span>&#x2714;&#xFE0F;</span> Render: Tính phí theo lượt</li>
+                        <li class="flex items-start gap-2"><span>&#x2714;&#xFE0F;</span> Duy trì: 1M VNĐ/tháng</li>
+                    </ul>
+                    <button class="w-full py-2 px-4 border border-amber-600 text-amber-600 rounded-lg hover:bg-amber-50 font-medium transition" onclick="highlightPricing(0)">Xem so sánh</button>
+                </div>
+
+                <!-- Option 2 -->
+                <div class="border-2 border-amber-500 rounded-2xl p-8 bg-white shadow-xl relative transform md:-translate-y-4">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-amber-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wide">
+                        KHUYÊN DÙNG
+                    </div>
+                    <h3 class="text-2xl font-bold text-stone-900 mb-2">Professional</h3>
+                    <p class="text-stone-500 text-sm mb-6">Cập nhật liên tục, có CMS tự quản lý</p>
+                    <div class="text-4xl font-extrabold text-amber-700 mb-2">55M<span class="text-lg text-stone-500 font-normal"> VNĐ</span></div>
+                    <p class="text-sm text-stone-500 mb-6">Phí khởi tạo nền tảng</p>
+                    <ul class="space-y-3 mb-8 text-stone-600 text-sm font-medium">
+                        <li class="flex items-start gap-2 text-stone-800"><span>&#x2714;&#xFE0F;</span> CMS quản trị độc lập</li>
+                        <li class="flex items-start gap-2 text-stone-800"><span>&#x2714;&#xFE0F;</span> Hệ thống QR Code từng sản phẩm</li>
+                        <li class="flex items-start gap-2"><span>&#x2714;&#xFE0F;</span> Render: Ưu đãi theo gói nạp</li>
+                        <li class="flex items-start gap-2"><span>&#x2714;&#xFE0F;</span> Duy trì: 3M VNĐ/tháng (Báo cáo/Hỗ trợ)</li>
+                    </ul>
+                    <button class="w-full py-2 px-4 bg-amber-600 text-white rounded-lg hover:bg-amber-700 font-medium transition shadow-md" onclick="highlightPricing(1)">Xem so sánh</button>
+                </div>
+
+                <!-- Option 3 -->
+                <div class="border border-stone-200 rounded-2xl p-8 bg-white hover:shadow-lg transition-shadow">
+                    <h3 class="text-2xl font-bold text-stone-900 mb-2">Enterprise</h3>
+                    <p class="text-stone-500 text-sm mb-6">Tích hợp sâu, độ chân thực tuyệt đối</p>
+                    <div class="text-4xl font-extrabold text-stone-900 mb-2">120M+<span class="text-lg text-stone-500 font-normal"> VNĐ</span></div>
+                    <p class="text-sm text-stone-500 mb-6">Phí khởi tạo nền tảng</p>
+                    <ul class="space-y-3 mb-8 text-stone-600 text-sm">
+                        <li class="flex items-start gap-2"><span>&#x2714;&#xFE0F;</span> Thiết kế Showroom ảo</li>
+                        <li class="flex items-start gap-2"><span>&#x2714;&#xFE0F;</span> Tích hợp ERP/E-com</li>
+                        <li class="flex items-start gap-2"><span>&#x2714;&#xFE0F;</span> Render: Không giới hạn (Hợp đồng)</li>
+                        <li class="flex items-start gap-2"><span>&#x2714;&#xFE0F;</span> Duy trì: 7M VNĐ/tháng (Server riêng)</li>
+                    </ul>
+                    <button class="w-full py-2 px-4 border border-amber-600 text-amber-600 rounded-lg hover:bg-amber-50 font-medium transition" onclick="highlightPricing(2)">Xem so sánh</button>
+                </div>
+            </div>
+
+            <!-- Visualization: Pricing Chart -->
+            <div class="bg-stone-50 p-6 rounded-2xl border border-stone-200 shadow-sm">
+                <h3 class="text-xl font-bold text-center text-stone-800 mb-6">Biểu Đồ So Sánh Cấu Trúc Chi Phí Cố Định</h3>
+                <div class="chart-container-large">
+                    <canvas id="pricingChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Lộ Trình -->
+    <section id="lo-trinh" class="py-16 bg-stone-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 text-center">
+                <h2 class="text-3xl font-bold text-stone-900 mb-4">Lộ Trình Thực Hiện</h2>
+                <p class="text-lg text-stone-600">
+                    Phân tách rõ ràng các giai đoạn từ lúc khởi tạo hạ tầng đến khi bàn giao.
+                </p>
+            </div>
+
+            <!-- Interactive Timeline -->
+            <div class="space-y-4">
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-amber-500 flex items-start gap-4">
+                    <div class="bg-amber-100 text-amber-800 font-bold w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0">T 1-2</div>
+                    <div>
+                        <h4 class="text-lg font-bold text-stone-800">Thiết Lập Hệ Thống Lõi</h4>
+                        <p class="text-stone-600 mt-1">Thiết kế UI/UX theo nhận diện thương hiệu. Lập trình và cài đặt hạ tầng Web Viewer, tích hợp AR và giao diện quản trị CMS.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-stone-300 flex items-start gap-4">
+                    <div class="bg-stone-200 text-stone-600 font-bold w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0">T 3</div>
+                    <div>
+                        <h4 class="text-lg font-bold text-stone-800">Số Hóa & Khởi Chạy Thử Nghiệm</h4>
+                        <p class="text-stone-600 mt-1">Cấp quyền truy cập CMS. Chạy đợt Render nghiệm thu cho 10 sản phẩm mẫu đầu tiên thông qua hệ thống AI và chuyên viên đồ họa.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-stone-300 flex items-start gap-4">
+                    <div class="bg-stone-200 text-stone-600 font-bold w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0">T 4</div>
+                    <div>
+                        <h4 class="text-lg font-bold text-stone-800">Đào Tạo & Bàn Giao</h4>
+                        <p class="text-stone-600 mt-1">Hướng dẫn đội ngũ nhân sự của Quý đối tác vận hành hệ thống Credit, cách upload và quản lý tài sản 3D. Bàn giao toàn diện nền tảng.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-stone-900 py-8 text-center text-stone-400">
+        <p class="mb-2">Tài liệu Đề Xuất Giải Pháp Số Hóa</p>
+        <p class="font-bold text-stone-300">LYNX AI SOLUTION &copy; 2024</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- Data Storage & State ---
+        const whyLynxData = {
+            ai: {
+                title: "Khả năng làm chủ công nghệ AI (AI-Driven)",
+                text: "Chúng tôi không phụ thuộc hoàn toàn vào một công cụ duy nhất. Lynx AI sử dụng hệ thống lọc và xử lý đa mô hình (Multi-model) để đảm bảo khung xương (Mesh) của sản phẩm luôn chuẩn xác, không bị méo mó như các giải pháp AI tự động thông thường."
+            },
+            retouch: {
+                title: "Đội ngũ hậu kỳ chuyên nghiệp (Expert Retouching)",
+                text: "Khác với các nền tảng quốc tế nơi AI làm xong là kết thúc, tại Lynx AI mọi sản phẩm đều được chuyên viên kiểm tra thủ công. Chúng tôi tái tạo chính xác các vật liệu khó như: Độ bóng kim loại, vân gỗ tự nhiên, độ xuyên thấu thủy tinh, đảm bảo tính thẩm mỹ cao nhất."
+            },
+            local: {
+                title: "Tối ưu hóa trải nghiệm nội địa",
+                text: "Hệ thống được tối ưu hóa cho hạ tầng mạng và thiết bị di động phổ biến tại Việt Nam, mang lại tốc độ tải siêu nhanh. Đồng thời, đội ngũ hỗ trợ trực tiếp 24/7 phản ứng nhanh với các yêu cầu cập nhật mà không bị rào cản ngôn ngữ hay múi giờ."
+            }
+        };
+
+        let pricingChartInstance = null;
+
+        // --- Core Interaction Handling ---
+
+        // Function for 'Tại Sao Lynx AI' detail updating
+        function showLynxDetail(key) {
+            // Update UI Cards
+            document.querySelectorAll('.interactive-card').forEach(card => {
+                card.classList.remove('active-card');
+            });
+            event.currentTarget.classList.add('active-card');
+
+            // Update Text
+            const detailBox = document.getElementById('lynx-detail-box');
+            const detailText = document.getElementById('lynx-detail-text');
+            
+            // Simple fade animation
+            detailBox.style.opacity = 0;
+            setTimeout(() => {
+                detailText.innerHTML = `<strong>${whyLynxData[key].title}:</strong> ${whyLynxData[key].text}`;
+                detailBox.style.opacity = 1;
+            }, 200);
+        }
+
+        // Function to highlight a specific pricing option in the chart
+        function highlightPricing(index) {
+            if(!pricingChartInstance) return;
+            
+            // Reset background colors
+            const bgColorsSetup = ['rgba(217, 119, 6, 0.4)', 'rgba(217, 119, 6, 0.4)', 'rgba(217, 119, 6, 0.4)'];
+            const borderColorsSetup = ['#d97706', '#d97706', '#d97706'];
+            
+            // Highlight selected
+            bgColorsSetup[index] = 'rgba(217, 119, 6, 0.9)'; // Darker Amber
+            
+            pricingChartInstance.data.datasets[0].backgroundColor = bgColorsSetup;
+            pricingChartInstance.update();
+            
+            // Scroll to chart
+            document.getElementById('pricingChart').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // --- Chart Initialization (Chart.js) ---
+        function initCharts() {
+            // 1. Savings Doughnut Charts
+            Chart.defaults.font.family = "'Inter', 'system-ui', sans-serif";
+            Chart.defaults.color = '#57534e'; // stone-600
+
+            const doughnutOptions = {
+                responsive: true,
+                maintainAspectRatio: false, // CRITICAL for chart-container
+                cutout: '70%',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return ` ${context.label}: ${context.raw}%`;
+                            }
+                        }
+                    }
+                }
+            };
+
+            // Marketing Savings (50%)
+            new Chart(document.getElementById('marketingSavingsChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Đã Tiết Kiệm', 'Chi Phí Còn Lại'],
+                    datasets: [{
+                        data: [50, 50],
+                        backgroundColor: ['#d97706', '#f5f5f4'], // Amber 600, Stone 100
+                        borderWidth: 0
+                    }]
+                },
+                options: doughnutOptions
+            });
+
+            // Return Rate Savings (30%)
+            new Chart(document.getElementById('returnRateChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Tỷ Lệ Giảm Thiểu', 'Tỷ Lệ Còn Lại'],
+                    datasets: [{
+                        data: [30, 70],
+                        backgroundColor: ['#0ea5e9', '#f5f5f4'], // Sky 500, Stone 100
+                        borderWidth: 0
+                    }]
+                },
+                options: doughnutOptions
+            });
+
+
+            // 2. Pricing Comparison Bar Chart
+            const ctxPricing = document.getElementById('pricingChart');
+            pricingChartInstance = new Chart(ctxPricing, {
+                type: 'bar',
+                data: {
+                    labels: ['Option 1 (Basic)', 'Option 2 (Professional)', 'Option 3 (Enterprise)'],
+                    datasets: [
+                        {
+                            label: 'Phí Khởi Tạo (Triệu VNĐ)',
+                            data: [25, 55, 120],
+                            backgroundColor: [
+                                'rgba(217, 119, 6, 0.4)', // Amber dim
+                                'rgba(217, 119, 6, 0.9)', // Amber solid (Default highlight)
+                                'rgba(217, 119, 6, 0.4)'
+                            ],
+                            borderColor: '#d97706',
+                            borderWidth: 1,
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Phí Duy Trì / Tháng (Triệu VNĐ)',
+                            data: [1, 3, 7],
+                            backgroundColor: '#64748b', // Slate 500
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false, // CRITICAL for container
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Chi Phí (Triệu VNĐ)'
+                            },
+                            grid: {
+                                color: '#f5f5f4'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        legend: {
+                            position: 'top',
+                        }
+                    },
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                    }
+                }
+            });
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', initCharts);
+
+    </script>
+</body>
+</html>
