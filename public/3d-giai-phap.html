@@ -75,6 +75,16 @@
             max-height: 450px;
         }
 
+        .chart-container-roi {
+            position: relative;
+            width: 100%;
+            height: 360px;
+        }
+
+        input[type=range] {
+            accent-color: #d97706;
+        }
+
         /* Interactive utilities */
         .interactive-card {
             transition: all 0.3s ease;
@@ -293,6 +303,64 @@
                     <canvas id="pricingChart"></canvas>
                 </div>
             </div>
+
+            <div class="mt-10 bg-stone-900 text-white p-6 md:p-8 rounded-2xl border border-stone-700">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold mb-2">So Sánh Chi Phí 12 Tháng: Từ Tháng Nào Lynx AI Tiết Kiệm Hơn?</h3>
+                    <p class="text-stone-300">
+                        Điều chỉnh giả định theo thực tế vận hành của doanh nghiệp để xem điểm hòa vốn và tổng chênh lệch chi phí sau 12 tháng.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="space-y-5">
+                        <div>
+                            <label class="block text-sm text-stone-300 mb-2">
+                                Số sản phẩm mới mỗi tháng:
+                                <span id="roi-qty-val" class="font-semibold text-amber-300">12</span>
+                            </label>
+                            <input id="roi-qty-input" type="range" min="2" max="60" value="12" class="w-full">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm text-stone-300 mb-2">
+                                Chi phí studio/truyền thống mỗi mẫu:
+                                <span id="roi-trad-val" class="font-semibold text-amber-300">2.500.000 VNĐ</span>
+                            </label>
+                            <input id="roi-trad-input" type="range" min="700000" max="6000000" step="100000" value="2500000" class="w-full">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm text-stone-300 mb-2">
+                                Chi phí render Lynx mỗi mẫu (credit):
+                                <span id="roi-render-val" class="font-semibold text-amber-300">800.000 VNĐ</span>
+                            </label>
+                            <input id="roi-render-input" type="range" min="300000" max="2000000" step="50000" value="800000" class="w-full">
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
+                            <div class="bg-stone-800 rounded-xl p-4 border border-stone-700">
+                                <p class="text-xs uppercase tracking-wider text-stone-400">Điểm hòa vốn</p>
+                                <p id="roi-breakeven" class="text-xl font-bold text-amber-300">--</p>
+                            </div>
+                            <div class="bg-stone-800 rounded-xl p-4 border border-stone-700">
+                                <p class="text-xs uppercase tracking-wider text-stone-400">Tiết kiệm sau 12 tháng</p>
+                                <p id="roi-saving-12m" class="text-xl font-bold text-emerald-300">--</p>
+                            </div>
+                            <div class="bg-stone-800 rounded-xl p-4 border border-stone-700">
+                                <p class="text-xs uppercase tracking-wider text-stone-400">Chi phí/Sản phẩm (năm 1)</p>
+                                <p id="roi-cost-per-unit" class="text-xl font-bold text-sky-300">--</p>
+                            </div>
+                        </div>
+
+                        <div class="chart-container-roi">
+                            <canvas id="roiBreakdownChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -359,6 +427,14 @@
         };
 
         let pricingChartInstance = null;
+        let roiBreakdownChartInstance = null;
+
+        const professionalSetupFee = 55000000;
+        const professionalMaintenanceFee = 3000000;
+
+        function formatVnd(value) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND', maximumFractionDigits: 0 }).format(value);
+        }
 
         // --- Core Interaction Handling ---
 
@@ -514,10 +590,107 @@
                     }
                 }
             });
+
+            updateRoiBreakdown();
+        }
+
+        function updateRoiBreakdown() {
+            const qty = parseInt(document.getElementById('roi-qty-input').value, 10);
+            const traditionalCost = parseInt(document.getElementById('roi-trad-input').value, 10);
+            const lynxRenderCost = parseInt(document.getElementById('roi-render-input').value, 10);
+
+            document.getElementById('roi-qty-val').textContent = qty.toString();
+            document.getElementById('roi-trad-val').textContent = formatVnd(traditionalCost);
+            document.getElementById('roi-render-val').textContent = formatVnd(lynxRenderCost);
+
+            const months = Array.from({ length: 13 }, (_, i) => i);
+            const traditionalData = months.map((m) => m * qty * traditionalCost);
+            const lynxData = months.map((m) => professionalSetupFee + (m * professionalMaintenanceFee) + (m * qty * lynxRenderCost));
+
+            let breakEvenMonth = null;
+            for (let i = 1; i < months.length; i += 1) {
+                if (lynxData[i] <= traditionalData[i]) {
+                    breakEvenMonth = i;
+                    break;
+                }
+            }
+
+            const savingAfter12Months = traditionalData[12] - lynxData[12];
+            const annualUnits = qty * 12;
+            const yearOneCostPerUnit = lynxData[12] / annualUnits;
+
+            document.getElementById('roi-breakeven').textContent = breakEvenMonth ? `Tháng ${breakEvenMonth}` : 'Sau 12 tháng';
+            const savingEl = document.getElementById('roi-saving-12m');
+            savingEl.textContent = formatVnd(Math.abs(savingAfter12Months));
+            savingEl.className = savingAfter12Months >= 0 ? 'text-xl font-bold text-emerald-300' : 'text-xl font-bold text-red-300';
+            document.getElementById('roi-cost-per-unit').textContent = formatVnd(yearOneCostPerUnit);
+
+            if (roiBreakdownChartInstance) {
+                roiBreakdownChartInstance.data.labels = months.map((m) => `Tháng ${m}`);
+                roiBreakdownChartInstance.data.datasets[0].data = traditionalData;
+                roiBreakdownChartInstance.data.datasets[1].data = lynxData;
+                roiBreakdownChartInstance.update();
+                return;
+            }
+
+            roiBreakdownChartInstance = new Chart(document.getElementById('roiBreakdownChart'), {
+                type: 'line',
+                data: {
+                    labels: months.map((m) => `Tháng ${m}`),
+                    datasets: [
+                        {
+                            label: 'Mô hình truyền thống',
+                            data: traditionalData,
+                            borderColor: '#94a3b8',
+                            backgroundColor: 'rgba(148, 163, 184, 0.15)',
+                            fill: true,
+                            tension: 0.3
+                        },
+                        {
+                            label: 'Lynx AI Professional',
+                            data: lynxData,
+                            borderColor: '#d97706',
+                            backgroundColor: 'rgba(217, 119, 6, 0.15)',
+                            fill: true,
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return `${Math.round(value / 1000000)}M`;
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${formatVnd(context.raw)}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
         }
 
         // Initialize when DOM is ready
-        document.addEventListener('DOMContentLoaded', initCharts);
+        document.addEventListener('DOMContentLoaded', () => {
+            initCharts();
+            ['roi-qty-input', 'roi-trad-input', 'roi-render-input'].forEach((id) => {
+                document.getElementById(id).addEventListener('input', updateRoiBreakdown);
+            });
+        });
 
     </script>
 </body>
