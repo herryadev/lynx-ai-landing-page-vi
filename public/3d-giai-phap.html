@@ -100,6 +100,47 @@
             border-color: #d97706; /* Amber 600 */
             background-color: #fffbeb; /* Amber 50 */
         }
+
+        .sales-offer-card {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 48%, #fef3c7 100%);
+            border: 1px solid #f59e0b;
+            box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.45);
+            animation: salesPulse 2.1s infinite;
+        }
+
+        .sales-offer-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            font-size: 11px;
+            line-height: 1;
+            padding: 0.45rem 0.75rem;
+            border-radius: 9999px;
+            background: #b45309;
+            color: #fff;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        @media (min-width: 640px) {
+            .sales-offer-badge {
+                font-size: 12px;
+            }
+        }
+
+        @keyframes salesPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.45);
+            }
+            70% {
+                box-shadow: 0 0 0 14px rgba(245, 158, 11, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+            }
+        }
     </style>
 </head>
 <body class="bg-stone-50 text-stone-800 font-sans antialiased">
@@ -366,6 +407,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -404,6 +446,31 @@
                         <p class="text-stone-600 mt-1">Hướng dẫn đội ngũ nhân sự của Quý đối tác vận hành hệ thống Credit, cách upload và quản lý tài sản 3D. Bàn giao toàn diện nền tảng.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="uu-dai" class="py-12 bg-stone-50 border-t border-stone-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="rounded-2xl p-6 md:p-8 sales-offer-card">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+                    <h3 class="text-xl md:text-2xl font-extrabold text-amber-900">Ưu Đãi Đồng Hành Cùng Doanh Nghiệp</h3>
+                    <span class="sales-offer-badge">Ưu đãi đặc biệt</span>
+                </div>
+                <ul class="space-y-3 text-stone-800">
+                    <li class="flex items-start gap-3">
+                        <span class="text-amber-700 font-bold">&#x2714;</span>
+                        <span><strong>Xây dựng Landing Page miễn phí</strong> khi triển khai giải pháp.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-amber-700 font-bold">&#x2714;</span>
+                        <span><strong>Hỗ trợ tư vấn giải pháp chuyển đổi số miễn phí</strong> theo nhu cầu thực tế của doanh nghiệp.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-amber-700 font-bold">&#x2714;</span>
+                        <span><strong>Giảm 20% chi phí phát triển phần mềm liên quan đến chuyển đổi số</strong> cho các hạng mục mở rộng sau triển khai.</span>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
