@@ -30,7 +30,7 @@
     "headline": "Trợ lý AI cho vận hành và tăng trưởng",
     "description": "Mỗi dịch vụ đi kèm video demo minh họa luồng sử dụng thực tế (video tạm dùng chung cho demo).",
     "items": {
-      "management": {
+      "report": {
         "title": "AI Quản lý & Báo cáo",
         "bullets": [
           "Báo cáo thu/chi, doanh thu theo ngày/tháng",
@@ -40,13 +40,13 @@
         "videoLabel": "Video demo AI Quản lý & Báo cáo"
       },
       "customerCare": {
-        "title": "AI Sales Agent chuyên mỹ phẩm",
+        "title": "AI Sales tự động",
         "bullets": [
           "Trả lời inbox khách hàng tự động 24/7",
           "Tư vấn sản phẩm cá nhân hóa",
           "Follow-up giỏ hàng và chốt đơn tự động"
         ],
-        "videoLabel": "Video demo AI Sales Agent chuyên mỹ phẩm"
+        "videoLabel": "Video demo AI Sales tự động"
       },
       "sales": {
         "title": "AI Sales tự động",

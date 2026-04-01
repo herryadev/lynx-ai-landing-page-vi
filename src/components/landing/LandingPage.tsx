@@ -10,17 +10,12 @@ import { Container } from "./Container";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 
-const SERVICE_KEYS = [
-  "management",
-  "customerCare",
-  "sales",
-  "content",
-] as const;
+const SERVICE_KEYS = ["report", "customerCare", "sales", "content"] as const;
 
 /** Video demo từng dịch vụ — sửa trực tiếp đường dẫn file tại đây. */
 const DEMO_VIDEO_SRC_BY_SERVICE: Record<(typeof SERVICE_KEYS)[number], string> =
   {
-    management: "/video/openclaw.mp4",
+    report: "/video/aireport.mp4",
     customerCare: "/video/customer_care.mp4",
     sales: "/video/tvc.mp4",
     content: "/video/openclaw.mp4",
@@ -172,7 +167,7 @@ export function LandingPage() {
                   >
                     <div className="flex items-start justify-between gap-4 border-b border-zinc-100 bg-zinc-50/80 px-6 py-5">
                       <div>
-                        <h3 className="text-xl font-bold tracking-tight text-zinc-950 sm:text-2xl">
+                        <h3 className="text-lg font-bold tracking-tight text-zinc-950 sm:text-2xl lg:text-xl">
                           {t(`services.items.${key}.title`)}
                         </h3>
                       </div>
