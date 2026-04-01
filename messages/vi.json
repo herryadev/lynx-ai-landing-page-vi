@@ -40,13 +40,13 @@
         "videoLabel": "Video demo AI Quản lý & Báo cáo"
       },
       "customerCare": {
-        "title": "AI Chăm sóc khách hàng",
+        "title": "AI Sales Agent chuyên mỹ phẩm",
         "bullets": [
-          "Trả lời inbox tự động 24/7",
-          "Tiếp nhận & quản lý bảo hành",
-          "Phân loại khách hàng, lưu trữ data"
+          "Trả lời inbox khách hàng tự động 24/7",
+          "Tư vấn sản phẩm cá nhân hóa",
+          "Follow-up giỏ hàng và chốt đơn tự động"
         ],
-        "videoLabel": "Video demo AI Chăm sóc khách hàng"
+        "videoLabel": "Video demo AI Sales Agent chuyên mỹ phẩm"
       },
       "sales": {
         "title": "AI Sales tự động",
@@ -86,7 +86,11 @@
     "whoWeAre": "Chúng tôi là ai?",
     "whoLinks": ["Tầm nhìn, sứ mệnh", "Giá trị cốt lõi", "Ý nghĩa tên Lynx"],
     "whatWeDo": "Chúng tôi làm gì?",
-    "whatLinks": ["Creative & Engineering", "Talent Platform", "Dự án của chúng tôi"],
+    "whatLinks": [
+      "Creative & Engineering",
+      "Talent Platform",
+      "Dự án của chúng tôi"
+    ],
     "newsUpdate": "Cập nhật tin tức",
     "newsLinks": ["Văn hóa - Sự kiện", "Tuyển dụng", "Chính sách phúc lợi"],
     "contactTitle": "Liên hệ",

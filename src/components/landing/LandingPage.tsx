@@ -1,26 +1,32 @@
-'use client';
+"use client";
 
-import { useCallback, useEffect, useRef, useState } from 'react';
-import {useTranslations} from 'next-intl';
-import Image from 'next/image';
-import {motion} from 'framer-motion';
-import { Play, X } from 'lucide-react';
-import {Container} from './Container';
-import {Header} from './Header';
-import {Footer} from './Footer';
-import {Button} from './Button';
+import { motion } from "framer-motion";
+import { Play, X } from "lucide-react";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Button } from "./Button";
+import { Container } from "./Container";
+import { Footer } from "./Footer";
+import { Header } from "./Header";
 
-const SERVICE_KEYS = ['management', 'customerCare', 'sales', 'content'] as const;
+const SERVICE_KEYS = [
+  "management",
+  "customerCare",
+  "sales",
+  "content",
+] as const;
 
 /** Video demo từng dịch vụ — sửa trực tiếp đường dẫn file tại đây. */
-const DEMO_VIDEO_SRC_BY_SERVICE: Record<(typeof SERVICE_KEYS)[number], string> = {
-  management: '/video/openclaw.mp4',
-  customerCare: '/video/video-2.mp4',
-  sales: '/video/tvc.mp4',
-  content: '/video/openclaw.mp4',
-};
+const DEMO_VIDEO_SRC_BY_SERVICE: Record<(typeof SERVICE_KEYS)[number], string> =
+  {
+    management: "/video/openclaw.mp4",
+    customerCare: "/video/customer_care.mp4",
+    sales: "/video/tvc.mp4",
+    content: "/video/openclaw.mp4",
+  };
 
-const POPUP_VIDEO_SRC = '/video/tvc.mp4';
+const POPUP_VIDEO_SRC = "/video/tvc.mp4";
 
 export function LandingPage() {
   const t = useTranslations();
@@ -37,7 +43,7 @@ export function LandingPage() {
       const el = serviceVideoRefs.current[key];
       if (!el) return;
       if (hoveredServiceKey === key) {
-        void el.play().catch(() => { });
+        void el.play().catch(() => {});
       } else {
         el.pause();
       }
@@ -55,7 +61,7 @@ export function LandingPage() {
   useEffect(() => {
     if (!videoOpen) return;
     const prev = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = prev;
     };
@@ -64,10 +70,10 @@ export function LandingPage() {
   useEffect(() => {
     if (!videoOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') closeVideo();
+      if (e.key === "Escape") closeVideo();
     };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, [videoOpen, closeVideo]);
 
   return (
@@ -82,34 +88,38 @@ export function LandingPage() {
             <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
               <motion.div
                 className="text-center lg:text-left"
-                initial={{opacity: 0, y: 20}}
-                animate={{opacity: 1, y: 0}}
-                transition={{duration: 0.5}}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
               >
                 <p className="text-base font-semibold uppercase tracking-wider text-zinc-500">
-                  {t('hero.kicker')}
+                  {t("hero.kicker")}
                 </p>
                 <h2 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
-                  {t('hero.headline')}
+                  {t("hero.headline")}
                 </h2>
                 <p className="mt-4 text-base leading-7 text-zinc-600">
-                  {t('hero.description')}
+                  {t("hero.description")}
                 </p>
                 <div className="mt-6 flex justify-center lg:justify-start">
-                  <a href="https://zalo.me/0912205001" target="_blank" rel="noopener noreferrer">
-                    <Button>{t('hero.cta')}</Button>
+                  <a
+                    href="https://zalo.me/0912205001"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button>{t("hero.cta")}</Button>
                   </a>
                 </div>
               </motion.div>
               <motion.div
                 className="relative h-64 w-full overflow-hidden rounded-2xl border border-zinc-200/90 shadow-sm ring-1 ring-zinc-950/4 sm:h-80 lg:h-96"
-                initial={{opacity: 0, x: 20}}
-                animate={{opacity: 1, x: 0}}
-                transition={{duration: 0.5, delay: 0.2}}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <Image
                   src="/img/img1.jpg"
-                  alt={t('hero.imageAlt')}
+                  alt={t("hero.imageAlt")}
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -136,19 +146,21 @@ export function LandingPage() {
           <div className="relative w-full px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
             <div className="mx-auto max-w-4xl text-center">
               <p className="text-sm font-bold uppercase tracking-[0.2em] text-(--color-primary)">
-                {t('services.kicker')}
+                {t("services.kicker")}
               </p>
               <h1 className="mt-4 text-4xl font-bold tracking-tight text-zinc-950 sm:text-5xl lg:text-6xl lg:leading-[1.08]">
-                {t('services.headline')}
+                {t("services.headline")}
               </h1>
               <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-zinc-600 sm:text-xl sm:leading-9">
-                {t('services.description')}
+                {t("services.description")}
               </p>
             </div>
             <div className="mt-14 grid gap-6 lg:grid-cols-2 xl:grid-cols-4 xl:gap-6 lg:mt-16">
               {SERVICE_KEYS.map((key, index) => {
-                const bullets = t.raw(`services.items.${key}.bullets`) as string[];
-                const n = String(index + 1).padStart(2, '0');
+                const bullets = t.raw(
+                  `services.items.${key}.bullets`,
+                ) as string[];
+                const n = String(index + 1).padStart(2, "0");
                 return (
                   <motion.article
                     key={key}
@@ -217,9 +229,9 @@ export function LandingPage() {
             <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
               <motion.div
                 className="relative h-64 w-full overflow-hidden rounded-2xl sm:h-80 lg:order-1 order-2 lg:h-96"
-                initial={{opacity: 0, x: -20}}
-                whileInView={{opacity: 1, x: 0}}
-                viewport={{once: true}}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
               >
                 <Image
                   src="/img/img2.jpg"
@@ -230,18 +242,18 @@ export function LandingPage() {
               </motion.div>
               <motion.div
                 className="lg:order-2 order-1"
-                initial={{opacity: 0, y: 20}}
-                whileInView={{opacity: 1, y: 0}}
-                viewport={{once: true}}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
               >
                 <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-                  {t('about.title')}
+                  {t("about.title")}
                 </h2>
                 <p className="mt-4 text-base leading-7 text-zinc-600">
-                  {t('about.body1')}
+                  {t("about.body1")}
                 </p>
                 <p className="mt-2 text-base leading-7 text-zinc-600">
-                  {t('about.body2')}
+                  {t("about.body2")}
                 </p>
               </motion.div>
             </div>
@@ -253,7 +265,7 @@ export function LandingPage() {
           <Container className="py-12 sm:py-16">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-                {t('why.title')}
+                {t("why.title")}
               </h2>
             </div>
             <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-12">
@@ -262,9 +274,9 @@ export function LandingPage() {
                   <motion.div
                     key={i}
                     className="flex gap-3 text-left"
-                    initial={{opacity: 0, y: 12}}
-                    whileInView={{opacity: 1, y: 0}}
-                    viewport={{once: true}}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                   >
                     <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-(--color-primary)" />
                     <p>{t(`why.points.${i}`)}</p>
@@ -273,9 +285,9 @@ export function LandingPage() {
               </div>
               <motion.div
                 className="relative h-64 w-full overflow-hidden rounded-2xl sm:h-80 lg:h-96"
-                initial={{opacity: 0, x: 20}}
-                whileInView={{opacity: 1, x: 0}}
-                viewport={{once: true}}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
               >
                 <Image
                   src="/img/img3.jpg"
@@ -289,23 +301,30 @@ export function LandingPage() {
         </section>
 
         {/* Final CTA */}
-        <section id="contact" className="border-b border-zinc-200 bg-(--color-primary-soft)/60">
+        <section
+          id="contact"
+          className="border-b border-zinc-200 bg-(--color-primary-soft)/60"
+        >
           <Container className="py-14 sm:py-20">
             <motion.div
               className="mx-auto max-w-2xl text-center"
-              initial={{opacity: 0, y: 16}}
-              whileInView={{opacity: 1, y: 0}}
-              viewport={{once: true}}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
             >
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                {t('cta.title')}
+                {t("cta.title")}
               </h2>
               <p className="mt-4 text-base leading-7 text-zinc-700">
-                {t('cta.description')}
+                {t("cta.description")}
               </p>
               <div className="mt-8 flex justify-center">
-                <a href="https://zalo.me/0912205001" target="_blank" rel="noopener noreferrer">
-                  <Button>{t('cta.button')}</Button>
+                <a
+                  href="https://zalo.me/0912205001"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button>{t("cta.button")}</Button>
                 </a>
               </div>
             </motion.div>
@@ -319,12 +338,18 @@ export function LandingPage() {
         type="button"
         onClick={openVideo}
         className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-50 flex max-w-[min(18rem,calc(100vw-2rem))] items-center gap-2.5 rounded-2xl border border-zinc-200/90 bg-white p-1.5 shadow-lg ring-1 ring-zinc-950/5 transition hover:border-zinc-300 hover:shadow-xl sm:bottom-6 sm:right-6 sm:gap-3 sm:p-2"
-        aria-label={t('hero.watchVideo')}
+        aria-label={t("hero.watchVideo")}
       >
         <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-(--color-primary) text-white shadow-md ring-2 ring-(--color-primary)/20 sm:h-12 sm:w-12">
-          <Play className="ml-0.5 h-5 w-5 sm:h-6 sm:w-6" fill="currentColor" aria-hidden />
+          <Play
+            className="ml-0.5 h-5 w-5 sm:h-6 sm:w-6"
+            fill="currentColor"
+            aria-hidden
+          />
         </span>
-        <span className="pr-2 text-left text-sm font-semibold text-zinc-800 sm:pr-3">{t('hero.watchVideo')}</span>
+        <span className="pr-2 text-left text-sm font-semibold text-zinc-800 sm:pr-3">
+          {t("hero.watchVideo")}
+        </span>
       </button>
 
       {videoOpen ? (
@@ -332,20 +357,20 @@ export function LandingPage() {
           <button
             type="button"
             className="absolute inset-0 bg-zinc-950/65 backdrop-blur-[2px]"
-            aria-label={t('hero.closeVideo')}
+            aria-label={t("hero.closeVideo")}
             onClick={closeVideo}
           />
           <div
             role="dialog"
             aria-modal="true"
-            aria-label={t('hero.videoAriaLabel')}
+            aria-label={t("hero.videoAriaLabel")}
             className="relative z-10 w-full max-w-[min(100%,min(90rem,calc(90vh*16/9)))] overflow-hidden rounded-2xl border border-zinc-700 bg-black shadow-2xl ring-1 ring-white/10"
           >
             <button
               type="button"
               className="absolute right-2 top-2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-zinc-950/85 text-white ring-1 ring-white/15 backdrop-blur transition hover:bg-zinc-800 sm:right-3 sm:top-3"
               onClick={closeVideo}
-              aria-label={t('hero.closeVideo')}
+              aria-label={t("hero.closeVideo")}
             >
               <X className="h-5 w-5" strokeWidth={2} />
             </button>
@@ -358,7 +383,7 @@ export function LandingPage() {
                 playsInline
                 controls
                 preload="auto"
-                aria-label={t('hero.videoAriaLabel')}
+                aria-label={t("hero.videoAriaLabel")}
               />
             </div>
           </div>
