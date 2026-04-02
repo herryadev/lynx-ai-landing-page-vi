@@ -10,14 +10,14 @@ import { Container } from "./Container";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 
-const SERVICE_KEYS = ["report", "customerCare", "sales", "content"] as const;
+const SERVICE_KEYS = ["report", "sales", "customerCare", "content"] as const;
 
 /** Video demo từng dịch vụ — sửa trực tiếp đường dẫn file tại đây. */
 const DEMO_VIDEO_SRC_BY_SERVICE: Record<(typeof SERVICE_KEYS)[number], string> =
   {
     report: "/video/aireport.mp4",
-    customerCare: "/video/customer_care.mp4",
-    sales: "/video/tvc.mp4",
+    sales: "/video/aisales.mp4",
+    customerCare: "/video/aicustomer.mp4",
     content: "/video/openclaw.mp4",
   };
 

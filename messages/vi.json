@@ -39,7 +39,7 @@
         ],
         "videoLabel": "Video demo AI Quản lý & Báo cáo"
       },
-      "customerCare": {
+      "sales": {
         "title": "AI Sales tự động",
         "bullets": [
           "Trả lời inbox khách hàng tự động 24/7",
@@ -48,14 +48,14 @@
         ],
         "videoLabel": "Video demo AI Sales tự động"
       },
-      "sales": {
-        "title": "AI Sales tự động",
+      "customerCare": {
+        "title": "AI CSKH tự động",
         "bullets": [
-          "Kết bạn Zalo theo tệp khách hàng mục tiêu",
-          "Tư vấn sản phẩm như người thật",
+          "Trả lời inbox khách hàng tự động 24/7",
+          "Chăm sóc quan tâm khách hàng như người thật",
           "Follow-up & chốt đơn tự động"
         ],
-        "videoLabel": "Video demo AI Sales"
+        "videoLabel": "Video demo AI Chăm sóc khách hàng"
       },
       "content": {
         "title": "AI Content & Marketing",
