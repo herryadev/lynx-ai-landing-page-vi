@@ -191,7 +191,6 @@ export function LandingPage() {
                             }}
                             className="h-full w-full object-contain"
                             src={DEMO_VIDEO_SRC_BY_SERVICE[key]}
-                            controls
                             playsInline
                             loop
                             preload="metadata"
@@ -376,7 +375,6 @@ export function LandingPage() {
                 autoPlay
                 loop
                 playsInline
-                controls
                 preload="auto"
                 aria-label={t("hero.videoAriaLabel")}
               />
