@@ -1,12 +1,13 @@
-import { useTranslations } from 'next-intl';
-import Image from 'next/image';
-import { Container } from './Container';
-import { Button } from './Button';
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "./Button";
+import { Container } from "./Container";
 
 const navItems = [
-  { key: 'about', href: '#about' },
-  { key: 'services', href: '#services' },
-  { key: 'why', href: '#why' }
+  { key: "about", href: "#about" },
+  { key: "services", href: "#services" },
+  { key: "why", href: "#why" },
 ] as const;
 
 export function Header() {
@@ -15,8 +16,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-200/70 bg-white/80 backdrop-blur">
       <Container className="flex h-16 items-center justify-between">
-        <a
-          href="#top"
+        <Link
+          href="/"
           className="flex items-center gap-3 font-semibold tracking-tight text-zinc-950 "
         >
           <Image
@@ -27,7 +28,7 @@ export function Header() {
             className="h-7 w-auto"
             priority
           />
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-6 lg:flex">
           {navItems.map((item) => (
@@ -39,13 +40,15 @@ export function Header() {
               {t(`nav.${item.key}`)}
             </a>
           ))}
-          <a href="https://zalo.me/0912205001" target="_blank" rel="noopener noreferrer">
-            <Button>{t('nav.contact')}</Button>
+          <a
+            href="https://zalo.me/0912205001"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button>{t("nav.contact")}</Button>
           </a>
         </nav>
-
       </Container>
     </header>
   );
 }
-
