@@ -79,7 +79,7 @@ export function LandingPage() {
       <main>
         {/* Hero */}
         <section className="relative overflow-hidden border-b border-zinc-200 bg-white">
-          <Container className="relative z-10 py-16 sm:py-20">
+          <Container className="relative z-10 py-20 sm:py-24 lg:py-32">
             <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
               <motion.div
                 className="text-center lg:text-left"
@@ -138,7 +138,7 @@ export function LandingPage() {
             <div className="absolute -top-32 right-0 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle_at_center,rgba(231,138,83,0.22),transparent_68%)] blur-3xl" />
             <div className="absolute bottom-0 left-0 h-[320px] w-[320px] rounded-full bg-[radial-gradient(circle_at_center,rgba(231,138,83,0.12),transparent_70%)] blur-3xl" />
           </div>
-          <div className="relative w-full px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+          <div className="relative w-full px-6 py-20 sm:px-8 sm:py-24 lg:py-32">
             <div className="mx-auto max-w-4xl text-center">
               <p className="text-sm font-bold uppercase tracking-[0.2em] text-(--color-primary)">
                 {t("services.kicker")}
@@ -150,7 +150,7 @@ export function LandingPage() {
                 {t("services.description")}
               </p>
             </div>
-            <div className="mt-14 grid gap-6 lg:grid-cols-2 xl:grid-cols-4 xl:gap-6 lg:mt-16">
+            <div className="mt-14 grid gap-8 lg:gap-12 xl:grid-cols-4 xl:gap-8 lg:mt-16">
               {SERVICE_KEYS.map((key, index) => {
                 const bullets = t.raw(
                   `services.items.${key}.bullets`,
@@ -181,7 +181,7 @@ export function LandingPage() {
                     <div className="flex flex-1 flex-col p-6 pt-5">
                       <div className="">
                         <div
-                          className="relative aspect-9/16 w-full overflow-hidden rounded-xl border border-zinc-200 bg-zinc-950 shadow-inner ring-1 ring-zinc-950/20"
+                          className="relative aspect-video w-full overflow-hidden rounded-xl border border-zinc-200 bg-zinc-950 shadow-inner ring-1 ring-zinc-950/20"
                           onMouseEnter={() => setHoveredServiceKey(key)}
                           onMouseLeave={() => setHoveredServiceKey(null)}
                         >
@@ -219,7 +219,7 @@ export function LandingPage() {
 
         {/* About */}
         <section id="about" className="border-b border-zinc-200 bg-white">
-          <Container className="py-12 sm:py-16">
+          <Container className="py-16 sm:py-20 lg:py-24">
             <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
               <motion.div
                 className="relative h-64 w-full overflow-hidden rounded-2xl sm:h-80 lg:order-1 order-2 lg:h-96"
@@ -256,7 +256,7 @@ export function LandingPage() {
 
         {/* Why choose us */}
         <section id="why" className="border-b border-zinc-200 bg-white">
-          <Container className="py-12 sm:py-16">
+          <Container className="py-16 sm:py-20 lg:py-24">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
                 {t("why.title")}
@@ -299,7 +299,7 @@ export function LandingPage() {
           id="contact"
           className="border-b border-zinc-200 bg-(--color-primary-soft)/60"
         >
-          <Container className="py-14 sm:py-20">
+          <Container className="py-16 sm:py-24">
             <motion.div
               className="mx-auto max-w-2xl text-center"
               initial={{ opacity: 0, y: 16 }}
