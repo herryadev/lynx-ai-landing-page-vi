@@ -16,6 +16,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-200/70 bg-white/80 backdrop-blur">
       <Container className="flex h-16 items-center justify-between">
+        {/* Logo */}
         <Link
           href="/"
           className="flex items-center gap-3 font-semibold tracking-tight text-zinc-950 "
