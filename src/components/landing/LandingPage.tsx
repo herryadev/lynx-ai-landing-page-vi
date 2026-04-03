@@ -5,6 +5,7 @@ import { Play, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Link } from "@/i18n/navigation";
 import { Button } from "./Button";
 import { Container } from "./Container";
 import { Footer } from "./Footer";
@@ -127,6 +128,55 @@ export function LandingPage() {
           <div className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute -top-40 left-1/2 h-[480px] w-[480px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(231,138,83,0.15),transparent_70%)] blur-3xl" />
           </div>
+        </section>
+
+        {/* SuperGrok Heavy — link tới subpage */}
+        <section
+          id="supergrok-heavy"
+          className="scroll-mt-20 border-b border-zinc-200 bg-white"
+        >
+          <Container className="py-12 sm:py-16">
+            <motion.div
+              className="relative overflow-hidden rounded-2xl border border-zinc-200 bg-linear-to-br from-(--color-primary-soft)/90 via-white to-zinc-50 p-8 shadow-sm ring-1 ring-zinc-950/5 sm:p-10 lg:p-12"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45 }}
+            >
+              <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[radial-gradient(circle_at_center,rgba(231,138,83,0.2),transparent_70%)] blur-2xl" />
+              <div className="relative grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
+                <div className="text-center lg:text-left">
+                  <p className="text-sm font-bold uppercase tracking-[0.2em] text-(--color-primary)">
+                    {t("grokHeavyPromo.kicker")}
+                  </p>
+                  <h2 className="mt-3 text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl lg:text-4xl">
+                    {t("grokHeavyPromo.headline")}
+                  </h2>
+                  <p className="mt-4 text-base leading-7 text-zinc-600">
+                    {t("grokHeavyPromo.description")}
+                  </p>
+                  <div className="mt-6 flex justify-center lg:justify-start">
+                    <Link href="/grok-heavy">
+                      <Button>{t("grokHeavyPromo.cta")}</Button>
+                    </Link>
+                  </div>
+                </div>
+                <div className="flex justify-center lg:justify-end">
+                  <div className="w-full max-w-sm rounded-2xl border border-zinc-200/90 bg-white/90 px-8 py-10 text-center shadow-md ring-1 ring-zinc-950/5 backdrop-blur-sm">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                      {t("grokHeavyPromo.highlight")}
+                    </p>
+                    <p className="mt-4 text-3xl font-bold tracking-tight text-zinc-950">
+                      SuperGrok
+                    </p>
+                    <p className="text-xl font-bold text-(--color-primary)">
+                      Heavy
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </Container>
         </section>
 
         {/* Services */}

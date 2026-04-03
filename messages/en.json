@@ -10,6 +10,13 @@
     "why": "Why choose us",
     "contact": "Contact Us"
   },
+  "grokHeavyPromo": {
+    "kicker": "Distribution & advisory",
+    "headline": "SuperGrok Heavy — one year, full access",
+    "description": "12-month plan: Grok 4 Heavy for heavy tasks, Grok 3 for daily work. Pay in VND, with activation support and safe Google sign-in guidance — no third-party account handoffs.",
+    "cta": "View plan details",
+    "highlight": "Grok 4 Heavy + Grok 3 · 12 months"
+  },
   "hero": {
     "kicker": "AI for ops, sales & marketing",
     "headline": "An AI suite to run, serve and grow your business",
