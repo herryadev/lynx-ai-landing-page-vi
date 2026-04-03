@@ -30,7 +30,7 @@
     "headline": "Four AI pillars for operations & growth",
     "description": "Each service includes a demo video showing the actual workflow (placeholder video shared across demos).",
     "items": {
-      "management": {
+      "report": {
         "title": "AI Management & Reporting",
         "bullets": [
           "Income/expense and revenue reports by day/month",
@@ -39,23 +39,23 @@
         ],
         "videoLabel": "Demo: AI Management & Reporting"
       },
+      "sales": {
+        "title": "AI Automated Sales",
+        "bullets": [
+          "Automated Zalo friend adds from target customer lists",
+          "Warranty intake & management",
+          "Automated follow-up and closing"
+        ],
+        "videoLabel": "Demo: AI Automated Sales"
+      },
       "customerCare": {
         "title": "AI Customer Care",
         "bullets": [
           "Automated inbox replies 24/7",
-          "Warranty intake & management",
-          "Customer segmentation and data storage"
-        ],
-        "videoLabel": "Demo: AI Customer Care"
-      },
-      "sales": {
-        "title": "AI Automated Sales",
-        "bullets": [
-          "Zalo friend adds from target customer lists",
           "Product consultation in a human-like tone",
           "Automated follow-up and closing"
         ],
-        "videoLabel": "Demo: AI Sales"
+        "videoLabel": "Demo: AI Customer Care"
       },
       "content": {
         "title": "AI Content & Marketing",

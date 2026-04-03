@@ -30,7 +30,7 @@
     "headline": "Trợ lý AI cho vận hành và tăng trưởng",
     "description": "Mỗi dịch vụ đi kèm video demo minh họa luồng sử dụng thực tế (video tạm dùng chung cho demo).",
     "items": {
-      "management": {
+      "report": {
         "title": "AI Quản lý & Báo cáo",
         "bullets": [
           "Báo cáo thu/chi, doanh thu theo ngày/tháng",
@@ -39,23 +39,23 @@
         ],
         "videoLabel": "Video demo AI Quản lý & Báo cáo"
       },
-      "customerCare": {
-        "title": "AI Chăm sóc khách hàng",
-        "bullets": [
-          "Trả lời inbox tự động 24/7",
-          "Tiếp nhận & quản lý bảo hành",
-          "Phân loại khách hàng, lưu trữ data"
-        ],
-        "videoLabel": "Video demo AI Chăm sóc khách hàng"
-      },
       "sales": {
         "title": "AI Sales tự động",
         "bullets": [
-          "Kết bạn Zalo theo tệp khách hàng mục tiêu",
-          "Tư vấn sản phẩm như người thật",
+          "Trả lời inbox khách hàng tự động 24/7",
+          "Tư vấn sản phẩm cá nhân hóa",
+          "Follow-up giỏ hàng và chốt đơn tự động"
+        ],
+        "videoLabel": "Video demo AI Sales tự động"
+      },
+      "customerCare": {
+        "title": "AI CSKH tự động",
+        "bullets": [
+          "Trả lời inbox khách hàng tự động 24/7",
+          "Chăm sóc quan tâm khách hàng như người thật",
           "Follow-up & chốt đơn tự động"
         ],
-        "videoLabel": "Video demo AI Sales"
+        "videoLabel": "Video demo AI Chăm sóc khách hàng"
       },
       "content": {
         "title": "AI Content & Marketing",
@@ -86,7 +86,11 @@
     "whoWeAre": "Chúng tôi là ai?",
     "whoLinks": ["Tầm nhìn, sứ mệnh", "Giá trị cốt lõi", "Ý nghĩa tên Lynx"],
     "whatWeDo": "Chúng tôi làm gì?",
-    "whatLinks": ["Creative & Engineering", "Talent Platform", "Dự án của chúng tôi"],
+    "whatLinks": [
+      "Creative & Engineering",
+      "Talent Platform",
+      "Dự án của chúng tôi"
+    ],
     "newsUpdate": "Cập nhật tin tức",
     "newsLinks": ["Văn hóa - Sự kiện", "Tuyển dụng", "Chính sách phúc lợi"],
     "contactTitle": "Liên hệ",
