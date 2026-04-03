@@ -14,7 +14,7 @@ export function Footer() {
 
   return (
     <footer id="contact" className="border-t border-zinc-200 bg-white">
-      <Container className="py-16">
+      <Container className="py-12">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {/* Logo */}
           <div>
@@ -72,7 +72,7 @@ export function Footer() {
         </div>
       </Container>
       <div className="border-t border-zinc-200">
-        <Container className="py-8 text-center text-sm text-zinc-500">
+        <Container className="py-6 text-center text-sm text-zinc-500">
           <p>© {new Date().getFullYear()} Lynx Solution. {t('footer.copyright')}</p>
         </Container>
       </div>
