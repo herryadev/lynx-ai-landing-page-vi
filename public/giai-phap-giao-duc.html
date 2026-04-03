@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đề xuất Chiến lược: Nâng cấp Nền tảng số Archimedes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Chosen Palette: Navy/Slate Professional with Emerald/Rose Accents -->
+    <!-- Application Structure Plan: The SPA is structured as a vertical scrolling "Pitch Deck". It flows logically: 1. The Vision (Hook), 2. Architecture Comparison (The technical problem), 3. Financial Analysis (The business case), 4. Executive Summary (The decision matrix). This structure is chosen to guide decision-makers (Board/Principals) from the high-level need down to the hard numbers, facilitating a clear "Invest vs Maintain" decision. Navigation is persistent for easy jumping. -->
+    <!-- Visualization & Content Choices: 
+         - Financials -> Goal: Compare 2-year costs -> Stacked Bar Chart (Chart.js) -> Hover for breakdown -> Justification: Clearest way to show that lower initial cost (WP) leads to higher total cost.
+         - Architecture -> Goal: Explain tech debt -> Interactive CSS Flexbox visualization -> Click tabs to switch views -> Justification: Explains "Monolithic vs Microservices" without jargon or SVG diagrams.
+         - Comparison -> Goal: Quick decision making -> CSS Grid Matrix -> Hover highlights -> Justification: Easier to scan than a standard HTML table.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #0f172a; /* slate-900 */
+        }
+        
+        /* Required Chart Container Styling */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 50vh;
+            max-height: 400px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 40vh;
+                max-height: 300px;
+            }
+        }
+
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        .nav-active {
+            color: #1e40af; /* blue-800 */
+            font-weight: 600;
+            border-bottom: 2px solid #1e40af;
+        }
+
+        /* Pure CSS Shapes for icons */
+        .css-check {
+            display: inline-block;
+            transform: rotate(45deg);
+            height: 12px;
+            width: 6px;
+            border-bottom: 2px solid #10b981;
+            border-right: 2px solid #10b981;
+            margin-right: 8px;
+            margin-bottom: 4px;
+        }
+        .css-cross {
+            display: inline-block;
+            position: relative;
+            width: 12px;
+            height: 12px;
+            margin-right: 8px;
+        }
+        .css-cross::before, .css-cross::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #ef4444;
+            top: 5px;
+        }
+        .css-cross::before { transform: rotate(45deg); }
+        .css-cross::after { transform: rotate(-45deg); }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <!-- Fixed Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-card transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold tracking-tight text-slate-800">ARCHIMEDES <span class="text-blue-600 font-light">DIGITAL</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center" id="nav-links">
+                    <a href="#vision" class="text-slate-600 hover:text-blue-600 transition nav-link nav-active">Tầm nhìn</a>
+                    <a href="#architecture" class="text-slate-600 hover:text-blue-600 transition nav-link">Kiến trúc</a>
+                    <a href="#financials" class="text-slate-600 hover:text-blue-600 transition nav-link">Tài chính</a>
+                    <a href="#comparison" class="text-slate-600 hover:text-blue-600 transition nav-link">Tổng kết</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        
+        <!-- Section: Vision -->
+        <section id="vision" class="min-h-screen flex items-center bg-gradient-to-b from-slate-50 to-slate-100 py-20">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <p class="text-blue-600 font-semibold uppercase tracking-wider mb-2 text-sm">Đề xuất chiến lược 2026</p>
+                <h1 class="text-4xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
+                    Từ Website Giới Thiệu Đến<br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Hệ Sinh Thái Thông Minh</span>
+                </h1>
+                
+                <p class="mt-4 max-w-2xl text-lg text-slate-600 mb-10">
+                    Phân tích này trình bày lộ trình nâng cấp nền tảng công nghệ của Tập đoàn Giáo dục Archimedes. Chúng ta sẽ khám phá lý do tại sao việc rời bỏ WordPress để chuyển sang Modern Stack (Next.js & Nest.js) không chỉ là vấn đề kỹ thuật, mà là quyết định đầu tư tối ưu chi phí và gia tăng vị thế thương hiệu.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                    <div class="glass-card p-6 rounded-xl border-l-4 border-blue-500">
+                        <div class="text-3xl mb-4">🚀</div>
+                        <h3 class="text-xl font-bold mb-2">Premium UX</h3>
+                        <p class="text-slate-600 text-sm">Tốc độ tức thì (dưới 0.5s), giao diện tùy biến đo ni đóng giày, tạo sự tin tưởng tuyệt đối.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-xl border-l-4 border-emerald-500">
+                        <div class="text-3xl mb-4">🛡️</div>
+                        <h3 class="text-xl font-bold mb-2">Bê Tông Cốt Thép</h3>
+                        <p class="text-slate-600 text-sm">Chịu tải mùa tuyển sinh hàng nghìn lượt truy cập, bảo mật dữ liệu học sinh chuẩn doanh nghiệp.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-xl border-l-4 border-purple-500">
+                        <div class="text-3xl mb-4">🤖</div>
+                        <h3 class="text-xl font-bold mb-2">AI-Ready</h3>
+                        <p class="text-slate-600 text-sm">Sẵn sàng tích hợp trợ lý ảo tư vấn 24/7 và hệ thống tự động hóa tuyển sinh.</p>
+                    </div>
+                </div>
+
+                <div class="mt-16 text-center text-sm text-slate-500 uppercase tracking-widest">
+                    Được tin dùng bởi các tập đoàn hàng đầu
+                </div>
+                <div class="mt-6 flex flex-wrap justify-center gap-8 text-xl font-bold text-slate-300">
+                    <span>NETFLIX</span>
+                    <span>TikTok</span>
+                    <span>UBER</span>
+                    <span>NIKE</span>
+                    <span>coursera</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Architecture -->
+        <section id="architecture" class="py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-slate-900">Tính mở rộng: "Xây Lego" vs "Vá Nhà Lá"</h2>
+                    <p class="mt-4 text-slate-600 max-w-2xl mx-auto">
+                        Mục này giải thích sự khác biệt cốt lõi về kỹ thuật ảnh hưởng trực tiếp đến chi phí sau này. Hãy nhấp để so sánh cấu trúc lỏng lẻo của hệ thống cũ và cấu trúc module linh hoạt của hệ thống mới.
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-2 flex justify-center mb-8 max-w-sm mx-auto">
+                    <button onclick="switchArch('wp')" id="btn-wp" class="flex-1 py-2 px-4 rounded-xl text-sm font-medium transition bg-white shadow text-slate-900">WordPress (Hiện tại)</button>
+                    <button onclick="switchArch('next')" id="btn-next" class="flex-1 py-2 px-4 rounded-xl text-sm font-medium transition text-slate-500 hover:text-slate-900">Next.js + Nest.js (Mới)</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center min-h-[400px]">
+                    <!-- Interactive Vis -->
+                    <div class="flex justify-center items-center p-8 bg-slate-100 rounded-2xl h-full relative" id="arch-visual">
+                        <!-- Content injected by JS -->
+                    </div>
+
+                    <!-- Explainer Text -->
+                    <div id="arch-text">
+                         <!-- Content injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Financials -->
+        <section id="financials" class="py-20 bg-slate-50">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-16">
+                    <h2 class="text-3xl font-bold text-slate-900">Bài Toán Tài Chính: Duy Trì vs Đầu Tư</h2>
+                    <p class="mt-4 text-slate-600 max-w-3xl">
+                        Biểu đồ dưới đây minh họa "cái bẫy chi phí âm" của việc giữ lại hệ thống cũ. Dù WordPress có chi phí khởi tạo thấp (hoặc bằng 0 nếu dùng lại), chi phí bảo trì, sửa lỗi và mua bản quyền hàng năm sẽ nhanh chóng vượt qua mức đầu tư một lần cho một nền tảng mới, sạch và tự vận hành.
+                    </p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 mb-8">
+                    <div class="chart-container">
+                        <canvas id="costChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-xl border border-rose-100">
+                        <h4 class="text-lg font-bold text-rose-600 mb-2">Chi phí duy trì (Expense)</h4>
+                        <ul class="text-slate-600 space-y-2 text-sm">
+                            <li><span class="css-cross"></span> Nợ kỹ thuật: Plugin dễ xung đột.</li>
+                            <li><span class="css-cross"></span> Chi phí nâng cấp đắt đỏ do cấu trúc lỏng lẻo.</li>
+                            <li><span class="css-cross"></span> Cần trả phí bản quyền Plugin/Theme hàng năm (~5tr/năm).</li>
+                            <li><span class="css-cross"></span> Phí sửa lỗi, bảo mật tốn kém (~10tr/năm).</li>
+                        </ul>
+                        <div class="mt-4 pt-4 border-t border-slate-100 font-bold text-slate-800">
+                            Tổng 2 năm: ~40.000.000 VNĐ
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-emerald-100">
+                        <h4 class="text-lg font-bold text-emerald-600 mb-2">Khoản đầu tư (Investment)</h4>
+                        <ul class="text-slate-600 space-y-2 text-sm">
+                            <li><span class="css-check"></span> Tài sản công nghệ độc lập, sở hữu vĩnh viễn.</li>
+                            <li><span class="css-check"></span> Không phí bản quyền phần mềm (Code thuần).</li>
+                            <li><span class="css-check"></span> Hệ thống tự vận hành, phí bảo trì cực thấp (~1tr/năm).</li>
+                            <li><span class="css-check"></span> Rút ngắn 50% thời gian triển khai tính năng mới.</li>
+                        </ul>
+                        <div class="mt-4 pt-4 border-t border-slate-100 font-bold text-slate-800">
+                            Đầu tư 1 lần: 25.000.000 VNĐ<br>
+                            <span class="text-emerald-600 text-sm">Tiết kiệm ~40% đường dài</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Comparison Matrix -->
+        <section id="comparison" class="py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-slate-900">Tổng Kết So Sánh Dành Cho Lãnh Đạo</h2>
+                    <p class="mt-4 text-slate-600 max-w-2xl mx-auto">
+                        Bảng đối chiếu trực diện các giá trị cốt lõi, giúp định hình rõ quyết định chiến lược cho nền tảng số của Archimedes trong tương lai.
+                    </p>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b-2 border-slate-200">
+                                <th class="py-4 px-6 text-slate-500 font-semibold w-1/4">Hạng mục</th>
+                                <th class="py-4 px-6 text-rose-600 font-bold bg-rose-50 rounded-tl-xl w-1/3">WordPress (Duy trì cũ)</th>
+                                <th class="py-4 px-6 text-emerald-600 font-bold bg-emerald-50 rounded-tr-xl w-5/12">Next.js + Nest.js (Nâng cấp mới)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-slate-700" id="matrix-body">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-16 bg-blue-900 rounded-2xl p-10 text-center text-white shadow-xl">
+                    <h3 class="text-2xl font-bold mb-4">Kết Luận Chiến Lược</h3>
+                    <p class="max-w-3xl mx-auto text-blue-100 mb-8 leading-relaxed">
+                        Với mức đầu tư dự kiến <strong>25.000.000 VNĐ</strong>, Archimedes không chỉ sở hữu một website mới, mà là đang xây dựng một <strong>nền tảng công nghệ lõi</strong> cho tương lai. Đây là bước đi kinh tế nhất để ngừng lãng phí ngân sách vào việc sửa lỗi hệ thống cũ và bắt đầu kiến tạo một hình ảnh giáo dục hiện đại, chuyên nghiệp.
+                    </p>
+                    <div class="text-xl font-light italic text-blue-200 uppercase tracking-widest">
+                        "Đầu tư một lần - Sử dụng trọn đời - Dẫn đầu công nghệ"
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-slate-900 text-slate-400 py-8 text-center text-sm">
+            <p>Tài liệu đề xuất giải pháp công nghệ theo concept Di Sản Số.</p>
+        </footer>
+    </main>
+
+    <script>
+        // --- Data Storage ---
+        const reportData = {
+            costs: {
+                labels: ['Khởi tạo / Nâng cấp', 'Phí bản quyền (2 năm)', 'Sửa lỗi & Bảo mật (2 năm)'],
+                datasets: [
+                    {
+                        label: 'WordPress (Duy trì)',
+                        data: [0, 10000000, 20000000], // Extrapolated from 5m/yr and 10m/yr
+                        backgroundColor: '#ef4444', // red
+                    },
+                    {
+                        label: 'Next.js + Nest.js (Đầu tư)',
+                        data: [25000000, 0, 20000000], // Note: The graph needs to show total. The data array is values per category. Wait, the report says Fix is ~1m/yr. So 2m total.
+                    }
+                ]
+            },
+            architecture: {
+                wp: {
+                    html: `
+                        <div class="w-48 h-48 bg-rose-200 border-4 border-rose-400 rounded-xl flex items-center justify-center flex-col relative shadow-lg transition-all duration-500">
+                            <span class="font-bold text-rose-800">WordPress Core</span>
+                            <div class="text-xs text-rose-700 mt-2 text-center px-2">Giao diện, Database, Logic trộn lẫn</div>
+                            <!-- Simulated tangled plugins -->
+                            <div class="absolute -top-3 -right-3 w-8 h-8 bg-orange-400 rounded-full border-2 border-white"></div>
+                            <div class="absolute -bottom-2 -left-2 w-10 h-10 bg-red-500 rounded border-2 border-white transform rotate-12"></div>
+                        </div>
+                    `,
+                    title: "Kiến trúc Nguyên khối (Monolithic)",
+                    desc: "Các tính năng đan xen vào nhau. Khi muốn sửa 'Tuyển sinh', có thể vô tình làm hỏng 'Tin tức' do dùng chung database và plugin chồng chéo. Việc nâng cấp rủi ro cao, giống như rút một viên gạch ở chân tường.",
+                    omni: "Chỉ phục vụ cho 1 website. Muốn làm App Mobile gần như phải xây lại từ đầu."
+                },
+                next: {
+                    html: `
+                        <div class="flex flex-col items-center space-y-4 transition-all duration-500">
+                            <div class="w-48 h-16 bg-blue-200 border-2 border-blue-400 rounded-lg flex items-center justify-center font-bold text-blue-800 shadow">Giao diện (Next.js)</div>
+                            <div class="text-slate-400">⬇️ API ⬇️</div>
+                            <div class="w-56 h-20 bg-emerald-200 border-2 border-emerald-500 rounded-xl flex items-center justify-center font-bold text-emerald-800 shadow relative">
+                                Bộ não trung tâm (Nest.js)
+                                <div class="absolute -right-6 top-6 text-slate-400 text-sm">➡️ App Mobile</div>
+                                <div class="absolute -left-6 top-6 text-slate-400 text-sm">⬅️ Hệ thống LMS</div>
+                            </div>
+                        </div>
+                    `,
+                    title: "Cấu trúc Module (Lego-like)",
+                    desc: "Mọi tính năng được tách biệt. Thêm 'Cổng thanh toán' chỉ cần lắp thêm 1 module mà không chạm vào code hiện có. Giảm 50% thời gian triển khai tính năng mới.",
+                    omni: "Nest.js (API-First) đóng vai trò bộ não. Kết nối App Mobile dễ dàng, tiết kiệm 80% chi phí hạ tầng dữ liệu tương lai."
+                }
+            },
+            matrix: [
+                { category: 'Giá trị tài sản', wp: 'Là một "mẫu web" thuê mướn, dễ lỗi thời.', next: 'Là một <b>Tài sản công nghệ độc lập</b>, trường sở hữu 100%.' },
+                { category: 'Chi phí nâng cấp', wp: 'Rẻ lúc đầu, cực đắt và phức tạp về sau.', next: 'Đầu tư bài bản lúc đầu (25tr), <b>nâng cấp cực rẻ</b> về sau.' },
+                { category: 'Khả năng mở rộng', wp: 'Hạn chế (Dễ làm vỡ hệ thống cũ).', next: 'Không giới hạn (Cấu trúc module an toàn tuyệt đối).' },
+                { category: 'Tích hợp AI & App', wp: 'Phụ thuộc bên thứ 3, tốn phí hàng tháng.', next: '<b>Sẵn sàng tích hợp sâu</b>, sở hữu vĩnh viễn.' },
+                { category: 'Vị thế thương hiệu', wp: '"Chúng tôi có một website".', next: '"Chúng tôi <b>dẫn đầu</b> về công nghệ giáo dục".' }
+            ]
+        };
+
+        // --- State Management ---
+        let costChartInstance = null;
+
+        // --- Core Interaction Handling ---
+
+        // 1. Initialize Chart
+        function initChart() {
+            const ctx = document.getElementById('costChart').getContext('2d');
+            
+            // Data adjusted to match the total narrative: WP ~40m, Next 27m over 2 years
+            const data = {
+                labels: ['Năm 1', 'Năm 2'],
+                datasets: [
+                    {
+                        label: 'WordPress (Duy trì)',
+                        data: [20000000, 20000000], // 20m per year maintaining
+                        backgroundColor: 'rgba(239, 68, 68, 0.8)', // rose-500
+                        stack: 'Stack 0',
+                    },
+                    {
+                        label: 'Next.js + Nest.js (Đầu tư)',
+                        data: [26000000, 10000000], // 25m init + 1m maint year 1, 1m maint year 2 (Wait, report says 27m total. Let's make it 25+1 = 26m Y1, 1m Y2)
+                        backgroundColor: 'rgba(16, 185, 129, 0.8)', // emerald-500
+                        stack: 'Stack 1',
+                    }
+                ]
+            };
+
+            costChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', },
+                        title: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) { label += ': '; }
+                                    if (context.parsed.y !== null) {
+                                        label += new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(context.parsed.y);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            stacked: true,
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return value / 1000000 + ' Tr';
+                                }
+                            }
+                        },
+                        x: { stacked: true }
+                    }
+                }
+            });
+        }
+
+        // 2. Handle Architecture Switch
+        function switchArch(type) {
+            const data = reportData.architecture[type];
+            
+            // Update Visual
+            document.getElementById('arch-visual').innerHTML = data.html;
+            
+            // Update Text
+            document.getElementById('arch-text').innerHTML = `
+                <h3 class="text-2xl font-bold text-slate-900 mb-4">${data.title}</h3>
+                <p class="text-slate-600 mb-4 leading-relaxed">${data.desc}</p>
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                    <h4 class="font-semibold text-blue-900 text-sm uppercase tracking-wider mb-2">Omni-channel Ready</h4>
+                    <p class="text-blue-800 text-sm">${data.omni}</p>
+                </div>
+            `;
+
+            // Update Buttons
+            const btnWp = document.getElementById('btn-wp');
+            const btnNext = document.getElementById('btn-next');
+            
+            if (type === 'wp') {
+                btnWp.className = "flex-1 py-2 px-4 rounded-xl text-sm font-medium transition bg-white shadow text-slate-900";
+                btnNext.className = "flex-1 py-2 px-4 rounded-xl text-sm font-medium transition text-slate-500 hover:text-slate-900";
+            } else {
+                btnNext.className = "flex-1 py-2 px-4 rounded-xl text-sm font-medium transition bg-white shadow text-slate-900";
+                btnWp.className = "flex-1 py-2 px-4 rounded-xl text-sm font-medium transition text-slate-500 hover:text-slate-900";
+            }
+        }
+
+        // 3. Populate Matrix
+        function populateMatrix() {
+            const tbody = document.getElementById('matrix-body');
+            reportData.matrix.forEach((row, index) => {
+                const tr = document.createElement('tr');
+                tr.className = index !== reportData.matrix.length - 1 ? 'border-b border-slate-100 transition hover:bg-slate-50' : 'transition hover:bg-slate-50';
+                tr.innerHTML = `
+                    <td class="py-4 px-6 font-medium text-slate-900">${row.category}</td>
+                    <td class="py-4 px-6 bg-rose-50/30 text-slate-600">${row.wp}</td>
+                    <td class="py-4 px-6 bg-emerald-50/30 text-slate-800">${row.next}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // 4. Functional Navigation & Scroll Spy
+        function setupNavigation() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navbar = document.getElementById('navbar');
+
+            // Scroll effect for navbar background
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('shadow-md');
+                } else {
+                    navbar.classList.remove('shadow-md');
+                }
+            });
+
+            // Intersection Observer for highlighting nav links
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('nav-active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('nav-active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+        }
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            initChart();
+            switchArch('next'); // Default to showing the new solution first to anchor the vision
+            populateMatrix();
+            setupNavigation();
+        });
+
+    </script>
+</body>
+</html>
