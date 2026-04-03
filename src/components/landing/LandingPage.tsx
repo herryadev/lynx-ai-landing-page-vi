@@ -18,7 +18,7 @@ const DEMO_VIDEO_SRC_BY_SERVICE: Record<(typeof SERVICE_KEYS)[number], string> =
     report: "/video/aireport.mp4",
     sales: "/video/aisales.mp4",
     customerCare: "/video/aicustomer.mp4",
-    content: "/video/openclaw.mp4",
+    content: "/video/aicontent.mp4",
   };
 
 const POPUP_VIDEO_SRC = "/video/tvc.mp4";
