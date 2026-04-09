@@ -5,13 +5,19 @@ import { Play, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link } from "@/i18n/navigation";
 import { Button } from "./Button";
 import { Container } from "./Container";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 
 const SERVICE_KEYS = ["report", "sales", "customerCare", "content"] as const;
+const TEAM_KEYS = ["ceo", "cto", "cfo", "cmo"] as const;
+const TEAM_IMAGE_SRC_BY_KEY: Record<(typeof TEAM_KEYS)[number], string> = {
+  ceo: "/img/team/ceo.jpeg",
+  cto: "/img/team/cto.jpeg",
+  cfo: "/img/team/cfo.jpeg",
+  cmo: "/img/team/cmo.png",
+};
 
 /** Video demo từng dịch vụ — sửa trực tiếp đường dẫn file tại đây. */
 const DEMO_VIDEO_SRC_BY_SERVICE: Record<(typeof SERVICE_KEYS)[number], string> =
@@ -130,55 +136,6 @@ export function LandingPage() {
           </div>
         </section>
 
-        {/* SuperGrok Heavy — link tới subpage */}
-        <section
-          id="supergrok-heavy"
-          className="scroll-mt-20 border-b border-zinc-200 bg-white"
-        >
-          <Container className="py-12 sm:py-16">
-            <motion.div
-              className="relative overflow-hidden rounded-2xl border border-zinc-200 bg-linear-to-br from-(--color-primary-soft)/90 via-white to-zinc-50 p-8 shadow-sm ring-1 ring-zinc-950/5 sm:p-10 lg:p-12"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45 }}
-            >
-              <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[radial-gradient(circle_at_center,rgba(231,138,83,0.2),transparent_70%)] blur-2xl" />
-              <div className="relative grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
-                <div className="text-center lg:text-left">
-                  <p className="text-sm font-bold uppercase tracking-[0.2em] text-(--color-primary)">
-                    {t("grokHeavyPromo.kicker")}
-                  </p>
-                  <h2 className="mt-3 text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl lg:text-4xl">
-                    {t("grokHeavyPromo.headline")}
-                  </h2>
-                  <p className="mt-4 text-base leading-7 text-zinc-600">
-                    {t("grokHeavyPromo.description")}
-                  </p>
-                  <div className="mt-6 flex justify-center lg:justify-start">
-                    <Link href="/grok-heavy">
-                      <Button>{t("grokHeavyPromo.cta")}</Button>
-                    </Link>
-                  </div>
-                </div>
-                <div className="flex justify-center lg:justify-end">
-                  <div className="w-full max-w-sm rounded-2xl border border-zinc-200/90 bg-white/90 px-8 py-10 text-center shadow-md ring-1 ring-zinc-950/5 backdrop-blur-sm">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
-                      {t("grokHeavyPromo.highlight")}
-                    </p>
-                    <p className="mt-4 text-3xl font-bold tracking-tight text-zinc-950">
-                      SuperGrok
-                    </p>
-                    <p className="text-xl font-bold text-(--color-primary)">
-                      Heavy
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </Container>
-        </section>
-
         {/* Services */}
         <section
           id="services"
@@ -222,7 +179,7 @@ export function LandingPage() {
                         </h3>
                       </div>
                       <span
-                        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-(--color-primary) text-sm font-bold text-white shadow-md ring-2 ring-(--color-primary)/25"
+                        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-(--color-primary) text-xs font-bold text-white shadow-sm ring-2 ring-(--color-primary)/20"
                         aria-hidden
                       >
                         {n}
@@ -300,6 +257,49 @@ export function LandingPage() {
                   {t("about.body2")}
                 </p>
               </motion.div>
+            </div>
+            <div className="mt-8 sm:mt-10">
+              <div className="mx-auto max-w-2xl text-center">
+                <h3 className="text-lg font-semibold tracking-tight sm:text-xl">
+                  {t("about.teamTitle")}
+                </h3>
+                <p className="mt-2 text-xs leading-5 text-zinc-600 sm:text-sm">
+                  {t("about.teamDescription")}
+                </p>
+              </div>
+              <div className="mx-auto mt-6 grid max-w-5xl grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4 sm:gap-x-6">
+                {TEAM_KEYS.map((key, index) => (
+                  <motion.article
+                    key={key}
+                    className="text-center"
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.05 }}
+                  >
+                    <div className="relative mx-auto h-24 w-24 overflow-hidden rounded-full border border-zinc-200 bg-zinc-100 shadow-sm sm:h-28 sm:w-28 lg:h-32 lg:w-32">
+                      <Image
+                        src={TEAM_IMAGE_SRC_BY_KEY[key]}
+                        alt={t(`about.members.${key}.name`)}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 96px, (max-width: 1024px) 112px, 128px"
+                      />
+                    </div>
+                    <div className="mt-3">
+                      <p className="text-[10px] font-semibold uppercase tracking-wide text-(--color-primary)">
+                        {t(`about.members.${key}.role`)}
+                      </p>
+                      <h4 className="mt-1 text-sm font-semibold tracking-tight text-zinc-950">
+                        {t(`about.members.${key}.name`)}
+                      </h4>
+                      <p className="mx-auto mt-1 max-w-68 text-xs leading-5 text-zinc-600 line-clamp-2">
+                        {t(`about.members.${key}.bio`)}
+                      </p>
+                    </div>
+                  </motion.article>
+                ))}
+              </div>
             </div>
           </Container>
         </section>

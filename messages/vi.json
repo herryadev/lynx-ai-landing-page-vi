@@ -10,13 +10,6 @@
     "why": "Tại sao chọn chúng tôi",
     "contact": "Liên hệ"
   },
-  "grokHeavyPromo": {
-    "kicker": "Phân phối & tư vấn",
-    "headline": "SuperGrok Heavy — một năm đầy đủ quyền lợi",
-    "description": "Gói 12 tháng: Grok 4 Heavy cho tác vụ nặng, Grok 3 cho công việc hằng ngày. Thanh toán VNĐ, hỗ trợ kích hoạt và hướng dẫn đăng nhập an toàn qua Google — không qua tài khoản thứ ba.",
-    "cta": "Xem chi tiết gói",
-    "highlight": "Grok 4 Heavy + Grok 3 · 12 tháng"
-  },
   "hero": {
     "kicker": "AI cho vận hành, bán hàng & marketing",
     "headline": "Bộ giải pháp AI giúp bạn quản lý, chăm sóc khách hàng và tăng doanh thu",
@@ -30,7 +23,31 @@
   "about": {
     "title": "Về chúng tôi",
     "body1": "Chúng tôi xây dựng các module AI chuyên sâu cho bán lẻ và dịch vụ: số liệu rõ ràng theo thời gian thực, khách hàng được phản hồi ngay cả ngoài giờ, và đội sales — marketing có công cụ tự động hóa thay vì làm thủ công.",
-    "body2": "Mỗi phân hệ đều có lộ trình triển khai cụ thể, tích hợp Zalo / Telegram / TikTok / Facebook theo nhu cầu, để bạn nhìn thấy giá trị sớm và mở rộng dần theo giai đoạn."
+    "body2": "Mỗi phân hệ đều có lộ trình triển khai cụ thể, tích hợp Zalo / Telegram / TikTok / Facebook theo nhu cầu, để bạn nhìn thấy giá trị sớm và mở rộng dần theo giai đoạn.",
+    "teamTitle": "Đội ngũ lãnh đạo",
+    "teamDescription": "4 thành viên nòng cốt phụ trách chiến lược, công nghệ, tài chính và tăng trưởng.",
+    "members": {
+      "ceo": {
+        "role": "CEO",
+        "name": "Tên CEO",
+        "bio": "Định hướng chiến lược tổng thể và phát triển doanh nghiệp."
+      },
+      "cto": {
+        "role": "CTO",
+        "name": "Tên CTO",
+        "bio": "Phụ trách kiến trúc sản phẩm, AI và hạ tầng công nghệ."
+      },
+      "cfo": {
+        "role": "CFO",
+        "name": "Tên CFO",
+        "bio": "Quản trị tài chính, kế hoạch vốn và hiệu quả vận hành."
+      },
+      "cmo": {
+        "role": "CMO",
+        "name": "Tên CMO",
+        "bio": "Dẫn dắt marketing, thương hiệu và chiến lược tăng trưởng."
+      }
+    }
   },
   "services": {
     "kicker": "Dịch vụ",

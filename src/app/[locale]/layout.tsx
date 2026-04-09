@@ -55,6 +55,7 @@ export async function generateMetadata({
       images: [
         {
           url: ogImage,
+          secureUrl: ogImage,
           width: 1200,
           height: 630,
           alt: title
@@ -63,9 +64,22 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
+      site: '@lynxsolution',
+      creator: '@lynxsolution',
       title,
       description,
       images: [ogImage]
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+        'max-video-preview': -1
+      }
     },
     icons: {
       icon: '/favicon.ico',
