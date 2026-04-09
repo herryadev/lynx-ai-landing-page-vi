@@ -13,10 +13,10 @@ import { Header } from "./Header";
 const SERVICE_KEYS = ["report", "sales", "customerCare", "content"] as const;
 const TEAM_KEYS = ["ceo", "cto", "cfo", "cmo"] as const;
 const TEAM_IMAGE_SRC_BY_KEY: Record<(typeof TEAM_KEYS)[number], string> = {
-  ceo: "/img/team/ceo1.jpeg",
-  cto: "/img/team/cto1.jpeg",
-  cfo: "/img/team/cfo1.jpeg",
-  cmo: "/img/team/cmo1.png",
+  ceo: "/img/team/ceo.jpeg",
+  cto: "/img/team/cto.jpeg",
+  cfo: "/img/team/cfo.jpeg",
+  cmo: "/img/team/cmo.png",
 };
 
 /** Video demo từng dịch vụ — sửa trực tiếp đường dẫn file tại đây. */

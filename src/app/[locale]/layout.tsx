@@ -32,7 +32,8 @@ export async function generateMetadata({
   const siteUrl = 'https://lynxsolution.vn';
   const localePath = locale === routing.defaultLocale ? '' : `/${locale}`;
   const canonicalUrl = `${siteUrl}${localePath || '/'}`
-  const ogImage = `${siteUrl}/thumbnail.png`;
+  // Add a version query so social crawlers fetch a fresh image.
+  const ogImage = `${siteUrl}/thumbnail.png?v=20260409`;
 
   return {
     metadataBase: new URL(siteUrl),
@@ -56,8 +57,8 @@ export async function generateMetadata({
         {
           url: ogImage,
           secureUrl: ogImage,
-          width: 1200,
-          height: 630,
+          width: 4318,
+          height: 2000,
           alt: title
         }
       ]
@@ -68,7 +69,12 @@ export async function generateMetadata({
       creator: '@lynxsolution',
       title,
       description,
-      images: [ogImage]
+      images: [
+        {
+          url: ogImage,
+          alt: title
+        }
+      ]
     },
     robots: {
       index: true,
