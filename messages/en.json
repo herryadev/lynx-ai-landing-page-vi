@@ -29,22 +29,22 @@
     "members": {
       "ceo": {
         "role": "CEO",
-        "name": "CEO Name",
+        "name": "Ta Duy Dat",
         "bio": "Leads company strategy and overall business direction."
       },
       "cto": {
         "role": "CTO",
-        "name": "CTO Name",
+        "name": "Nguyen Canh Nguyen",
         "bio": "Owns product architecture, AI systems and technology platform."
       },
       "cfo": {
         "role": "CFO",
-        "name": "CFO Name",
+        "name": "Le Van Mong",
         "bio": "Oversees financial planning, capital and operational efficiency."
       },
       "cmo": {
         "role": "CMO",
-        "name": "CMO Name",
+        "name": "Phan Ha Duy",
         "bio": "Leads marketing, brand and growth strategy execution."
       }
     }

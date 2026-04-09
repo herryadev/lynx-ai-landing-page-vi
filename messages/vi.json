@@ -29,22 +29,22 @@
     "members": {
       "ceo": {
         "role": "CEO",
-        "name": "Tên CEO",
+        "name": "Tạ Duy Đạt",
         "bio": "Định hướng chiến lược tổng thể và phát triển doanh nghiệp."
       },
       "cto": {
         "role": "CTO",
-        "name": "Tên CTO",
+        "name": "Nguyễn Cảnh Nguyên",
         "bio": "Phụ trách kiến trúc sản phẩm, AI và hạ tầng công nghệ."
       },
       "cfo": {
         "role": "CFO",
-        "name": "Tên CFO",
+        "name": "Lê Văn Mong",
         "bio": "Quản trị tài chính, kế hoạch vốn và hiệu quả vận hành."
       },
       "cmo": {
         "role": "CMO",
-        "name": "Tên CMO",
+        "name": "Phan Hà Duy",
         "bio": "Dẫn dắt marketing, thương hiệu và chiến lược tăng trưởng."
       }
     }
