@@ -39,20 +39,20 @@ function Hero() {
         <div className="absolute -left-32 top-20 h-72 w-72 -translate-x-1/2 rounded-full bg-[--color-primary]/10 blur-xl" />
         <div className="absolute -right-20 bottom-0 h-64 w-64 rounded-full bg-zinc-100 blur-lg" />
       </div>
-      <Container className="py-20 sm:py-28">
-        <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-xs font-semibold text-zinc-600">
+      <Container className="py-16 sm:py-24 lg:py-32">
+        <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1.5 text-xs font-semibold text-zinc-600">
           Gói năm
           {off > 0 ? ` · Giảm ${off}%` : ""}
         </p>
-        <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-zinc-950 sm:text-5xl lg:text-6xl">
+        <h1 className="max-w-3xl text-3xl font-bold tracking-tight text-zinc-950 sm:text-4xl lg:text-5xl">
           SuperGrok Heavy
           <span className="block text-zinc-500">Một năm đầy đủ quyền lợi</span>
         </h1>
-        <p className="mt-6 max-w-xl text-lg text-zinc-600">
+        <p className="mt-4 max-w-2xl text-base leading-7 text-zinc-600 sm:text-lg">
           Truy cập Grok 4 Heavy cho tác vụ nặng, Grok 3 cho công việc hằng ngày
           — thanh toán VNĐ, kích hoạt nhanh.
         </p>
-        <div className="mt-10 flex flex-wrap gap-4">
+        <div className="mt-8 flex flex-wrap gap-4">
           <a
             href="#san-pham"
             className="inline-flex items-center justify-center rounded-xl bg-[#e78a53] px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-[#d97840]"
@@ -83,21 +83,21 @@ function DirectLoginCallout() {
   return (
     <div
       id="dang-nhap-dung"
-      className="scroll-mt-24 mt-8 rounded-2xl border-2 border-amber-400/80 bg-linear-to-br from-amber-50 to-white p-6 shadow-md shadow-amber-900/10 sm:p-8"
+      className="scroll-mt-24 mt-12 rounded-2xl border-2 border-amber-400/80 bg-linear-to-br from-amber-50 to-white p-6 shadow-md shadow-amber-900/10 sm:p-8"
       role="note"
     >
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
         <span
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-200/80 text-lg font-bold text-amber-900"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-200/80 text-lg font-bold text-amber-900"
           aria-hidden
         >
           !
         </span>
         <div className="min-w-0">
-          <h3 className="text-lg font-bold text-amber-950 sm:text-xl">
+          <h3 className="text-base font-bold text-amber-950 sm:text-lg">
             Nhấn mạnh: không dùng tài khoản thứ ba
           </h3>
-          <p className="mt-3 text-sm leading-relaxed text-amber-950/90 sm:text-base">
+          <p className="mt-2 text-sm leading-relaxed text-amber-950/90">
             Bạn chỉ đăng nhập{" "}
             <strong className="font-semibold text-zinc-950">trực tiếp</strong>{" "}
             bằng{" "}
@@ -117,7 +117,7 @@ function DirectLoginCallout() {
             trang lạ hay bên thứ ba yêu cầu nhập mật khẩu vào hệ thống không
             phải Google/xAI.
           </p>
-          <p className="mt-3 text-xs text-amber-800/80 sm:text-sm">
+          <p className="mt-2 text-xs text-amber-800/80 sm:text-sm">
             Mục đích: tránh lộ mật khẩu và mất quyền truy cập. Nếu có hướng dẫn
             từ shop, vẫn phải thao tác trên cổng đăng nhập chính thức.
           </p>
@@ -136,44 +136,42 @@ function ProductSection() {
       className="scroll-mt-24 border-b border-zinc-200 py-20"
     >
       <Container>
-        <h2 className="text-2xl font-bold text-zinc-950 sm:text-3xl">
+        <h2 className="text-3xl font-bold text-zinc-950 sm:text-4xl">
           Sản phẩm
         </h2>
-        <p className="mt-2 max-w-2xl text-zinc-600">
+        <p className="mt-3 max-w-2xl text-base leading-7 text-zinc-600 sm:text-lg">
           Gói 12 tháng. Liên hệ Lynx Solution để được tư vấn, báo giá và hỗ trợ
           đăng ký — phù hợp cá nhân hoặc team.
         </p>
 
         <DirectLoginCallout />
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-2">
-          <div className="rounded-2xl border border-[--color-primary]/30 bg-linear-to-br from-zinc-50 to-white p-8 shadow-xl">
+        <div className="mt-16 grid gap-8 lg:grid-cols-2">
+          <div className="rounded-2xl border border-[--color-primary]/30 bg-linear-to-br from-zinc-50 to-white p-6 shadow-xl sm:p-8">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
-                <h3 className="text-xl font-semibold text-zinc-950 sm:text-2xl">
+                <h3 className="text-xl font-semibold text-zinc-950">
                   {p.name}
                 </h3>
                 <p className="mt-1 text-sm text-zinc-600">{p.durationLabel}</p>
               </div>
-              <span className="rounded-lg bg-[--color-primary]/15 px-2 py-1 text-xs font-semibold text-[--color-primary]">
+              <span className="rounded-lg bg-[--color-primary]/15 px-2.5 py-1 text-xs font-semibold text-[--color-primary]">
                 Bán chạy
               </span>
             </div>
             <p className="mt-4 text-zinc-700">{p.subtitle}</p>
             <ul className="mt-6 space-y-3 text-sm text-zinc-600">
               {p.bullets.map((b) => (
-                <li key={b} className="flex gap-2">
+                <li key={b} className="flex gap-2.5">
                   <span
-                    className="mt-0.5 shrink-0 text-[--color-primary]"
+                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[--color-primary]"
                     aria-hidden
-                  >
-                    ✓
-                  </span>
+                  />
                   <span>{b}</span>
                 </li>
               ))}
             </ul>
-            <div className="mt-8 flex flex-wrap items-end gap-4 border-t border-zinc-200 pt-8">
+            <div className="mt-8 flex flex-wrap items-end gap-4 border-t border-zinc-200 pt-6">
               <div>
                 <p className="text-xs uppercase tracking-wider text-zinc-500">
                   Giá gói năm
@@ -189,12 +187,11 @@ function ProductSection() {
               </div>
               {off > 0 ? (
                 <div className="rounded-lg bg-[--color-primary]/10 px-3 py-2 text-sm font-semibold text-[--color-primary]">
-                  Giảm {off}% · từ {fmt.format(p.compareAtVnd)} còn{" "}
-                  {fmt.format(p.priceVnd)}
+                  Giảm {off}%
                 </div>
               ) : null}
             </div>
-            <p className="mt-6 text-sm text-zinc-600">
+            <p className="mt-4 text-sm text-zinc-600">
               Để mua gói hoặc hỏi thêm chi tiết, vui lòng liên hệ trực tiếp —
               chúng tôi hỗ trợ nhanh qua Zalo.
             </p>
@@ -209,7 +206,7 @@ function ProductSection() {
 
           <div
             id="gioi-han"
-            className="scroll-mt-24 rounded-2xl border border-zinc-200 bg-zinc-50/80 p-8"
+            className="scroll-mt-24 rounded-2xl border border-zinc-200 bg-zinc-50/80 p-6 sm:p-8"
           >
             <h3 className="text-lg font-semibold text-zinc-950">
               Giới hạn sử dụng (theo tháng)
@@ -224,8 +221,8 @@ function ProductSection() {
                   key={row.label}
                   className="flex items-center justify-between gap-4 border-b border-zinc-200 pb-4 last:border-0 last:pb-0"
                 >
-                  <dt className="text-zinc-600">{row.label}</dt>
-                  <dd className="text-right font-medium text-zinc-950">
+                  <dt className="text-sm text-zinc-600">{row.label}</dt>
+                  <dd className="text-right text-sm font-semibold text-zinc-950">
                     {row.value}
                   </dd>
                 </div>
@@ -258,19 +255,21 @@ function FAQ() {
     },
   ];
   return (
-    <section id="faq" className="scroll-mt-24 py-20">
+    <section id="faq" className="scroll-mt-24 py-16 sm:py-20 lg:py-24">
       <Container>
-        <h2 className="text-2xl font-bold text-zinc-950 sm:text-3xl">
+        <h2 className="text-3xl font-bold text-zinc-950 sm:text-4xl">
           Câu hỏi thường gặp
         </h2>
         <div className="mt-10 space-y-6">
           {qa.map((item) => (
             <div
               key={item.q}
-              className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm"
+              className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-8"
             >
-              <h3 className="font-medium text-zinc-950">{item.q}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-600">
+              <h3 className="text-base font-semibold text-zinc-950 sm:text-lg">
+                {item.q}
+              </h3>
+              <p className="mt-2 text-sm leading-7 text-zinc-600">
                 {item.a}
               </p>
             </div>
