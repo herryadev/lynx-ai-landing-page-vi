@@ -33,7 +33,7 @@ export async function generateMetadata({
   const localePath = locale === routing.defaultLocale ? "" : `/${locale}`;
   const canonicalUrl = `${siteUrl}${localePath || "/"}`;
   // Add a version query so social crawlers fetch a fresh image.
-  const ogImage = `${siteUrl}/thumbnail.png?v=20260409`;
+  const ogImage = `${siteUrl}/thumbnail1.png?v=20260409`;
 
   return {
     metadataBase: new URL(siteUrl),
