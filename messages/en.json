@@ -32,15 +32,15 @@
         "name": "Ta Duy Dat",
         "bio": "Leads company strategy and overall business direction."
       },
+      "cco": {
+        "role": "CCO",
+        "name": "Nguyen Canh Nguyen",
+        "bio": "Develop strategies, manage sales operations, and expand the market to increase revenue."
+      },
       "cto": {
         "role": "CTO",
-        "name": "Nguyen Canh Nguyen",
-        "bio": "Owns product architecture, AI systems and technology platform."
-      },
-      "cfo": {
-        "role": "CFO",
         "name": "Le Van Mong",
-        "bio": "Oversees financial planning, capital and operational efficiency."
+        "bio": "Owns product architecture, AI systems and technology platform."
       },
       "cmo": {
         "role": "CMO",

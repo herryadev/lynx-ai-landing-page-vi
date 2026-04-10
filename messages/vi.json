@@ -32,15 +32,15 @@
         "name": "Tạ Duy Đạt",
         "bio": "Định hướng chiến lược tổng thể và phát triển doanh nghiệp."
       },
+      "cco": {
+        "role": "CCO",
+        "name": "Nguyễn Cảnh Nguyên",
+        "bio": "Hoạch định chiến lược, quản lý hoạt động bán hàng và phát triển thị trường để tăng doanh thu."
+      },
       "cto": {
         "role": "CTO",
-        "name": "Nguyễn Cảnh Nguyên",
-        "bio": "Phụ trách kiến trúc sản phẩm, AI và hạ tầng công nghệ."
-      },
-      "cfo": {
-        "role": "CFO",
         "name": "Lê Văn Mong",
-        "bio": "Quản trị tài chính, kế hoạch vốn và hiệu quả vận hành."
+        "bio": "Phụ trách kiến trúc sản phẩm, AI và hạ tầng công nghệ."
       },
       "cmo": {
         "role": "CMO",

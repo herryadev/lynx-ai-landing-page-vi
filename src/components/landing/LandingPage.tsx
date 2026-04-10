@@ -11,11 +11,11 @@ import { Footer } from "./Footer";
 import { Header } from "./Header";
 
 const SERVICE_KEYS = ["report", "sales", "customerCare", "content"] as const;
-const TEAM_KEYS = ["ceo", "cto", "cfo", "cmo"] as const;
+const TEAM_KEYS = ["ceo", "cco", "cto", "cmo"] as const;
 const TEAM_IMAGE_SRC_BY_KEY: Record<(typeof TEAM_KEYS)[number], string> = {
   ceo: "/img/team/ceo.jpeg",
-  cto: "/img/team/cto.jpeg",
-  cfo: "/img/team/cfo.jpeg",
+  cco: "/img/team/cto.jpeg",
+  cto: "/img/team/cfo.jpeg",
   cmo: "/img/team/cmo.png",
 };
 
