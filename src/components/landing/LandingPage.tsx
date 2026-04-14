@@ -224,6 +224,53 @@ export function LandingPage() {
           </div>
         </section>
 
+        {/* EDUVIBE */}
+        <section className="border-b border-zinc-200 bg-white">
+          <Container className="py-12 sm:py-16">
+            <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
+              <motion.div
+                className="order-2 lg:order-1"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <p className="text-sm font-bold uppercase tracking-[0.2em] text-(--color-primary)">
+                  EDUVIBE
+                </p>
+                <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+                  Nền tảng học online dành cho người muốn học thật, làm thật
+                </h2>
+                <p className="mt-4 text-base leading-7 text-zinc-600">
+                  Khám phá khoá học thực chiến với lộ trình rõ ràng, dễ bắt đầu
+                  và có thể ứng dụng ngay vào công việc.
+                </p>
+                <div className="mt-6">
+                  <a
+                    href="https://edu.lynxsolution.vn/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button>Khám phá khóa học</Button>
+                  </a>
+                </div>
+              </motion.div>
+              <motion.div
+                className="relative order-1 h-64 w-full overflow-hidden border-zinc-200/90 sm:h-80 lg:order-2 lg:h-96 rounded-2xl"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <Image
+                  src="/img/edu.png"
+                  alt="EDUVIBE nền tảng học online"
+                  fill
+                  className="object-contain rounded-2xl"
+                />
+              </motion.div>
+            </div>
+          </Container>
+        </section>
+
         {/* About */}
         <section id="about" className="border-b border-zinc-200 bg-white">
           <Container className="py-12 sm:py-16">
