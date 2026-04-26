@@ -14,7 +14,7 @@ export function ProjectsSection() {
         <div className="projects-grid fade-up">
           <div className="project-card">
             <div className="project-thumb">
-              <img src="/img/img1.jpg" alt="Phần mềm quản lý doanh nghiệp ERP" loading="lazy" />
+              <img src="/img/project-erp.png" alt="Phần mềm quản lý doanh nghiệp ERP" loading="lazy" />
             </div>
             <div className="project-body">
               <h3>Phần mềm quản lý doanh nghiệp</h3>
@@ -32,7 +32,7 @@ export function ProjectsSection() {
           </div>
           <div className="project-card">
             <div className="project-thumb">
-              <img src="/img/img2.jpg" alt="Hệ thống quản lý khách hàng CRM" loading="lazy" />
+              <img src="/img/project-crm.jpg" alt="Hệ thống quản lý khách hàng CRM" loading="lazy" />
             </div>
             <div className="project-body">
               <h3>Hệ thống quản lý khách hàng (CRM)</h3>
@@ -50,7 +50,7 @@ export function ProjectsSection() {
           </div>
           <div className="project-card">
             <div className="project-thumb">
-              <img src="/img/img3.jpg" alt="Quản lý Data Zalo Sale" loading="lazy" />
+              <img src="/img/project-zalo.png" alt="Quản lý Data Zalo Sale" loading="lazy" />
             </div>
             <div className="project-body">
               <h3>Quản lý Data Zalo Sale</h3>
@@ -68,7 +68,7 @@ export function ProjectsSection() {
           </div>
           <div className="project-card">
             <div className="project-thumb">
-              <img src="/img/img1.jpg" alt="Trợ lý ảo AI chăm sóc khách hàng" loading="lazy" />
+              <img src="/img/project-ai.jpg" alt="Trợ lý ảo AI chăm sóc khách hàng" loading="lazy" />
             </div>
             <div className="project-body">
               <h3>Trợ lý ảo AI chăm sóc khách hàng</h3>

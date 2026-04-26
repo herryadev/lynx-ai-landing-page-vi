@@ -9,7 +9,7 @@ export function ClientsSection() {
         </div>
         <div className="clients-grid fade-up">
           <a className="client-tile" href="https://owen.vn/" target="_blank" rel="noopener noreferrer">
-            <img src="/img/logo-owen.png" alt="OWEN" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+            <img src="https://owen.cdn.vccloud.vn/media/favicon/stores/1/logo_owen_file_icon.png" alt="OWEN" />
             <div>
               <div className="client-name">OWEN</div>
               <div className="client-domain">owen.vn</div>
