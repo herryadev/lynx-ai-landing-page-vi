@@ -1,80 +1,53 @@
-import {useTranslations} from 'next-intl';
-import Image from 'next/image';
-import {Container} from './Container';
-
-const navItems = [
-  {key: 'about', href: '#about'},
-  {key: 'services', href: '#services'},
-  {key: 'why', href: '#why'},
-  {key: 'contact', href: '#contact'}
-] as const;
+// Server Component — SSR + SEO
+import Image from "next/image";
 
 export function Footer() {
-  const t = useTranslations();
-
   return (
-    <footer id="contact" className="border-t border-zinc-200 bg-white">
-      <Container className="py-12">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Logo */}
-          <div>
-            <div className="flex items-center gap-3">
+    <footer>
+      <div className="wrap">
+        <div className="footer-grid">
+          <div className="footer-brand">
+            <div className="logo" style={{ marginBottom: "18px" }}>
               <Image
                 src="/img/logo.png"
-                alt="Lynx Solution logo"
-                width={120}
-                height={32}
-                className="h-8 w-auto"
+                alt="LYNX AI SOLUTION"
+                width={140}
+                height={38}
+                style={{ height: "38px", width: "auto", display: "block", filter: "brightness(0) invert(1)" }}
               />
             </div>
+            <p>Giải pháp phần mềm và AI tiên tiến, đồng hành cùng doanh nghiệp Việt trên hành trình chuyển đổi số.</p>
           </div>
-
-          {/* Navigation */}
-          <div>
-            <h3 className="text-base font-semibold text-zinc-950">Liên kết</h3>
-            <ul className="mt-3 space-y-2 text-base text-zinc-600">
-              {navItems.map((item) => (
-                <li key={item.key}>
-                  <a href={item.href} className="hover:text-zinc-950 hover:underline">
-                    {t(`nav.${item.key}`)}
-                  </a>
-                </li>
-              ))}
+          <div className="footer-col">
+            <h5>Dịch vụ</h5>
+            <ul>
+              <li><a href="#services">Phát triển phần mềm</a></li>
+              <li><a href="#services">Giải pháp AI/ML</a></li>
+              <li><a href="#services">Cloud &amp; DevOps</a></li>
+              <li><a href="#services">Data Analytics</a></li>
             </ul>
           </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-base font-semibold text-zinc-950">
-              {t('footer.contactTitle')}
-            </h3>
-            <ul className="mt-3 space-y-2 text-base text-zinc-600">
-              <li>
-                {t('footer.phone')}: <a href="https://zalo.me/0912205001" className="hover:text-zinc-950 hover:underline">091.220.5001</a>
-              </li>
-              <li>
-                {t('footer.email')}: <a href="mailto:info@lynxsolution.vn" className="hover:text-zinc-950 hover:underline">info@lynxsolution.vn</a>
-              </li>
+          <div className="footer-col">
+            <h5>Công ty</h5>
+            <ul>
+              <li><a href="#overview">Giới thiệu</a></li>
+              <li><a href="#team">Đội ngũ</a></li>
+              <li><a href="#projects">Dự án</a></li>
+              <li><a href="#certifications">Chứng nhận</a></li>
             </ul>
           </div>
-
-          {/* Offices */}
-          <div>
-            <h3 className="text-base font-semibold text-zinc-950">
-              {t('footer.offices')}
-            </h3>
-            <ul className="mt-3 space-y-2 text-base text-zinc-600">
-              {[0].map((i) => (
-                <li key={i}>{t(`footer.officesList.${i}`)}</li>
-              ))}
+          <div className="footer-col">
+            <h5>Liên hệ</h5>
+            <ul>
+              <li><a href="mailto:info@lynxsolution.vn">info@lynxsolution.vn</a></li>
+              <li><a href="tel:+84929862699">+84 929 862 699</a></li>
             </ul>
           </div>
         </div>
-      </Container>
-      <div className="border-t border-zinc-200">
-        <Container className="py-6 text-center text-sm text-zinc-500">
-          <p>© {new Date().getFullYear()} Lynx Solution. {t('footer.copyright')}</p>
-        </Container>
+        <div className="footer-bottom">
+          <p>© {new Date().getFullYear()} CTCP LYNX AI SOLUTION · MST 0111115574</p>
+          <p>Chính sách bảo mật · Điều khoản sử dụng</p>
+        </div>
       </div>
     </footer>
   );

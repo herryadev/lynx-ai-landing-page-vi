@@ -1,55 +1,45 @@
-import { useTranslations } from "next-intl";
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "./Button";
-import { Container } from "./Container";
+"use client";
 
-const navItems = [
-  { key: "about", href: "#about" },
-  { key: "services", href: "#services" },
-  { key: "why", href: "#why" },
-] as const;
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export function Header() {
-  const t = useTranslations();
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-200/70 bg-white/80 backdrop-blur">
-      <Container className="flex h-16 items-center justify-between">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="flex items-center gap-3 font-semibold tracking-tight text-zinc-950 "
-        >
+    <>
+      <nav
+        className="top"
+        style={scrolled ? { boxShadow: "0 8px 32px rgba(42,24,16,0.1)" } : undefined}
+      >
+        <a href="#hero" className="logo">
           <Image
             src="/img/logo.png"
-            alt="Lynx Solution logo"
-            width={120}
-            height={28}
-            className="h-7 w-auto"
+            alt="LYNX AI SOLUTION"
+            width={140}
+            height={34}
+            style={{ height: "34px", width: "auto", display: "block" }}
             priority
           />
-        </Link>
-
-        <nav className="hidden items-center gap-6 lg:flex">
-          {navItems.map((item) => (
-            <a
-              key={item.key}
-              href={item.href}
-              className="text-base font-medium text-zinc-600 transition-colors hover:text-zinc-950"
-            >
-              {t(`nav.${item.key}`)}
-            </a>
-          ))}
-          <a
-            href="https://zalo.me/0912205001"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button>{t("nav.contact")}</Button>
-          </a>
-        </nav>
-      </Container>
-    </header>
+        </a>
+        <div className="nav-links" style={{ display: menuOpen ? "none" : undefined }}>
+          <a href="#overview">Giới thiệu</a>
+          <a href="#services">Dịch vụ</a>
+          <a href="#competencies">Năng lực</a>
+          <a href="#projects">Dự án</a>
+          <a href="#team">Đội ngũ</a>
+        </div>
+        <a href="#contact" className="nav-cta">
+          Liên hệ <span style={{ fontSize: "11px" }}>→</span>
+        </a>
+      </nav>
+    </>
   );
 }

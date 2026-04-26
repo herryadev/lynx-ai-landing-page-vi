@@ -5,9 +5,11 @@
   },
   "nav": {
     "home": "Home",
-    "about": "About us",
+    "about": "Overview",
     "services": "Services",
-    "why": "Why choose us",
+    "competencies": "Competencies",
+    "projects": "Projects",
+    "team": "Team",
     "contact": "Contact Us"
   },
   "hero": {

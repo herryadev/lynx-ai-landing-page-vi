@@ -5,6 +5,7 @@ import { getMessages, getTranslations } from "next-intl/server";
 import { Geist, Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
+import "../new2.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -113,7 +114,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--cream)] text-[var(--ink)] selection:bg-[var(--orange)] selection:text-white`}
       >
         <NextIntlClientProvider messages={messages}>
           {children}

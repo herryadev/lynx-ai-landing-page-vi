@@ -5,9 +5,11 @@
   },
   "nav": {
     "home": "Trang chủ",
-    "about": "Về chúng tôi",
+    "about": "Giới thiệu",
     "services": "Dịch vụ",
-    "why": "Tại sao chọn chúng tôi",
+    "competencies": "Năng lực",
+    "projects": "Dự án",
+    "team": "Đội ngũ",
     "contact": "Liên hệ"
   },
   "hero": {

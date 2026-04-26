@@ -1,18 +1,32 @@
 @import "tailwindcss";
 
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-    /* Sticky header ~4rem; extra room so targets không bị che */
-    scroll-padding-top: 5rem;
-  }
-}
-
+/* ─── LYNX AI Design System ─── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --color-primary: #e78a53;
-  --color-primary-soft: #ffe4cf;
+  --cream: #fdeee2;
+  --cream-2: #fbe4d2;
+  --cream-3: #f7d7bd;
+  --orange: #e78a53;
+  --orange-deep: #d4733b;
+  --orange-soft: #f4a878;
+  --ink: #2a1810;
+  --ink-2: #5a3f2e;
+  --ink-3: #8a6f5d;
+  --line: rgba(42, 24, 16, 0.08);
+  --line-2: rgba(42, 24, 16, 0.14);
+  --white: #ffffff;
+  --shadow-sm: 0 1px 2px rgba(42,24,16,0.04), 0 2px 8px rgba(42,24,16,0.04);
+  --shadow-md: 0 4px 16px rgba(42,24,16,0.06), 0 12px 32px rgba(231,138,83,0.08);
+  --shadow-lg: 0 8px 24px rgba(42,24,16,0.08), 0 24px 64px rgba(231,138,83,0.14);
+  --r-sm: 12px;
+  --r-md: 18px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+
+  /* Legacy compat */
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --color-primary: var(--orange);
+  --color-primary-soft: var(--cream-2);
 }
 
 @theme inline {
@@ -22,15 +36,91 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.011em;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+img { max-width: 100%; display: block; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(42,24,16,0.18); border-radius: 999px; border: 2px solid var(--cream); }
+::-webkit-scrollbar-thumb:hover { background: rgba(42,24,16,0.32); }
+
+::selection { background: var(--orange); color: #fff; }
+
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+.section { padding: 96px 0; position: relative; }
+
+/* Eyebrow / pill labels */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
+  color: var(--orange-deep);
+  background: rgba(231,138,83,0.12);
+  padding: 6px 12px; border-radius: 999px;
+}
+.eyebrow::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--orange);
+}
+
+.lede { color: var(--ink-2); font-size: 17px; max-width: 640px; line-height: 1.55; }
+
+/* ─── Buttons (iOS-style) ─── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 48px; padding: 0 22px; border-radius: 999px;
+  font-size: 15px; font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary {
+  background: var(--orange); color: #fff;
+  box-shadow: 0 4px 14px rgba(231,138,83,0.4), inset 0 1px 0 rgba(255,255,255,0.25);
+}
+.btn-primary:hover { background: var(--orange-deep); box-shadow: 0 6px 20px rgba(231,138,83,0.5); }
+.btn-ghost {
+  background: var(--white); color: var(--ink);
+  box-shadow: var(--shadow-sm);
+}
+.btn-ghost:hover { box-shadow: var(--shadow-md); }
+.btn-link {
+  color: var(--orange-deep); font-weight: 600; font-size: 15px;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.btn-link:hover { gap: 8px; }
+
+/* ─── Fade-up reveal ─── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.2,0.8,0.2,1), transform 0.7s cubic-bezier(0.2,0.8,0.2,1);
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes lynxFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+.lynx-tab-panel-active {
+  animation: lynxFadeIn 0.4s ease;
 }
