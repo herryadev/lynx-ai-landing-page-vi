@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDISON SCIENCE CENTER - Nơi những nhà sáng chế tương lai bắt đầu</title>
+
+    <!-- Tailwind CSS (CDN cho phát triển, khi deploy nên dùng Tailwind CLI để build file CSS tĩnh) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- ========================================================================== -->
+    <!-- PHẦN CSS: KHI DEPLOY, HÃY COPY NỘI DUNG DƯỚI ĐÂY SANG FILE 'style.css' -->
+    <!-- Và thay thế bằng: <link rel="stylesheet" href="style.css"> -->
+    <!-- ========================================================================== -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+        :root {
+            --edison-blue: #1e3a8a;
+            --edison-orange: #f59e0b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Utils */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        /* 3D Flip Card Component */
+        .card-flip-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .card-flip:hover .card-flip-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            backface-visibility: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Logo Carousel Animation */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .logo-carousel {
+            display: flex;
+            width: calc(250px * 10);
+            animation: scroll 20s linear infinite;
+        }
+
+        /* Hover Effects */
+        .stat-card:hover .stat-number {
+            text-shadow: 0 0 20px rgba(245, 158, 11, 0.6);
+            transform: scale(1.25);
+        }
+
+        .icon-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 160px;
+            border-radius: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- MENU -->
+    <nav class="fixed w-full z-50 glass-effect border-b border-slate-200" id="main-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center transition-all duration-300" id="nav-container">
+                <!-- LOGO -->
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl font-black text-blue-900 tracking-tighter">EDISON</span>
+                    <div class="h-6 w-[2px] bg-slate-300 hidden sm:block mx-1"></div>
+                    <span class="text-lg font-extrabold tracking-tight text-blue-900 hidden lg:block uppercase">Science
+                        Center</span>
+                </div>
+
+                <!-- NAVIGATION LINKS -->
+                <div class="hidden md:flex space-x-10 font-medium text-slate-600">
+                    <a href="#intro" class="hover:text-blue-900 transition font-semibold">Giới thiệu</a>
+                    <a href="#ecosystem" class="hover:text-blue-900 transition font-semibold">Hệ sinh thái</a>
+                    <a href="#solution" class="hover:text-blue-900 transition font-semibold">Giải pháp</a>
+                    <a href="#author" class="hover:text-blue-900 transition font-semibold">Tác giả</a>
+                </div>
+
+                <!-- Spacer for layout balance -->
+                <div class="md:w-32 hidden lg:block"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: BANNER -->
+    <section class="relative h-screen flex items-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=2070"
+                alt="Không gian phòng thí nghiệm ESC" class="w-full h-full object-cover brightness-50">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+            <div class="max-w-3xl text-white fade-in-up">
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight">
+                    Edison Science Center
+                </h1>
+                <p class="text-2xl md:text-3xl font-light mb-8 text-blue-100">
+                    Nơi những nhà sáng chế tương lai bắt đầu
+                </p>
+                <p class="text-lg mb-10 text-slate-300 max-w-xl">
+                    Khám phá hệ thống thiết bị thí nghiệm Vật lí bản quyền từ lớp 6 – 12. Công trình tâm huyết của Nhà
+                    giáo vì nền khoa học thực hành Việt Nam.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#ecosystem"
+                        class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-xl font-bold text-center transition transform hover:-translate-y-1">
+                        KHÁM PHÁ BỘ THIẾT BỊ
+                    </a>
+                </div>
+
+                <!-- HIGHLIGHT STATS GRID -->
+                <div class="grid grid-cols-3 gap-8 mt-16 border-t border-white/20 pt-8">
+                    <div class="stat-card group cursor-default">
+                        <div
+                            class="stat-number text-4xl md:text-5xl font-bold text-amber-400 transition-all duration-300 origin-left drop-shadow-lg">
+                            130+</div>
+                        <div
+                            class="text-sm text-slate-300 mt-2 group-hover:text-white transition-colors duration-300 uppercase tracking-wider font-semibold">
+                            Bộ thí nghiệm</div>
+                    </div>
+                    <div class="stat-card group cursor-default">
+                        <div
+                            class="stat-number text-4xl md:text-5xl font-bold text-amber-400 transition-all duration-300 origin-left drop-shadow-lg">
+                            30+</div>
+                        <div
+                            class="text-sm text-slate-300 mt-2 group-hover:text-white transition-colors duration-300 uppercase tracking-wider font-semibold">
+                            Năm kinh nghiệm</div>
+                    </div>
+                    <div class="stat-card group cursor-default">
+                        <div
+                            class="stat-number text-4xl md:text-5xl font-bold text-amber-400 transition-all duration-300 origin-left drop-shadow-lg">
+                            3.000+</div>
+                        <div
+                            class="text-sm text-slate-300 mt-2 group-hover:text-white transition-colors duration-300 uppercase tracking-wider font-semibold">
+                            Học sinh</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: GIỚI THIỆU -->
+    <section id="intro" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-6 uppercase tracking-wider">Thực tiễn
+                    khơi nguồn sáng tạo</h2>
+                <blockquote class="text-xl italic text-slate-600 leading-relaxed font-light">
+                    "Tại ESC, chúng tôi tin rằng cách tốt nhất để hiểu một định luật là tự mình tìm ra nó. Kế thừa triết
+                    lý từ Nhà giáo Mai Văn Túc, chúng tôi trang bị cho học sinh 'đôi mắt' quan sát và 'tư duy' giải
+                    quyết vấn đề."
+                </blockquote>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8">
+                <div
+                    class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl hover:bg-white transition-all duration-300 group">
+                    <div
+                        class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-900 text-3xl mb-6 group-hover:bg-blue-900 group-hover:text-white transition">
+                        <i class="fa-solid fa-microscope"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-blue-900">Trải nghiệm thực 100%</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Loại bỏ hoàn toàn việc "học chay" với hơn 130 bộ
+                        thiết bị thí nghiệm thực tế.</p>
+                </div>
+                <div
+                    class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl hover:bg-white transition-all duration-300 group">
+                    <div
+                        class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center text-amber-600 text-3xl mb-6 group-hover:bg-amber-500 group-hover:text-white transition">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-blue-900">Tư duy phản biện</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Khuyến khích đặt câu hỏi "Tại sao?" và đi tìm câu
+                        trả lời qua thực nghiệm.</p>
+                </div>
+                <div
+                    class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl hover:bg-white transition-all duration-300 group">
+                    <div
+                        class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 text-3xl mb-6 group-hover:bg-green-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-city"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-blue-900">Khoa học đời sống</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Giải thích hiện tượng đời thường, giúp khoa học
+                        trở nên gần gũi, ứng dụng cao.</p>
+                </div>
+                <div
+                    class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl hover:bg-white transition-all duration-300 group">
+                    <div
+                        class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-600 text-3xl mb-6 group-hover:bg-purple-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-blue-900">Thiết bị bản quyền</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Giáo cụ thiết kế chuyên biệt, đảm bảo chính xác,
+                        an toàn và cảm hứng.</p>
+                </div>
+            </div>
+            <p class="text-center mt-12 text-slate-400 text-sm font-medium italic">
+                Hệ sinh thái đang tiếp tục mở rộng sang lộ trình Hóa học, Sinh học và STEM liên môn (2027 – 2029)
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 3: HỆ SINH THÁI GIẢI PHÁP -->
+    <section id="ecosystem" class="py-24 bg-slate-100 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16">
+                <h2 class="text-4xl font-extrabold text-blue-900 mb-4 tracking-tight uppercase">Hệ sinh thái giải pháp
+                    giáo dục khoa học toàn diện</h2>
+                <p class="text-xl text-slate-600 max-w-2xl font-light">Từ thiết bị đến chương trình, từ đào tạo giáo
+                    viên đến sự kiện – Edison xây dựng nền tảng khoa học thực hành cho thế hệ trẻ Việt Nam.</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6">
+                <!-- Card 1: Thiết bị -->
+                <div class="card-flip h-[440px] cursor-pointer">
+                    <div class="card-flip-inner relative w-full h-full">
+                        <div
+                            class="card-front bg-white p-8 rounded-3xl shadow-sm flex flex-col justify-between border border-slate-200">
+                            <div>
+                                <div class="icon-container bg-blue-50 text-blue-900 text-6xl">
+                                    <i class="fa-solid fa-vials"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-blue-900 mb-4">Thiết bị thí nghiệm & học tập chuyên
+                                    sâu</h4>
+                            </div>
+                            <span class="text-blue-600 font-bold flex items-center">Xem chi tiết <i
+                                    class="fa-solid fa-arrow-right ml-2 text-xs"></i></span>
+                        </div>
+                        <div
+                            class="card-back bg-blue-900 p-8 rounded-3xl text-white flex flex-col justify-center text-center px-6">
+                            <p class="mb-8 font-light">Nghiên cứu và phát triển thiết bị bản quyền, đáp ứng đa dạng cấp
+                                độ chương trình học với độ chính xác cao nhất.</p>
+                            <button class="bg-amber-500 hover:bg-amber-600 py-3 rounded-xl font-bold transition">Xem
+                                Catalogue</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Đào tạo -->
+                <div class="card-flip h-[440px] cursor-pointer">
+                    <div class="card-flip-inner relative w-full h-full">
+                        <div
+                            class="card-front bg-white p-8 rounded-3xl shadow-sm flex flex-col justify-between border border-slate-200">
+                            <div>
+                                <div class="icon-container bg-amber-50 text-amber-600 text-6xl">
+                                    <i class="fa-solid fa-chalkboard-user"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-blue-900 mb-4">Đào tạo & tập huấn giáo viên</h4>
+                            </div>
+                            <span class="text-blue-600 font-bold flex items-center">Xem chi tiết <i
+                                    class="fa-solid fa-arrow-right ml-2 text-xs"></i></span>
+                        </div>
+                        <div
+                            class="card-back bg-blue-900 p-8 rounded-3xl text-white flex flex-col justify-center text-center px-6">
+                            <p class="mb-8 font-light">Hỗ trợ đội ngũ giáo viên làm chủ công nghệ giáo dục, thiết kế bài
+                                giảng sinh động và khai thác tối đa thiết bị.</p>
+                            <button class="bg-amber-500 hover:bg-amber-600 py-3 rounded-xl font-bold transition">Tìm
+                                hiểu thêm</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Phát triển chương trình -->
+                <div class="card-flip h-[440px] cursor-pointer">
+                    <div class="card-flip-inner relative w-full h-full">
+                        <div
+                            class="card-front bg-white p-8 rounded-3xl shadow-sm flex flex-col justify-between border border-slate-200">
+                            <div>
+                                <div class="icon-container bg-green-50 text-green-600 text-6xl">
+                                    <i class="fa-solid fa-diagram-project"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-blue-900 mb-4">Phát triển chương trình & tư vấn</h4>
+                            </div>
+                            <span class="text-blue-600 font-bold flex items-center">Xem chi tiết <i
+                                    class="fa-solid fa-arrow-right ml-2 text-xs"></i></span>
+                        </div>
+                        <div
+                            class="card-back bg-blue-900 p-8 rounded-3xl text-white flex flex-col justify-center text-center px-6">
+                            <p class="mb-8 font-light">Xây dựng chương trình STEM liên môn, bám sát chương trình quốc
+                                gia và mở rộng qua dự án thực tế.</p>
+                            <button class="bg-amber-500 hover:bg-amber-600 py-3 rounded-xl font-bold transition">Nhận tư
+                                vấn</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Sự kiện -->
+                <div class="card-flip h-[440px] cursor-pointer">
+                    <div class="card-flip-inner relative w-full h-full">
+                        <div
+                            class="card-front bg-white p-8 rounded-3xl shadow-sm flex flex-col justify-between border border-slate-200">
+                            <div>
+                                <div class="icon-container bg-purple-50 text-purple-600 text-6xl">
+                                    <i class="fa-solid fa-calendar-check"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-blue-900 mb-4">Sự kiện khoa học & hỗ trợ nghiên cứu
+                                </h4>
+                            </div>
+                            <span class="text-blue-600 font-bold flex items-center">Xem chi tiết <i
+                                    class="fa-solid fa-arrow-right ml-2 text-xs"></i></span>
+                        </div>
+                        <div
+                            class="card-back bg-blue-900 p-8 rounded-3xl text-white flex flex-col justify-center text-center px-6">
+                            <p class="mb-8 font-light">Tổ chức các sân chơi trí tuệ, câu lạc bộ khoa học nhằm kết nối
+                                cộng đồng và hỗ trợ học sinh nghiên cứu.</p>
+                            <button class="bg-amber-500 hover:bg-amber-600 py-3 rounded-xl font-bold transition">Xem sự
+                                kiện</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: GIẢI PHÁP -->
+    <section id="solution" class="py-24 bg-blue-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight uppercase">Giải pháp thí nghiệm gắn
+                    bảng<br><span class="text-amber-400 text-2xl md:text-4xl font-light italic">Đưa "Lab" vào từng tiết
+                        lý thuyết</span></h2>
+                <p class="text-xl text-blue-200 mb-12 font-light leading-relaxed">Tối ưu không gian, chính xác tuyệt
+                    đối, truyền cảm hứng học tập tối đa thông qua hệ thống module độc quyền. Công cụ giúp hiện thực hóa
+                    giáo dục thực nghiệm ngay tại lớp học.</p>
+
+                <div class="grid md:grid-cols-3 gap-8 mb-16">
+                    <div class="p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition">
+                        <div
+                            class="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center text-blue-900 mb-4 mx-auto font-bold">
+                            1</div>
+                        <p class="text-slate-200 text-sm font-medium">Hàng trăm thí nghiệm từ một bộ duy nhất</p>
+                    </div>
+                    <div class="p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition">
+                        <div
+                            class="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center text-blue-900 mb-4 mx-auto font-bold">
+                            2</div>
+                        <p class="text-slate-200 text-sm font-medium">Độ chính xác cao – đạt chuẩn HSG Quốc gia</p>
+                    </div>
+                    <div class="p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition">
+                        <div
+                            class="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center text-blue-900 mb-4 mx-auto font-bold">
+                            3</div>
+                        <p class="text-slate-200 text-sm font-medium">Thiết kế module – dễ lắp, dễ thay, dễ mở rộng</p>
+                    </div>
+                </div>
+
+                <!-- GIẢI PHÁP 6-IN-1 TÁCH BIỆT VÀ NỔI BẬT -->
+                <div class="p-10 bg-white/5 rounded-[3rem] border border-white/20 backdrop-blur-sm shadow-2xl">
+                    <h4
+                        class="text-amber-400 font-bold mb-8 flex items-center justify-center gap-3 tracking-widest uppercase text-lg">
+                        <i class="fa-solid fa-star"></i> Lộ trình khoa học "6 trong 1" toàn diện
+                    </h4>
+
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                        <div class="group">
+                            <div
+                                class="w-full aspect-square bg-white/10 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-amber-500 hover:text-blue-900 transition-all duration-300 shadow-lg border border-white/10">
+                                <i class="fa-solid fa-eye text-amber-500 group-hover:text-blue-900 text-2xl"></i>
+                                <span class="font-bold text-[10px] uppercase tracking-tighter">Khám phá hiện
+                                    tượng</span>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div
+                                class="w-full aspect-square bg-white/10 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-amber-500 hover:text-blue-900 transition-all duration-300 shadow-lg border border-white/10">
+                                <i class="fa-solid fa-brain text-amber-500 group-hover:text-blue-900 text-2xl"></i>
+                                <span class="font-bold text-[10px] uppercase tracking-tighter">Hình thành khái
+                                    niệm</span>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div
+                                class="w-full aspect-square bg-white/10 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-amber-500 hover:text-blue-900 transition-all duration-300 shadow-lg border border-white/10">
+                                <i
+                                    class="fa-solid fa-magnifying-glass-chart text-amber-500 group-hover:text-blue-900 text-2xl"></i>
+                                <span class="font-bold text-[10px] uppercase tracking-tighter">Tìm hiểu quy luật</span>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div
+                                class="w-full aspect-square bg-white/10 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-amber-500 hover:text-blue-900 transition-all duration-300 shadow-lg border border-white/10">
+                                <i
+                                    class="fa-solid fa-vial-circle-check text-amber-500 group-hover:text-blue-900 text-2xl"></i>
+                                <span class="font-bold text-[10px] uppercase tracking-tighter">Kiểm chứng quy
+                                    luật</span>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div
+                                class="w-full aspect-square bg-white/10 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-amber-500 hover:text-blue-900 transition-all duration-300 shadow-lg border border-white/10">
+                                <i class="fa-solid fa-flask text-amber-500 group-hover:text-blue-900 text-2xl"></i>
+                                <span class="font-bold text-[10px] uppercase tracking-tighter">Thực hành chuẩn</span>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div
+                                class="w-full aspect-square bg-white/10 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-amber-500 hover:text-blue-900 transition-all duration-300 shadow-lg border border-white/10">
+                                <i class="fa-solid fa-rocket text-amber-500 group-hover:text-blue-900 text-2xl"></i>
+                                <span class="font-bold text-[10px] uppercase tracking-tighter">Dự án STEM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: TÁC GIẢ -->
+    <section id="author" class="py-24 bg-white relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-12">
+                <h3 class="text-blue-900 font-extrabold text-3xl md:text-4xl mb-2 uppercase tracking-tight">Mai Văn Túc
+                </h3>
+                <p class="text-amber-500 font-semibold tracking-widest uppercase text-sm mb-6">Người thầy truyền cảm
+                    hứng thực nghiệm</p>
+                <div class="w-24 h-1 bg-amber-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div class="p-8 bg-slate-50 rounded-[2rem] hover:shadow-xl transition-all duration-300">
+                    <div class="text-4xl font-black text-blue-900 mb-2">30+</div>
+                    <p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Năm kinh nghiệm giảng dạy</p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-[2rem] hover:shadow-xl transition-all duration-300">
+                    <div class="text-4xl font-black text-blue-900 mb-2">15+</div>
+                    <p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Năm cố vấn Olympia</p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-[2rem] hover:shadow-xl transition-all duration-300">
+                    <div class="text-4xl font-black text-blue-900 mb-2">100+</div>
+                    <p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Giải thưởng HSG Quốc gia</p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-[2rem] hover:shadow-xl transition-all duration-300">
+                    <div
+                        class="text-2xl md:text-3xl font-black text-blue-900 mb-2 uppercase tracking-tighter whitespace-nowrap">
+                        Độc quyền</div>
+                    <p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Hàng trăm mô hình bản quyền</p>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-6 text-slate-700 leading-relaxed font-medium mb-16">
+                <p class="flex items-center justify-center gap-3"><i
+                        class="fa-solid fa-graduation-cap text-blue-900"></i> GV Vật lí – Trường THPT Chuyên Khoa học tự
+                    nhiên, ĐHQG Hà Nội</p>
+                <p class="flex items-center justify-center gap-3"><i class="fa-solid fa-flask text-blue-900"></i> Người
+                    sáng lập Trung tâm Vật lí Edison & Đồng sáng lập ESC</p>
+                <p class="flex items-center justify-center gap-3"><i class="fa-solid fa-tv text-blue-900"></i> Cố vấn
+                    chuyên môn Chương trình Đường lên đỉnh Olympia</p>
+            </div>
+
+            <blockquote
+                class="p-12 bg-blue-900 text-white rounded-[3rem] italic text-2xl md:text-3xl font-light shadow-2xl relative">
+                <i class="fa-solid fa-quote-left absolute top-8 left-10 text-white/10 text-7xl"></i>
+                "Tôi bắt đầu hành trình giáo dục khoa học với mong muốn giản dị là giúp học sinh học khoa học qua trải
+                nghiệm thực tế thay vì chỉ tiếp cận qua lý thuyết sách vở."
+                <i class="fa-solid fa-quote-right absolute bottom-8 right-10 text-white/10 text-7xl"></i>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- SECTION 6: TESTIMONIALS -->
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-extrabold text-blue-900 mb-4 uppercase tracking-tight">Tiếng nói từ thực tiễn
+                </h2>
+                <p class="text-xl text-slate-600 font-light italic">Câu chuyện thực tế từ giáo viên, học sinh và cha mẹ
+                    học sinh đã đồng hành cùng Edison.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-10">
+                <div
+                    class="bg-white p-10 rounded-[2.5rem] shadow-sm relative border border-slate-100 hover:shadow-xl transition group">
+                    <div
+                        class="w-16 h-16 bg-blue-900 rounded-full absolute -top-8 left-10 flex items-center justify-center text-white text-2xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-quote-right"></i>
+                    </div>
+                    <p class="text-slate-600 mb-8 italic leading-relaxed font-light">"Tôi tham gia khóa tập huấn của
+                        Edison và thực sự choáng ngợp. Hệ thống thí nghiệm gắn bảng giúp giáo viên dễ dàng truyền tải
+                        những đại lượng khô khan thành niềm hứng thú bất tận cho học sinh."</p>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 bg-slate-200 rounded-full overflow-hidden flex items-center justify-center text-slate-400">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-blue-900">Thầy Mai Ngọc Văn</h5>
+                            <p class="text-xs text-slate-500 uppercase tracking-wider">GV Vật lí Archimedes School</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white p-10 rounded-[2.5rem] shadow-sm relative border border-slate-100 hover:shadow-xl transition group">
+                    <div
+                        class="w-16 h-16 bg-blue-900 rounded-full absolute -top-8 left-10 flex items-center justify-center text-white text-2xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-quote-right"></i>
+                    </div>
+                    <p class="text-slate-600 mb-8 italic leading-relaxed font-light">"Tại ESC, em không còn phải học
+                        thuộc lòng những công thức khó hiểu. Việc tự tay lắp đặt và tìm ra quy luật qua thí nghiệm giúp
+                        em hiểu bản chất vấn đề và yêu môn Vật lí hơn."</p>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 bg-slate-200 rounded-full overflow-hidden flex items-center justify-center text-slate-400">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-blue-900">Trần Minh Anh</h5>
+                            <p class="text-xs text-slate-500 uppercase tracking-wider">HS Lớp 11 Chuyên Lý, Hà Nội</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white p-10 rounded-[2.5rem] shadow-sm relative border border-slate-100 hover:shadow-xl transition group">
+                    <div
+                        class="w-16 h-16 bg-blue-900 rounded-full absolute -top-8 left-10 flex items-center justify-center text-white text-2xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-quote-right"></i>
+                    </div>
+                    <p class="text-slate-600 mb-8 italic leading-relaxed font-light">"Tôi ngạc nhiên khi thấy con tự tin
+                        giải thích về hiện tượng thực tế. ESC đã đánh thức tư duy quan sát và sự chủ động tìm tòi vốn bị
+                        ngủ quên của con."</p>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 bg-slate-200 rounded-full overflow-hidden flex items-center justify-center text-slate-400">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-blue-900">Chị Nguyễn Hồng Hà</h5>
+                            <p class="text-xs text-slate-500 uppercase tracking-wider">Phụ huynh học sinh</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: ĐỐI TÁC -->
+    <section class="py-16 bg-white overflow-hidden border-y border-slate-100">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center uppercase tracking-widest text-slate-400 font-bold text-sm">
+            ESC đồng hành cùng các đơn vị giáo dục hàng đầu
+        </div>
+        <div class="relative overflow-hidden w-full">
+            <div class="logo-carousel flex items-center space-x-20">
+                <span class="text-xl font-bold text-slate-400 grayscale hover:grayscale-0 transition">TRƯỜNG CHUYÊN
+                    KHTN</span>
+                <span
+                    class="text-xl font-bold text-slate-400 grayscale hover:grayscale-0 transition uppercase tracking-tighter">Đường
+                    lên đỉnh Olympia</span>
+                <span
+                    class="text-xl font-bold text-slate-400 grayscale hover:grayscale-0 transition uppercase tracking-tighter">Archimedes
+                    School</span>
+                <span
+                    class="text-xl font-bold text-slate-400 grayscale hover:grayscale-0 transition uppercase tracking-tighter">Edison
+                    Physics</span>
+                <span class="text-xl font-bold text-slate-400 grayscale hover:grayscale-0 transition">TRƯỜNG CHUYÊN
+                    KHTN</span>
+                <span
+                    class="text-xl font-bold text-slate-400 grayscale hover:grayscale-0 transition uppercase tracking-tighter">Đường
+                    lên đỉnh Olympia</span>
+                <span
+                    class="text-xl font-bold text-slate-400 grayscale hover:grayscale-0 transition uppercase tracking-tighter">Archimedes
+                    School</span>
+                <span
+                    class="text-xl font-bold text-slate-400 grayscale hover:grayscale-0 transition uppercase tracking-tighter">Edison
+                    Physics</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white pt-24 pb-12 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-16 mb-16">
+                <div>
+                    <!-- LOGO DẠNG TEXT TẠI FOOTER -->
+                    <div class="flex items-center gap-3 mb-8">
+                        <span class="text-2xl font-black text-blue-900 tracking-tighter">EDISON</span>
+                    </div>
+                    <p class="text-slate-500 italic font-light text-lg mb-8">"There’s a better way to do it – Find it."
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-50 text-blue-900 rounded-full flex items-center justify-center hover:bg-blue-900 hover:text-white transition"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-50 text-blue-900 rounded-full flex items-center justify-center hover:bg-blue-900 hover:text-white transition"><i
+                                class="fa-brands fa-youtube"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-50 text-blue-900 rounded-full flex items-center justify-center hover:bg-blue-900 hover:text-white transition"><i
+                                class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="md:col-span-2 grid sm:grid-cols-2 gap-12">
+                    <div>
+                        <h5 class="text-lg font-bold text-blue-900 mb-6 uppercase tracking-widest">Thông liên hệ</h5>
+                        <ul class="space-y-4 text-slate-600">
+                            <li class="flex gap-4">
+                                <i class="fa-solid fa-location-dot mt-1 text-amber-500"></i>
+                                <span>65 Trương Công Giai, Cầu Giấy, Hà Nội</span>
+                            </li>
+                            <li class="flex gap-4">
+                                <i class="fa-solid fa-phone mt-1 text-amber-500"></i>
+                                <span>0983 888 038</span>
+                            </li>
+                            <li class="flex gap-4">
+                                <i class="fa-solid fa-envelope mt-1 text-amber-500"></i>
+                                <span>edison@aschool.edu.vn</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-lg font-bold text-blue-900 mb-6 uppercase tracking-widest">Tin tức & Sự kiện
+                        </h5>
+                        <ul class="space-y-4 text-slate-500">
+                            <li><a href="#" class="hover:text-blue-900 transition underline-offset-4 hover:underline">Hệ
+                                    sinh thái STEM 2027</a></li>
+                            <li><a href="#"
+                                    class="hover:text-blue-900 transition underline-offset-4 hover:underline">Tập huấn
+                                    giáo viên tháng 5</a></li>
+                            <li><a href="#"
+                                    class="hover:text-blue-900 transition underline-offset-4 hover:underline">Bản quyền
+                                    thiết bị gắn bảng</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center pt-12 border-t border-slate-50 text-slate-400 text-sm italic">
+                &copy; 2026 Edison Science Center Việt Nam. Chào mừng bạn đến với kỷ nguyên khoa học thực hành.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================================================== -->
+    <!-- PHẦN JS: KHI DEPLOY, HÃY COPY NỘI DUNG DƯỚI ĐÂY SANG FILE 'script.js'      -->
+    <!-- Và gọi vào HTML bằng: <script src="script.js"></script>                    -->
+    <!-- ========================================================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Logic cho Smooth scroll khi click menu
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        const headerOffset = 80; // Chiều cao của thanh header
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // 2. Logic cho hiệu ứng thu nhỏ Header khi cuộn trang
+            const nav = document.getElementById('main-nav');
+            const navContainer = document.getElementById('nav-container');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('shadow-lg');
+                    navContainer.classList.remove('h-20');
+                    navContainer.classList.add('h-16');
+                } else {
+                    nav.classList.remove('shadow-lg');
+                    navContainer.classList.remove('h-16');
+                    navContainer.classList.add('h-20');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
