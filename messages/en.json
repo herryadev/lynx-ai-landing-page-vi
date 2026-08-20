@@ -1,14 +1,15 @@
 {
   "meta": {
-    "title": "AI operations, customer care, automated sales & marketing",
-    "description": "AI platform for Vietnamese businesses: revenue & inventory reports, 24/7 CS, Zalo sales automation, content & short-form video — with demo videos per module."
+    "title": "Lynx AI Solution — AI operations, sales & retail analytics for businesses",
+    "description": "AI platform for businesses: cash-flow & inventory reporting, 24/7 customer care, automated Zalo sales, content & video marketing, and e-commerce analytics (TikTok Shop, Shopee) — with a demo video for every module."
   },
   "nav": {
     "home": "Home",
     "about": "About us",
     "services": "Services",
     "why": "Why choose us",
-    "contact": "Contact Us"
+    "contact": "Contact Us",
+    "projects": "Projects"
   },
   "hero": {
     "kicker": "AI for ops, sales & marketing",
@@ -23,7 +24,7 @@
   "about": {
     "title": "About us",
     "body1": "We build focused AI modules for retail and services: real-time metrics, instant customer responses outside office hours, and automation for sales and marketing instead of manual follow-up.",
-    "body2": "Each module has a clear rollout path with Zalo, Telegram, TikTok and Facebook integrations so you see value early and scale step by step."
+    "body2": "Each module has a clear rollout path with Zalo, Telegram, TikTok and Facebook integrations so you see value early and scale step by step. Alongside client work, Lynx AI Solution directly owns and operates its own retail brand, Chom Chom Studio, on TikTok Shop — where we run our own products before packaging them for clients."
   },
   "services": {
     "kicker": "Services",
@@ -69,10 +70,58 @@
       }
     }
   },
+  "projects": {
+    "kicker": "Projects",
+    "title": "Selected projects",
+    "description": "What we have built — including the products we operate for ourselves.",
+    "items": {
+      "chomchom": {
+        "badge": "Lynx in-house product",
+        "title": "Chom Chom Studio — internal TikTok Shop dashboard",
+        "desc": "Lynx AI Solution owns and operates the women's fashion brand Chom Chom Studio (chomchom.com.vn), selling on TikTok Shop under the company's own advertiser account. We built the internal reporting dashboard that reads data through the TikTok Business API: daily GMV Max revenue and ad spend, ROI per campaign and per video, inventory by SKU, ad wallet balance — and manages that same account's GMV Max campaigns.",
+        "tags": [
+          "TikTok Business API",
+          "GMV Max",
+          "BI Dashboard",
+          "E-commerce"
+        ],
+        "result": "Covers only the company's own advertiser account · internal use, no data shared with third parties",
+        "linkLabel": "Visit the brand →",
+        "linkHref": "https://chomchom.com.vn"
+      },
+      "crm": {
+        "badge": "Client project",
+        "title": "Customer management system (CRM 360°)",
+        "desc": "Centralizes multi-channel customer data, automates segmentation, tracks the sales pipeline and measures campaign performance in real time.",
+        "tags": [
+          "CRM",
+          "Customer 360",
+          "Analytics"
+        ],
+        "result": "Higher conversion rate · better customer retention",
+        "linkLabel": "",
+        "linkHref": ""
+      },
+      "zalo": {
+        "badge": "Client project",
+        "title": "Zalo Sales Data Management",
+        "desc": "Syncs and manages all Zalo OA conversation data — sales assignment, automated follow-up reminders, order tracking and per-agent KPI measurement.",
+        "tags": [
+          "Zalo OA API",
+          "Sales Pipeline",
+          "Realtime"
+        ],
+        "result": "No lost leads · better close rate",
+        "linkLabel": "",
+        "linkHref": ""
+      }
+    }
+  },
   "why": {
     "title": "Why choose us",
     "points": [
       "One platform, many modules: reporting, CS, sales and marketing connected instead of fragmented tools.",
+      "We use our own products: we operate our own retail brand on TikTok Shop, so we understand e-commerce and advertising problems from the inside.",
       "Built for Vietnam channels: Zalo, Telegram, TikTok and Reels in the default rollout.",
       "See before you buy: demo videos per module so you know features and automation depth.",
       "After go-live: we tune prompts, playbooks and reports to your real operations."
@@ -91,6 +140,27 @@
     "officesList": [
       "Hanoi: No. 26, Lane 364 Minh Khai Street, Vinh Tuy Ward, Hai Ba Trung District, Hanoi, Vietnam."
     ],
-    "copyright": "All rights reserved."
+    "copyright": "All rights reserved.",
+    "whoWeAre": "Who we are",
+    "whoLinks": [
+      "Vision & mission",
+      "Core values",
+      "The meaning of Lynx"
+    ],
+    "whatWeDo": "What we do",
+    "whatLinks": [
+      "Creative & Engineering",
+      "Talent Platform",
+      "Our projects"
+    ],
+    "newsUpdate": "News & updates",
+    "newsLinks": [
+      "Culture & events",
+      "Careers",
+      "Benefits"
+    ],
+    "joinUs": "Join us",
+    "brandsTitle": "Our brands",
+    "brandsNote": "Chom Chom Studio — a women's fashion brand owned and operated by Lynx AI Solution on TikTok Shop."
   }
 }

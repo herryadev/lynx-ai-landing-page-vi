@@ -1,14 +1,15 @@
 {
   "meta": {
-    "title": "AI quản lý, chăm sóc khách hàng, sales & marketing tự động",
-    "description": "Nền tảng AI cho doanh nghiệp: báo cáo thu chi & tồn kho, CSKH 24/7, sales Zalo tự động, content & video marketing — có video demo từng module."
+    "title": "Lynx AI Solution — AI vận hành, bán hàng & Retail Analytics cho doanh nghiệp",
+    "description": "Nền tảng AI cho doanh nghiệp: báo cáo thu chi & tồn kho, CSKH 24/7, sales Zalo tự động, content & video marketing, và phân tích dữ liệu thương mại điện tử (TikTok Shop, Shopee) — có video demo từng module."
   },
   "nav": {
     "home": "Trang chủ",
     "about": "Về chúng tôi",
     "services": "Dịch vụ",
     "why": "Tại sao chọn chúng tôi",
-    "contact": "Liên hệ"
+    "contact": "Liên hệ",
+    "projects": "Dự án"
   },
   "hero": {
     "kicker": "AI cho vận hành, bán hàng & marketing",
@@ -23,7 +24,7 @@
   "about": {
     "title": "Về chúng tôi",
     "body1": "Chúng tôi xây dựng các module AI chuyên sâu cho bán lẻ và dịch vụ: số liệu rõ ràng theo thời gian thực, khách hàng được phản hồi ngay cả ngoài giờ, và đội sales — marketing có công cụ tự động hóa thay vì làm thủ công.",
-    "body2": "Mỗi phân hệ đều có lộ trình triển khai cụ thể, tích hợp Zalo / Telegram / TikTok / Facebook theo nhu cầu, để bạn nhìn thấy giá trị sớm và mở rộng dần theo giai đoạn."
+    "body2": "Mỗi phân hệ đều có lộ trình triển khai cụ thể, tích hợp Zalo / Telegram / TikTok / Facebook theo nhu cầu, để bạn nhìn thấy giá trị sớm và mở rộng dần theo giai đoạn. Bên cạnh dịch vụ cho khách hàng, Lynx AI Solution còn trực tiếp sở hữu và vận hành thương hiệu bán lẻ Chôm Chôm Studio trên TikTok Shop — nơi chúng tôi tự dùng sản phẩm của mình trước khi đóng gói cho khách."
   },
   "services": {
     "kicker": "Dịch vụ",
@@ -68,10 +69,58 @@
       }
     }
   },
+  "projects": {
+    "kicker": "Dự án",
+    "title": "Dự án tiêu biểu",
+    "description": "Những gì chúng tôi đã làm — bao gồm cả sản phẩm chúng tôi tự vận hành cho chính mình.",
+    "items": {
+      "chomchom": {
+        "badge": "Sản phẩm nội bộ của Lynx",
+        "title": "Chôm Chôm Studio — Dashboard TikTok Shop nội bộ",
+        "desc": "Lynx AI Solution sở hữu và vận hành thương hiệu thời trang nữ Chôm Chôm Studio (chomchom.com.vn), bán trên TikTok Shop qua tài khoản quảng cáo của chính công ty. Chúng tôi xây dashboard báo cáo nội bộ đọc dữ liệu qua TikTok Business API: doanh thu và chi phí quảng cáo GMV Max hằng ngày, ROI theo từng chiến dịch và từng video, tồn kho theo SKU, số dư ví quảng cáo — và quản lý chính các chiến dịch GMV Max của tài khoản này.",
+        "tags": [
+          "TikTok Business API",
+          "GMV Max",
+          "BI Dashboard",
+          "Thương mại điện tử"
+        ],
+        "result": "Dữ liệu chỉ thuộc tài khoản của chính công ty · dùng nội bộ, không chia sẻ cho bên thứ ba",
+        "linkLabel": "Xem thương hiệu →",
+        "linkHref": "https://chomchom.com.vn"
+      },
+      "crm": {
+        "badge": "Dự án khách hàng",
+        "title": "Hệ thống quản lý khách hàng (CRM 360°)",
+        "desc": "Tập trung dữ liệu khách hàng đa kênh, phân khúc tự động, theo dõi pipeline bán hàng và đo lường hiệu quả chiến dịch theo thời gian thực.",
+        "tags": [
+          "CRM",
+          "Customer 360",
+          "Analytics"
+        ],
+        "result": "Tăng tỷ lệ chuyển đổi · giữ chân khách hàng",
+        "linkLabel": "",
+        "linkHref": ""
+      },
+      "zalo": {
+        "badge": "Dự án khách hàng",
+        "title": "Quản lý Data Zalo Sale",
+        "desc": "Đồng bộ và quản lý toàn bộ dữ liệu hội thoại Zalo OA — phân công sale, tự động nhắc lịch, tracking đơn hàng và đo lường KPI từng nhân viên.",
+        "tags": [
+          "Zalo OA API",
+          "Sales Pipeline",
+          "Realtime"
+        ],
+        "result": "Không bỏ sót lead · tối ưu tỉ lệ chốt đơn",
+        "linkLabel": "",
+        "linkHref": ""
+      }
+    }
+  },
   "why": {
     "title": "Tại sao chọn chúng tôi",
     "points": [
       "Một nền tảng nhiều module: quản lý số liệu, CSKH, sales và marketing liên thông thay vì rời rạc công cụ.",
+      "Tự dùng sản phẩm của mình: chúng tôi vận hành thương hiệu bán lẻ riêng trên TikTok Shop, nên hiểu bài toán thương mại điện tử và quảng cáo từ bên trong.",
       "Kênh Việt Nam: Zalo, Telegram, TikTok, Facebook Reels được tính toán sẵn trong luồng triển khai.",
       "Minh bạch trước khi mua: xem video demo từng phân hệ, hiểu rõ tính năng và mức độ tự động hóa.",
       "Đồng hành sau bàn giao: tối ưu prompt, kịch bản và báo cáo theo thực tế vận hành của bạn."
@@ -84,11 +133,23 @@
   },
   "footer": {
     "whoWeAre": "Chúng tôi là ai?",
-    "whoLinks": ["Tầm nhìn, sứ mệnh", "Giá trị cốt lõi", "Ý nghĩa tên Lynx"],
+    "whoLinks": [
+      "Tầm nhìn, sứ mệnh",
+      "Giá trị cốt lõi",
+      "Ý nghĩa tên Lynx"
+    ],
     "whatWeDo": "Chúng tôi làm gì?",
-    "whatLinks": ["Creative & Engineering", "Talent Platform", "Dự án của chúng tôi"],
+    "whatLinks": [
+      "Creative & Engineering",
+      "Talent Platform",
+      "Dự án của chúng tôi"
+    ],
     "newsUpdate": "Cập nhật tin tức",
-    "newsLinks": ["Văn hóa - Sự kiện", "Tuyển dụng", "Chính sách phúc lợi"],
+    "newsLinks": [
+      "Văn hóa - Sự kiện",
+      "Tuyển dụng",
+      "Chính sách phúc lợi"
+    ],
     "contactTitle": "Liên hệ",
     "phone": "Zalo",
     "email": "Email",
@@ -97,6 +158,8 @@
       "Hà Nội: Số 26 Ngõ 364 Đường Minh Khai, Phường Vĩnh Tuy, Quận Hai Bà Trưng, Thành phố Hà Nội, Việt Nam."
     ],
     "copyright": "Bản quyền thuộc về Lynx Solution.",
-    "joinUs": "Join us"
+    "joinUs": "Join us",
+    "brandsTitle": "Thương hiệu của chúng tôi",
+    "brandsNote": "Chôm Chôm Studio — thương hiệu thời trang nữ do Lynx AI Solution sở hữu và vận hành trên TikTok Shop."
   }
 }

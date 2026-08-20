@@ -22,6 +22,14 @@ const DEMO_VIDEO_SRC_BY_SERVICE: Record<(typeof SERVICE_KEYS)[number], string> =
 
 const POPUP_VIDEO_SRC = '/video/tvc.mp4';
 
+const PROJECT_KEYS = ['chomchom', 'crm', 'zalo'] as const;
+
+const PROJECT_TAG_COUNT: Record<(typeof PROJECT_KEYS)[number], number> = {
+  chomchom: 4,
+  crm: 3,
+  zalo: 3,
+};
+
 export function LandingPage() {
   const t = useTranslations();
   const [videoOpen, setVideoOpen] = useState(false);
@@ -244,6 +252,85 @@ export function LandingPage() {
                   {t('about.body2')}
                 </p>
               </motion.div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Projects */}
+        <section
+          id="projects"
+          className="scroll-mt-20 border-b border-zinc-200 bg-zinc-50/60"
+        >
+          <Container className="py-12 sm:py-16">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-(--color-primary)">
+                {t('projects.kicker')}
+              </p>
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+                {t('projects.title')}
+              </h2>
+              <p className="mt-4 text-base leading-7 text-zinc-600">
+                {t('projects.description')}
+              </p>
+            </div>
+            <div className="mt-10 grid gap-6 lg:grid-cols-3">
+              {PROJECT_KEYS.map((key, index) => {
+                const linkHref = t(`projects.items.${key}.linkHref`);
+                const linkLabel = t(`projects.items.${key}.linkLabel`);
+                const featured = key === 'chomchom';
+
+                return (
+                  <motion.article
+                    key={key}
+                    className={[
+                      'flex flex-col rounded-2xl border bg-white p-6 text-left',
+                      featured
+                        ? 'border-(--color-primary)/60 bg-(--color-primary-soft)/25 shadow-[0_20px_50px_-30px_rgba(24,24,27,0.3)] lg:col-span-3'
+                        : 'border-zinc-200',
+                    ].join(' ')}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.05 }}
+                  >
+                    <span className="inline-flex w-fit rounded-full border border-(--color-primary)/40 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wide text-(--color-primary)">
+                      {t(`projects.items.${key}.badge`)}
+                    </span>
+                    <h3 className="mt-4 text-xl font-bold tracking-tight text-zinc-950">
+                      {t(`projects.items.${key}.title`)}
+                    </h3>
+                    <p className="mt-3 text-base leading-7 text-zinc-600">
+                      {t(`projects.items.${key}.desc`)}
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {Array.from({length: PROJECT_TAG_COUNT[key]}, (_, i) => (
+                        <span
+                          key={i}
+                          className="rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-600"
+                        >
+                          {t(`projects.items.${key}.tags.${i}`)}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="mt-4 flex gap-2 text-sm font-medium text-zinc-700">
+                      <span aria-hidden className="text-(--color-primary)">
+                        &#10003;
+                      </span>
+                      {t(`projects.items.${key}.result`)}
+                    </p>
+                    {linkHref && linkLabel ? (
+                      <a
+                        href={linkHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 w-fit text-sm font-semibold text-(--color-primary) hover:underline"
+                      >
+                        {linkLabel}
+                      </a>
+                    ) : null}
+                  </motion.article>
+                );
+              })}
             </div>
           </Container>
         </section>

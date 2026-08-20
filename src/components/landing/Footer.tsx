@@ -5,6 +5,7 @@ import {Container} from './Container';
 const navItems = [
   {key: 'about', href: '#about'},
   {key: 'services', href: '#services'},
+  {key: 'projects', href: '#projects'},
   {key: 'why', href: '#why'},
   {key: 'contact', href: '#contact'}
 ] as const;
@@ -27,6 +28,20 @@ export function Footer() {
                 className="h-8 w-auto"
               />
             </div>
+            <h3 className="mt-6 text-base font-semibold text-zinc-950">
+              {t('footer.brandsTitle')}
+            </h3>
+            <p className="mt-2 text-sm leading-6 text-zinc-600">
+              {t('footer.brandsNote')}
+            </p>
+            <a
+              href="https://chomchom.com.vn"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-block text-sm font-semibold text-(--color-primary) hover:underline"
+            >
+              chomchom.com.vn
+            </a>
           </div>
 
           {/* Navigation */}

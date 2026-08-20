@@ -2,10 +2,12 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Container } from './Container';
 import { Button } from './Button';
+import { LocaleSwitcher } from './LocaleSwitcher';
 
 const navItems = [
   { key: 'about', href: '#about' },
   { key: 'services', href: '#services' },
+  { key: 'projects', href: '#projects' },
   { key: 'why', href: '#why' }
 ] as const;
 
@@ -29,6 +31,10 @@ export function Header() {
           />
         </a>
 
+        <div className="flex items-center gap-3 lg:hidden">
+          <LocaleSwitcher />
+        </div>
+
         <nav className="hidden items-center gap-6 lg:flex">
           {navItems.map((item) => (
             <a
@@ -42,6 +48,7 @@ export function Header() {
           <a href="https://zalo.me/0912205001" target="_blank" rel="noopener noreferrer">
             <Button>{t('nav.contact')}</Button>
           </a>
+          <LocaleSwitcher />
         </nav>
 
       </Container>
